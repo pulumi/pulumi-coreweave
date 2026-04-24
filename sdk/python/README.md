@@ -1,10 +1,7 @@
 # Pulumi provider for CoreWeave
 
-This provider is currently under development and not yet ready for use. Please check back later for updates.
+Pulumi provider that lets you manage [CoreWeave](https://coreweave.com/) resources. Based on the [terraform-provider-coreweave](https://github.com/coreweave/terraform-provider-coreweave) Terraform provider under the hood.
 
-# CoreWeave Resource Provider
-
-The CoreWeave Resource Provider lets you manage [CoreWeave](http://example.com) resources.
 
 ## Installing
 
