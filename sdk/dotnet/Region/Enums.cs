@@ -5,7 +5,7 @@ using System;
 using System.ComponentModel;
 using Pulumi;
 
-namespace Pulumi.Xyz.Region
+namespace Pulumi.Coreweave.Region
 {
     [EnumType]
     public readonly struct Region : IEquatable<Region>

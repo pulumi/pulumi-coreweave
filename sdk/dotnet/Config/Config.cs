@@ -4,7 +4,7 @@
 using System;
 using System.Collections.Immutable;
 
-namespace Pulumi.Xyz
+namespace Pulumi.Coreweave
 {
     public static class Config
     {
@@ -30,16 +30,46 @@ namespace Pulumi.Xyz
             }
         }
 
-        private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("xyz");
+        private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("coreweave");
 
-        private static readonly __Value<Pulumi.Xyz.Region.Region?> _region = new __Value<Pulumi.Xyz.Region.Region?>(() => __config.GetObject<Pulumi.Xyz.Region.Region>("region"));
+        private static readonly __Value<string?> _endpoint = new __Value<string?>(() => __config.Get("endpoint"));
         /// <summary>
-        /// A region which should be used.
+        /// CoreWeave API Endpoint. This can also be set via the COREWEAVE_API_ENDPOINT environment variable, which takes precedence. Defaults to `https://api.coreweave.com/`
         /// </summary>
-        public static Pulumi.Xyz.Region.Region? Region
+        public static string? Endpoint
         {
-            get => _region.Get();
-            set => _region.Set(value);
+            get => _endpoint.Get();
+            set => _endpoint.Set(value);
+        }
+
+        private static readonly __Value<string?> _httpTimeout = new __Value<string?>(() => __config.Get("httpTimeout"));
+        /// <summary>
+        /// Timeout duration for the HTTP client to use. This can also be set via the COREWEAVE_HTTP_TIMEOUT environment variable, which takes precedence. If unset, defaults to 10 seconds
+        /// </summary>
+        public static string? HttpTimeout
+        {
+            get => _httpTimeout.Get();
+            set => _httpTimeout.Set(value);
+        }
+
+        private static readonly __Value<string?> _s3Endpoint = new __Value<string?>(() => __config.Get("s3Endpoint"));
+        /// <summary>
+        /// CoreWeave S3 Endpoint, used for CoreWeave Object Storage. This can also be set via the COREWEAVE_S3_ENDPOINT environment variable, which takes precedence. Defaults to `https://cwobject.com`
+        /// </summary>
+        public static string? S3Endpoint
+        {
+            get => _s3Endpoint.Get();
+            set => _s3Endpoint.Set(value);
+        }
+
+        private static readonly __Value<string?> _token = new __Value<string?>(() => __config.Get("token"));
+        /// <summary>
+        /// CoreWeave API Token in the form `CW-SECRET-&lt;secret&gt;`. This can also be set via the COREWEAVE_API_TOKEN environment variable, which takes precedence.
+        /// </summary>
+        public static string? Token
+        {
+            get => _token.Get();
+            set => _token.Set(value);
         }
 
     }

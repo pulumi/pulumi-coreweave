@@ -15,13 +15,12 @@
 package main
 
 import (
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfgen"
 
 	coreweave "github.com/pulumi/pulumi-coreweave/provider"
-	"github.com/pulumi/pulumi-coreweave/provider/pkg/version"
 )
 
 func main() {
 	// Modify the path to point to the new provider
-	tfgen.Main("coreweave", version.Version, coreweave.Provider())
+	tfgen.Main("coreweave", coreweave.Provider())
 }
