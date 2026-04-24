@@ -58,10 +58,12 @@ jobs:
         with:
           module-path: provider
           ignore-modules: >-
+            buf.build/gen/go,
             github.com/aead/chacha20,
             github.com/apache/arrow/go/v12,
             github.com/apache/thrift/lib/go/thrift,
             github.com/cloudflare/circl,
+            github.com/coreweave,
             github.com/golang,
             github.com/gorhill/cronexpr,
             github.com/in-toto/in-toto-golang,
