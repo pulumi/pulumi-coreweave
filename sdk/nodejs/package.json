@@ -1,0 +1,27 @@
+{
+    "name": "@pulumi/coreweave",
+    "version": "1.0.0-alpha.0+dev",
+    "description": "A Pulumi package for creating and managing CoreWeave cloud resources.",
+    "keywords": [
+        "coreweave",
+        "category/cloud"
+    ],
+    "homepage": "https://www.pulumi.com",
+    "repository": "https://github.com/pulumi/pulumi-coreweave",
+    "license": "Apache-2.0",
+    "scripts": {
+        "build": "tsc"
+    },
+    "dependencies": {
+        "@pulumi/pulumi": "^3.142.0"
+    },
+    "devDependencies": {
+        "@types/node": "^20",
+        "typescript": "^4.7.0"
+    },
+    "pulumi": {
+        "resource": true,
+        "name": "coreweave",
+        "version": "1.0.0-alpha.0+dev"
+    }
+}

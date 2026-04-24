@@ -1,0 +1,3 @@
+name: coreweave
+description: A Pulumi resource provider for coreweave.
+language: python

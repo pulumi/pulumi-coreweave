@@ -1,0 +1,8 @@
+# Ignore local build tracking directory
+.make
+bin
+
+sdk/dotnet/version.txt
+sdk/python/venv
+sdk/nodejs/yarn.lock
+provider/coverage.txt
