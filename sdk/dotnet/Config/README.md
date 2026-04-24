@@ -1,1 +1,1 @@
-An example built with pulumi-go-provider.
+A Pulumi package for creating and managing xyz cloud resources.

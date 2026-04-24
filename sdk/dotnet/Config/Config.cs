@@ -4,7 +4,7 @@
 using System;
 using System.Collections.Immutable;
 
-namespace Pulumi.ProviderBoilerplate
+namespace Pulumi.Xyz
 {
     public static class Config
     {
@@ -30,13 +30,16 @@ namespace Pulumi.ProviderBoilerplate
             }
         }
 
-        private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("provider-boilerplate");
+        private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("xyz");
 
-        private static readonly __Value<bool?> _itsasecret = new __Value<bool?>(() => __config.GetBoolean("itsasecret"));
-        public static bool? Itsasecret
+        private static readonly __Value<Pulumi.Xyz.Region.Region?> _region = new __Value<Pulumi.Xyz.Region.Region?>(() => __config.GetObject<Pulumi.Xyz.Region.Region>("region"));
+        /// <summary>
+        /// A region which should be used.
+        /// </summary>
+        public static Pulumi.Xyz.Region.Region? Region
         {
-            get => _itsasecret.Get();
-            set => _itsasecret.Set(value);
+            get => _region.Get();
+            set => _region.Set(value);
         }
 
     }
