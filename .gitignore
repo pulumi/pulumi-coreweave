@@ -1,5 +1,5 @@
-
-
 # Ignore local build tracking directory
 .make
 bin
+
+sdk/dotnet/version.txt
