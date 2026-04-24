@@ -1,5 +1,6 @@
 {
     "name": "coreweave",
+    "displayName": "CoreWeave",
     "description": "A Pulumi package for creating and managing CoreWeave cloud resources.",
     "keywords": [
         "coreweave",
@@ -787,19 +788,6 @@
                 }
             },
             "type": "object"
-        },
-        "coreweave:region/region:Region": {
-            "type": "string",
-            "enum": [
-                {
-                    "name": "here",
-                    "value": "HERE"
-                },
-                {
-                    "name": "overThere",
-                    "value": "OVER_THERE"
-                }
-            ]
         }
     },
     "provider": {

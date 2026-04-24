@@ -25,11 +25,8 @@ from . import outputs
 if typing.TYPE_CHECKING:
     import pulumi_coreweave.config as __config
     config = __config
-    import pulumi_coreweave.region as __region
-    region = __region
 else:
     config = _utilities.lazy_import('pulumi_coreweave.config')
-    region = _utilities.lazy_import('pulumi_coreweave.region')
 
 _utilities.register(
     resource_modules="""
