@@ -21,6 +21,7 @@ import (
 	_ "embed"
 
 	provider "github.com/coreweave/terraform-provider-coreweave/pulumi-shim"
+
 	pfbridge "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
