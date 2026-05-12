@@ -6,3 +6,4 @@ sdk/dotnet/version.txt
 sdk/python/venv
 sdk/nodejs/yarn.lock
 provider/coverage.txt
+.pulumi
