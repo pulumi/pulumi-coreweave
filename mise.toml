@@ -1,0 +1,11 @@
+# Root-level mise overrides that augment the ci-mgmt-generated
+# .config/mise.toml (which must not be hand-edited).
+#
+# The Terraform converter and the std plugin must be installed so that
+# `pulumi convert` can run during schema generation (`pulumiConvert: 1`).
+# Schema generation disables automatic plugin acquisition for
+# reproducibility, so these are pinned here and installed by mise,
+# matching every other Pulumi bridged provider.
+[tools]
+"vfox-pulumi:pulumi/pulumi-converter-terraform" = "1.2.4"
+"vfox-pulumi:pulumi/pulumi-std" = "2.2.0"
