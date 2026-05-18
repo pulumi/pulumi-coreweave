@@ -17,6 +17,13 @@ providerDefaultBranch: main
 # Enables automatic generation of basic docs pages for the registry.
 registryDocs: true
 
+# buf.build-generated protobuf/connectrpc SDKs for CoreWeave's own APIs.
+# These generated modules don't ship a LICENSE file that go-licenses can
+# detect, so exclude them from the license check.
+license:
+    ignore:
+        - buf.build/gen/go/coreweave
+
 # Enables ESC for CI secrets. Optional.
 esc:
     enabled: true
