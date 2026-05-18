@@ -9,6 +9,111 @@ using Pulumi.Serialization;
 
 namespace Pulumi.CoreWeave
 {
+    /// <summary>
+    /// Create and manage VPCs. Learn more about [CoreWeave VPCs](https://docs.coreweave.com/products/networking/vpc/about-vpcs).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using CoreWeave = Pulumi.CoreWeave;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new CoreWeave.NetworkingVpc("example", new()
+    ///     {
+    ///         Name = "default",
+    ///         Zone = "US-EAST-04A",
+    ///         HostPrefixes = new[]
+    ///         {
+    ///             new CoreWeave.Inputs.NetworkingVpcHostPrefixArgs
+    ///             {
+    ///                 Name = "primary",
+    ///                 Type = "PRIMARY",
+    ///                 Prefixes = new[]
+    ///                 {
+    ///                     "10.16.192.0/18",
+    ///                     "2601:db8:aaaa::/48",
+    ///                 },
+    ///             },
+    ///             new CoreWeave.Inputs.NetworkingVpcHostPrefixArgs
+    ///             {
+    ///                 Name = "container-network",
+    ///                 Type = "ROUTED",
+    ///                 Prefixes = new[]
+    ///                 {
+    ///                     "2601:db8:bbbb::/48",
+    ///                 },
+    ///                 Ipam = new CoreWeave.Inputs.NetworkingVpcHostPrefixIpamArgs
+    ///                 {
+    ///                     PrefixLength = 80,
+    ///                     GatewayAddressPolicy = "FIRST_IP",
+    ///                 },
+    ///             },
+    ///             new CoreWeave.Inputs.NetworkingVpcHostPrefixArgs
+    ///             {
+    ///                 Name = "attached-network",
+    ///                 Type = "ATTACHED",
+    ///                 Prefixes = new[]
+    ///                 {
+    ///                     "2601:db8:cccc::/48",
+    ///                 },
+    ///                 Ipam = new CoreWeave.Inputs.NetworkingVpcHostPrefixIpamArgs
+    ///                 {
+    ///                     PrefixLength = 64,
+    ///                 },
+    ///             },
+    ///         },
+    ///         VpcPrefixes = new[]
+    ///         {
+    ///             new CoreWeave.Inputs.NetworkingVpcVpcPrefixArgs
+    ///             {
+    ///                 Name = "pod cidr",
+    ///                 Value = "10.0.0.0/13",
+    ///             },
+    ///             new CoreWeave.Inputs.NetworkingVpcVpcPrefixArgs
+    ///             {
+    ///                 Name = "service cidr",
+    ///                 Value = "10.16.0.0/22",
+    ///             },
+    ///             new CoreWeave.Inputs.NetworkingVpcVpcPrefixArgs
+    ///             {
+    ///                 Name = "internal lb cidr",
+    ///                 Value = "10.32.4.0/22",
+    ///             },
+    ///         },
+    ///         Egress = new CoreWeave.Inputs.NetworkingVpcEgressArgs
+    ///         {
+    ///             DisablePublicAccess = false,
+    ///         },
+    ///         Ingress = new CoreWeave.Inputs.NetworkingVpcIngressArgs
+    ///         {
+    ///             DisablePublicServices = false,
+    ///         },
+    ///         Dhcp = new CoreWeave.Inputs.NetworkingVpcDhcpArgs
+    ///         {
+    ///             Dns = new CoreWeave.Inputs.NetworkingVpcDhcpDnsArgs
+    ///             {
+    ///                 Servers = new[]
+    ///                 {
+    ///                     "1.1.1.1",
+    ///                     "8.8.8.8",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import coreweave:index/networkingVpc:NetworkingVpc default {{id}}
+    /// ```
+    /// </summary>
     [CoreWeaveResourceType("coreweave:index/networkingVpc:NetworkingVpc")]
     public partial class NetworkingVpc : global::Pulumi.CustomResource
     {

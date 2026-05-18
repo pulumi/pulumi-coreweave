@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.CoreWeave
 {
+    /// <summary>
+    /// Create and manage clusters on [CoreWeave Kubernetes Service (CKS)](https://docs.coreweave.com/products/cks/clusters/introduction).
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import coreweave:index/cksCluster:CksCluster default {{id}}
+    /// ```
+    /// </summary>
     [CoreWeaveResourceType("coreweave:index/cksCluster:CksCluster")]
     public partial class CksCluster : global::Pulumi.CustomResource
     {

@@ -16,6 +16,105 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * Lifecycle configurations automate object management by defining actions applied to objects over time, such as expiring objects after a specified period or transitioning them to different storage tiers. This helps optimize storage costs and maintain data hygiene. Lifecycle configurations automate object management by defining actions applied to objects over time, such as expiring objects after a specified period or transitioning them to different storage tiers. This helps optimize storage costs and maintain data hygiene. [Learn more about S3-compatible lifecycle bucket configurations](https://docs.coreweave.com/products/storage/object-storage/reference/object-storage-s3#bucket-lifecycles).
+ * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.coreweave.ObjectStorageBucket;
+ * import com.pulumi.coreweave.ObjectStorageBucketArgs;
+ * import com.pulumi.coreweave.ObjectStorageBucketVersioning;
+ * import com.pulumi.coreweave.ObjectStorageBucketVersioningArgs;
+ * import com.pulumi.coreweave.inputs.ObjectStorageBucketVersioningVersioningConfigurationArgs;
+ * import com.pulumi.coreweave.ObjectStorageBucketLifecycleConfiguration;
+ * import com.pulumi.coreweave.ObjectStorageBucketLifecycleConfigurationArgs;
+ * import com.pulumi.coreweave.inputs.ObjectStorageBucketLifecycleConfigurationRuleArgs;
+ * import com.pulumi.coreweave.inputs.ObjectStorageBucketLifecycleConfigurationRuleFilterArgs;
+ * import com.pulumi.coreweave.inputs.ObjectStorageBucketLifecycleConfigurationRuleFilterAndArgs;
+ * import com.pulumi.coreweave.inputs.ObjectStorageBucketLifecycleConfigurationRuleExpirationArgs;
+ * import com.pulumi.coreweave.inputs.ObjectStorageBucketLifecycleConfigurationRuleNoncurrentVersionExpirationArgs;
+ * import com.pulumi.coreweave.inputs.ObjectStorageBucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new ObjectStorageBucket("default", ObjectStorageBucketArgs.builder()
+ *             .name("bucket-lifecycle-example")
+ *             .zone("US-EAST-04A")
+ *             .build());
+ * 
+ *         var defaultObjectStorageBucketVersioning = new ObjectStorageBucketVersioning("defaultObjectStorageBucketVersioning", ObjectStorageBucketVersioningArgs.builder()
+ *             .bucket(default_.name())
+ *             .versioningConfiguration(ObjectStorageBucketVersioningVersioningConfigurationArgs.builder()
+ *                 .status("Enabled")
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultObjectStorageBucketLifecycleConfiguration = new ObjectStorageBucketLifecycleConfiguration("defaultObjectStorageBucketLifecycleConfiguration", ObjectStorageBucketLifecycleConfigurationArgs.builder()
+ *             .bucket(default_.name())
+ *             .rules(            
+ *                 ObjectStorageBucketLifecycleConfigurationRuleArgs.builder()
+ *                     .id("cleanup-logs")
+ *                     .status("Enabled")
+ *                     .filter(ObjectStorageBucketLifecycleConfigurationRuleFilterArgs.builder()
+ *                         .and(ObjectStorageBucketLifecycleConfigurationRuleFilterAndArgs.builder()
+ *                             .prefix("logs/")
+ *                             .objectSizeGreaterThan(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1e+06) (example.pp:26,33-40)))
+ *                             .tags(Map.of("env", "prod"))
+ *                             .build())
+ *                         .build())
+ *                     .expiration(ObjectStorageBucketLifecycleConfigurationRuleExpirationArgs.builder()
+ *                         .days(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(30) (example.pp:33,14-16)))
+ *                         .build())
+ *                     .noncurrentVersionExpiration(ObjectStorageBucketLifecycleConfigurationRuleNoncurrentVersionExpirationArgs.builder()
+ *                         .noncurrentDays(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(7) (example.pp:36,33-34)))
+ *                         .newerNoncurrentVersions(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2) (example.pp:37,33-34)))
+ *                         .build())
+ *                     .build(),
+ *                 ObjectStorageBucketLifecycleConfigurationRuleArgs.builder()
+ *                     .id("expire-traces")
+ *                     .prefix("traces/")
+ *                     .status("Enabled")
+ *                     .abortIncompleteMultipartUpload(ObjectStorageBucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadArgs.builder()
+ *                         .daysAfterInitiation(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(5) (example.pp:44,29-30)))
+ *                         .build())
+ *                     .expiration(ObjectStorageBucketLifecycleConfigurationRuleExpirationArgs.builder()
+ *                         .date("2026-01-01T00:00:00Z")
+ *                         .build())
+ *                     .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(defaultObjectStorageBucketVersioning)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import coreweave:index/objectStorageBucketLifecycleConfiguration:ObjectStorageBucketLifecycleConfiguration default {{bucket_name}}
+ * ```
+ * 
+ */
 @ResourceType(type="coreweave:index/objectStorageBucketLifecycleConfiguration:ObjectStorageBucketLifecycleConfiguration")
 public class ObjectStorageBucketLifecycleConfiguration extends com.pulumi.resources.CustomResource {
     /**

@@ -9,6 +9,97 @@ using Pulumi.Serialization;
 
 namespace Pulumi.CoreWeave
 {
+    /// <summary>
+    /// Lifecycle configurations automate object management by defining actions applied to objects over time, such as expiring objects after a specified period or transitioning them to different storage tiers. This helps optimize storage costs and maintain data hygiene. Lifecycle configurations automate object management by defining actions applied to objects over time, such as expiring objects after a specified period or transitioning them to different storage tiers. This helps optimize storage costs and maintain data hygiene. [Learn more about S3-compatible lifecycle bucket configurations](https://docs.coreweave.com/products/storage/object-storage/reference/object-storage-s3#bucket-lifecycles).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using CoreWeave = Pulumi.CoreWeave;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new CoreWeave.ObjectStorageBucket("default", new()
+    ///     {
+    ///         Name = "bucket-lifecycle-example",
+    ///         Zone = "US-EAST-04A",
+    ///     });
+    /// 
+    ///     var defaultObjectStorageBucketVersioning = new CoreWeave.ObjectStorageBucketVersioning("default", new()
+    ///     {
+    ///         Bucket = @default.Name,
+    ///         VersioningConfiguration = new CoreWeave.Inputs.ObjectStorageBucketVersioningVersioningConfigurationArgs
+    ///         {
+    ///             Status = "Enabled",
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultObjectStorageBucketLifecycleConfiguration = new CoreWeave.ObjectStorageBucketLifecycleConfiguration("default", new()
+    ///     {
+    ///         Bucket = @default.Name,
+    ///         Rules = new[]
+    ///         {
+    ///             new CoreWeave.Inputs.ObjectStorageBucketLifecycleConfigurationRuleArgs
+    ///             {
+    ///                 Id = "cleanup-logs",
+    ///                 Status = "Enabled",
+    ///                 Filter = new CoreWeave.Inputs.ObjectStorageBucketLifecycleConfigurationRuleFilterArgs
+    ///                 {
+    ///                     And = new CoreWeave.Inputs.ObjectStorageBucketLifecycleConfigurationRuleFilterAndArgs
+    ///                     {
+    ///                         Prefix = "logs/",
+    ///                         ObjectSizeGreaterThan = 1000000,
+    ///                         Tags = 
+    ///                         {
+    ///                             { "env", "prod" },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Expiration = new CoreWeave.Inputs.ObjectStorageBucketLifecycleConfigurationRuleExpirationArgs
+    ///                 {
+    ///                     Days = 30,
+    ///                 },
+    ///                 NoncurrentVersionExpiration = new CoreWeave.Inputs.ObjectStorageBucketLifecycleConfigurationRuleNoncurrentVersionExpirationArgs
+    ///                 {
+    ///                     NoncurrentDays = 7,
+    ///                     NewerNoncurrentVersions = 2,
+    ///                 },
+    ///             },
+    ///             new CoreWeave.Inputs.ObjectStorageBucketLifecycleConfigurationRuleArgs
+    ///             {
+    ///                 Id = "expire-traces",
+    ///                 Prefix = "traces/",
+    ///                 Status = "Enabled",
+    ///                 AbortIncompleteMultipartUpload = new CoreWeave.Inputs.ObjectStorageBucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadArgs
+    ///                 {
+    ///                     DaysAfterInitiation = 5,
+    ///                 },
+    ///                 Expiration = new CoreWeave.Inputs.ObjectStorageBucketLifecycleConfigurationRuleExpirationArgs
+    ///                 {
+    ///                     Date = "2026-01-01T00:00:00Z",
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             defaultObjectStorageBucketVersioning,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import coreweave:index/objectStorageBucketLifecycleConfiguration:ObjectStorageBucketLifecycleConfiguration default {{bucket_name}}
+    /// ```
+    /// </summary>
     [CoreWeaveResourceType("coreweave:index/objectStorageBucketLifecycleConfiguration:ObjectStorageBucketLifecycleConfiguration")]
     public partial class ObjectStorageBucketLifecycleConfiguration : global::Pulumi.CustomResource
     {

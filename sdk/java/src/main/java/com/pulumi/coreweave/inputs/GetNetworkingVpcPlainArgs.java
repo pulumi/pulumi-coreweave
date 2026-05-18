@@ -13,9 +13,17 @@ public final class GetNetworkingVpcPlainArgs extends com.pulumi.resources.Invoke
 
     public static final GetNetworkingVpcPlainArgs Empty = new GetNetworkingVpcPlainArgs();
 
+    /**
+     * The ID of the VPC.
+     * 
+     */
     @Import(name="id", required=true)
     private String id;
 
+    /**
+     * @return The ID of the VPC.
+     * 
+     */
     public String id() {
         return this.id;
     }
@@ -44,6 +52,12 @@ public final class GetNetworkingVpcPlainArgs extends com.pulumi.resources.Invoke
             $ = new GetNetworkingVpcPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param id The ID of the VPC.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(String id) {
             $.id = id;
             return this;

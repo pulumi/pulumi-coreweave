@@ -11,12 +11,75 @@ namespace Pulumi.CoreWeave
 {
     public static class GetNetworkingVpc
     {
+        /// <summary>
+        /// Query information about an existing VPC by ID. See the [CoreWeave VPC API reference](https://docs.coreweave.com/products/networking/vpc/vpc-api).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using CoreWeave = Pulumi.CoreWeave;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = CoreWeave.GetNetworkingVpc.Invoke(new()
+        ///     {
+        ///         Id = "1063bce6-6e5b-4b0a-b73a-7e6106b2a77c",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetNetworkingVpcResult> InvokeAsync(GetNetworkingVpcArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNetworkingVpcResult>("coreweave:index/getNetworkingVpc:getNetworkingVpc", args ?? new GetNetworkingVpcArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Query information about an existing VPC by ID. See the [CoreWeave VPC API reference](https://docs.coreweave.com/products/networking/vpc/vpc-api).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using CoreWeave = Pulumi.CoreWeave;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = CoreWeave.GetNetworkingVpc.Invoke(new()
+        ///     {
+        ///         Id = "1063bce6-6e5b-4b0a-b73a-7e6106b2a77c",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetNetworkingVpcResult> Invoke(GetNetworkingVpcInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNetworkingVpcResult>("coreweave:index/getNetworkingVpc:getNetworkingVpc", args ?? new GetNetworkingVpcInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Query information about an existing VPC by ID. See the [CoreWeave VPC API reference](https://docs.coreweave.com/products/networking/vpc/vpc-api).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using CoreWeave = Pulumi.CoreWeave;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = CoreWeave.GetNetworkingVpc.Invoke(new()
+        ///     {
+        ///         Id = "1063bce6-6e5b-4b0a-b73a-7e6106b2a77c",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetNetworkingVpcResult> Invoke(GetNetworkingVpcInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetNetworkingVpcResult>("coreweave:index/getNetworkingVpc:getNetworkingVpc", args ?? new GetNetworkingVpcInvokeArgs(), options.WithDefaults());
     }
@@ -24,6 +87,9 @@ namespace Pulumi.CoreWeave
 
     public sealed class GetNetworkingVpcArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The ID of the VPC.
+        /// </summary>
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
 
@@ -35,6 +101,9 @@ namespace Pulumi.CoreWeave
 
     public sealed class GetNetworkingVpcInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The ID of the VPC.
+        /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 
@@ -48,14 +117,41 @@ namespace Pulumi.CoreWeave
     [OutputType]
     public sealed class GetNetworkingVpcResult
     {
+        /// <summary>
+        /// Settings affecting DHCP behavior within the VPC.
+        /// </summary>
         public readonly Outputs.GetNetworkingVpcDhcpResult Dhcp;
+        /// <summary>
+        /// Settings affecting traffic leaving the VPC.
+        /// </summary>
         public readonly Outputs.GetNetworkingVpcEgressResult Egress;
+        /// <summary>
+        /// An IPv4 CIDR range used to allocate host addresses when booting compute into a VPC.
+        /// </summary>
         public readonly string HostPrefix;
+        /// <summary>
+        /// The IPv4 or IPv6 CIDR ranges used to allocate host addresses when booting compute into a VPC.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetNetworkingVpcHostPrefixResult> HostPrefixes;
+        /// <summary>
+        /// The ID of the VPC.
+        /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Settings affecting traffic entering the VPC.
+        /// </summary>
         public readonly Outputs.GetNetworkingVpcIngressResult Ingress;
+        /// <summary>
+        /// The name of the VPC.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// A list of additional named IPv4 prefixes for the VPC.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetNetworkingVpcVpcPrefixResult> VpcPrefixes;
+        /// <summary>
+        /// The Availability Zone in which the VPC is located.
+        /// </summary>
         public readonly string Zone;
 
         [OutputConstructor]

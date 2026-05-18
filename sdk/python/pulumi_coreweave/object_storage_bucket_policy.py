@@ -25,7 +25,7 @@ class ObjectStorageBucketPolicyArgs:
         The set of arguments for constructing a ObjectStorageBucketPolicy resource.
 
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket for which to apply this policy.
-        :param pulumi.Input[_builtins.str] policy: Text of the policy. Must be valid JSON. The get_object_storage_bucket_policy_document data source may be used, simply reference the `.json` attribute of the data source.
+        :param pulumi.Input[_builtins.str] policy: Text of the policy. Must be valid JSON. The coreweave*object*storage*bucket*policy_document data source may be used, simply reference the `.json` attribute of the data source.
         """
         pulumi.set(__self__, "bucket", bucket)
         pulumi.set(__self__, "policy", policy)
@@ -46,7 +46,7 @@ class ObjectStorageBucketPolicyArgs:
     @pulumi.getter
     def policy(self) -> pulumi.Input[_builtins.str]:
         """
-        Text of the policy. Must be valid JSON. The get_object_storage_bucket_policy_document data source may be used, simply reference the `.json` attribute of the data source.
+        Text of the policy. Must be valid JSON. The coreweave*object*storage*bucket*policy_document data source may be used, simply reference the `.json` attribute of the data source.
         """
         return pulumi.get(self, "policy")
 
@@ -64,7 +64,7 @@ class _ObjectStorageBucketPolicyState:
         Input properties used for looking up and filtering ObjectStorageBucketPolicy resources.
 
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket for which to apply this policy.
-        :param pulumi.Input[_builtins.str] policy: Text of the policy. Must be valid JSON. The get_object_storage_bucket_policy_document data source may be used, simply reference the `.json` attribute of the data source.
+        :param pulumi.Input[_builtins.str] policy: Text of the policy. Must be valid JSON. The coreweave*object*storage*bucket*policy_document data source may be used, simply reference the `.json` attribute of the data source.
         """
         if bucket is not None:
             pulumi.set(__self__, "bucket", bucket)
@@ -87,7 +87,7 @@ class _ObjectStorageBucketPolicyState:
     @pulumi.getter
     def policy(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Text of the policy. Must be valid JSON. The get_object_storage_bucket_policy_document data source may be used, simply reference the `.json` attribute of the data source.
+        Text of the policy. Must be valid JSON. The coreweave*object*storage*bucket*policy_document data source may be used, simply reference the `.json` attribute of the data source.
         """
         return pulumi.get(self, "policy")
 
@@ -106,12 +106,79 @@ class ObjectStorageBucketPolicy(pulumi.CustomResource):
                  policy: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Create a ObjectStorageBucketPolicy resource with the given unique name, props, and options.
+        [Bucket access policies](https://docs.coreweave.com/products/storage/object-storage/auth-access/bucket-access/bucket-policies) allow you to define precise, S3-compatible access control for one bucket. These are optional, and are evaluated after organization access policies. See [Manage Bucket Policies](https://docs.coreweave.com/products/storage/object-storage/auth-access/bucket-access/manage-bucket-policies#example-policies) for examples and further information.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_coreweave as coreweave
+
+        raw = coreweave.ObjectStorageBucket("raw",
+            name="bucket-policy-raw-example",
+            zone="US-EAST-04A")
+        bucket_policy = {
+            "version": "2012-10-17",
+            "statement": [{
+                "sid": "allow-all",
+                "effect": "Allow",
+                "principal": {
+                    "CW": "*",
+                },
+                "action": ["s3:*"],
+                "resource": [raw.name.apply(lambda name: f"arn:aws:s3:::{name}")],
+            }],
+        }
+        raw_object_storage_bucket_policy = coreweave.ObjectStorageBucketPolicy("raw",
+            bucket=raw.name,
+            policy=pulumi.Output.json_dumps(bucket_policy))
+        ## Example using the coreweave_object_storage_bucket_policy_document data source
+        doc_object_storage_bucket = coreweave.ObjectStorageBucket("doc",
+            name="bucket-policy-doc-example",
+            zone="US-EAST-04A")
+        doc = coreweave.get_object_storage_bucket_policy_document_output(version="2012-10-17",
+            statements=[
+                {
+                    "sid": "allow-all",
+                    "effect": "Allow",
+                    "actions": ["s3:*"],
+                    "resources": [doc_object_storage_bucket.name.apply(lambda name: f"arn:aws:s3:::{name}")],
+                    "principal": {
+                        "CW": ["*"],
+                    },
+                },
+                {
+                    "sid": "DenyIfPrefixEquals",
+                    "effect": "Deny",
+                    "actions": ["s3:ListBucket"],
+                    "resources": [doc_object_storage_bucket.name.apply(lambda name: f"arn:aws:s3:::{name}")],
+                    "principal": {
+                        "CW": ["*"],
+                    },
+                    "condition": {
+                        "StringNotEquals": {
+                            "s3:prefix": "projects",
+                        },
+                    },
+                },
+            ])
+        doc_object_storage_bucket_policy = coreweave.ObjectStorageBucketPolicy("doc",
+            bucket=doc_object_storage_bucket.name,
+            policy=doc.json)
+        ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import coreweave:index/objectStorageBucketPolicy:ObjectStorageBucketPolicy default {{bucket_name}}
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket for which to apply this policy.
-        :param pulumi.Input[_builtins.str] policy: Text of the policy. Must be valid JSON. The get_object_storage_bucket_policy_document data source may be used, simply reference the `.json` attribute of the data source.
+        :param pulumi.Input[_builtins.str] policy: Text of the policy. Must be valid JSON. The coreweave*object*storage*bucket*policy_document data source may be used, simply reference the `.json` attribute of the data source.
         """
         ...
     @overload
@@ -120,7 +187,74 @@ class ObjectStorageBucketPolicy(pulumi.CustomResource):
                  args: ObjectStorageBucketPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a ObjectStorageBucketPolicy resource with the given unique name, props, and options.
+        [Bucket access policies](https://docs.coreweave.com/products/storage/object-storage/auth-access/bucket-access/bucket-policies) allow you to define precise, S3-compatible access control for one bucket. These are optional, and are evaluated after organization access policies. See [Manage Bucket Policies](https://docs.coreweave.com/products/storage/object-storage/auth-access/bucket-access/manage-bucket-policies#example-policies) for examples and further information.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_coreweave as coreweave
+
+        raw = coreweave.ObjectStorageBucket("raw",
+            name="bucket-policy-raw-example",
+            zone="US-EAST-04A")
+        bucket_policy = {
+            "version": "2012-10-17",
+            "statement": [{
+                "sid": "allow-all",
+                "effect": "Allow",
+                "principal": {
+                    "CW": "*",
+                },
+                "action": ["s3:*"],
+                "resource": [raw.name.apply(lambda name: f"arn:aws:s3:::{name}")],
+            }],
+        }
+        raw_object_storage_bucket_policy = coreweave.ObjectStorageBucketPolicy("raw",
+            bucket=raw.name,
+            policy=pulumi.Output.json_dumps(bucket_policy))
+        ## Example using the coreweave_object_storage_bucket_policy_document data source
+        doc_object_storage_bucket = coreweave.ObjectStorageBucket("doc",
+            name="bucket-policy-doc-example",
+            zone="US-EAST-04A")
+        doc = coreweave.get_object_storage_bucket_policy_document_output(version="2012-10-17",
+            statements=[
+                {
+                    "sid": "allow-all",
+                    "effect": "Allow",
+                    "actions": ["s3:*"],
+                    "resources": [doc_object_storage_bucket.name.apply(lambda name: f"arn:aws:s3:::{name}")],
+                    "principal": {
+                        "CW": ["*"],
+                    },
+                },
+                {
+                    "sid": "DenyIfPrefixEquals",
+                    "effect": "Deny",
+                    "actions": ["s3:ListBucket"],
+                    "resources": [doc_object_storage_bucket.name.apply(lambda name: f"arn:aws:s3:::{name}")],
+                    "principal": {
+                        "CW": ["*"],
+                    },
+                    "condition": {
+                        "StringNotEquals": {
+                            "s3:prefix": "projects",
+                        },
+                    },
+                },
+            ])
+        doc_object_storage_bucket_policy = coreweave.ObjectStorageBucketPolicy("doc",
+            bucket=doc_object_storage_bucket.name,
+            policy=doc.json)
+        ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import coreweave:index/objectStorageBucketPolicy:ObjectStorageBucketPolicy default {{bucket_name}}
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param ObjectStorageBucketPolicyArgs args: The arguments to use to populate this resource's properties.
@@ -174,7 +308,7 @@ class ObjectStorageBucketPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket for which to apply this policy.
-        :param pulumi.Input[_builtins.str] policy: Text of the policy. Must be valid JSON. The get_object_storage_bucket_policy_document data source may be used, simply reference the `.json` attribute of the data source.
+        :param pulumi.Input[_builtins.str] policy: Text of the policy. Must be valid JSON. The coreweave*object*storage*bucket*policy_document data source may be used, simply reference the `.json` attribute of the data source.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -196,7 +330,7 @@ class ObjectStorageBucketPolicy(pulumi.CustomResource):
     @pulumi.getter
     def policy(self) -> pulumi.Output[_builtins.str]:
         """
-        Text of the policy. Must be valid JSON. The get_object_storage_bucket_policy_document data source may be used, simply reference the `.json` attribute of the data source.
+        Text of the policy. Must be valid JSON. The coreweave*object*storage*bucket*policy_document data source may be used, simply reference the `.json` attribute of the data source.
         """
         return pulumi.get(self, "policy")
 

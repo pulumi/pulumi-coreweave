@@ -15,6 +15,51 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * Buckets are the primary organizational containers for your data in CoreWeave AI Object Storage. Bucket names must be globally-unique and not begin with `cw-` or `vip-`, which are reserved for internal use. Learn more about [creating buckets](https://docs.coreweave.com/products/storage/object-storage/buckets/create-bucket).
+ * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.coreweave.ObjectStorageBucket;
+ * import com.pulumi.coreweave.ObjectStorageBucketArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new ObjectStorageBucket("default", ObjectStorageBucketArgs.builder()
+ *             .name("my-tf-test-bucket")
+ *             .zone("US-EAST-04A")
+ *             .tags(Map.of("foo", "bar"))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import coreweave:index/objectStorageBucket:ObjectStorageBucket default {{name}}
+ * ```
+ * 
+ */
 @ResourceType(type="coreweave:index/objectStorageBucket:ObjectStorageBucket")
 public class ObjectStorageBucket extends com.pulumi.resources.CustomResource {
     /**

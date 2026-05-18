@@ -14,6 +14,57 @@ import java.lang.Boolean;
 import java.lang.String;
 import javax.annotation.Nullable;
 
+/**
+ * Manages settings for an Object Storage Bucket.
+ * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.coreweave.ObjectStorageBucket;
+ * import com.pulumi.coreweave.ObjectStorageBucketArgs;
+ * import com.pulumi.coreweave.ObjectStorageBucketSettings;
+ * import com.pulumi.coreweave.ObjectStorageBucketSettingsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new ObjectStorageBucket("default", ObjectStorageBucketArgs.builder()
+ *             .name("my-bucket-with-settings")
+ *             .zone("US-EAST-04A")
+ *             .build());
+ * 
+ *         var defaultObjectStorageBucketSettings = new ObjectStorageBucketSettings("defaultObjectStorageBucketSettings", ObjectStorageBucketSettingsArgs.builder()
+ *             .bucket(default_.name())
+ *             .auditLoggingEnabled(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import coreweave:index/objectStorageBucketSettings:ObjectStorageBucketSettings default {{bucket_name}}
+ * ```
+ * 
+ */
 @ResourceType(type="coreweave:index/objectStorageBucketSettings:ObjectStorageBucketSettings")
 public class ObjectStorageBucketSettings extends com.pulumi.resources.CustomResource {
     /**

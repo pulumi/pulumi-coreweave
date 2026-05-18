@@ -16,93 +16,269 @@ import java.util.Objects;
 
 @CustomType
 public final class GetCksClusterResult {
+    /**
+     * @return Additional Subject Alternative Names (SANs) included in the Kubernetes API server TLS certificate.
+     * 
+     */
     private List<String> additionalServerSans;
+    /**
+     * @return The API server endpoint of the cluster.
+     * 
+     */
     private String apiServerEndpoint;
+    /**
+     * @return The audit policy of the cluster.
+     * 
+     */
     private String auditPolicy;
+    /**
+     * @return The authentication webhook configuration of the cluster.
+     * 
+     */
     private GetCksClusterAuthnWebhook authnWebhook;
+    /**
+     * @return The authorization webhook configuration of the cluster.
+     * 
+     */
     private GetCksClusterAuthzWebhook authzWebhook;
+    /**
+     * @return The ID of the cluster.
+     * 
+     */
     private String id;
+    /**
+     * @return The internal load balancer CIDR names of the cluster.
+     * 
+     */
     private List<String> internalLbCidrNames;
+    /**
+     * @return The IPv6 internal load balancer CIDR names of the cluster.
+     * 
+     */
     private List<String> internalLbCidrNamesV6s;
+    /**
+     * @return The name of the cluster.
+     * 
+     */
     private String name;
+    /**
+     * @return The Kubernetes Service NodePort range.
+     * 
+     */
     private GetCksClusterNodePortRange nodePortRange;
+    /**
+     * @return The OIDC configuration of the cluster.
+     * 
+     */
     private GetCksClusterOidc oidc;
+    /**
+     * @return The pod CIDR name of the cluster.
+     * 
+     */
     private String podCidrName;
+    /**
+     * @return The IPv6 pod CIDR name of the cluster.
+     * 
+     */
     private String podCidrNameV6;
+    /**
+     * @return Whether the cluster is public.
+     * 
+     */
     private Boolean public_;
+    /**
+     * @return The URL of the OIDC issuer for the cluster&#39;s service account tokens. This value corresponds to the `--service-account-issuer` flag on the kube-apiserver.
+     * 
+     */
     private String serviceAccountOidcIssuerUrl;
+    /**
+     * @return The service CIDR name of the cluster.
+     * 
+     */
     private String serviceCidrName;
+    /**
+     * @return The IPv6 service CIDR name of the cluster.
+     * 
+     */
     private String serviceCidrNameV6;
+    /**
+     * @return The `clusterId` of the cluster to share storage with. Must be enabled by CoreWeave suppport. Contact CoreWeave support if you are interested in this feature.
+     * 
+     */
     private String sharedStorageClusterId;
+    /**
+     * @return The status of the cluster.
+     * 
+     */
     private String status;
+    /**
+     * @return The version of the cluster.
+     * 
+     */
     private String version;
+    /**
+     * @return The VPC ID of the cluster.
+     * 
+     */
     private String vpcId;
+    /**
+     * @return The zone of the cluster.
+     * 
+     */
     private String zone;
 
     private GetCksClusterResult() {}
+    /**
+     * @return Additional Subject Alternative Names (SANs) included in the Kubernetes API server TLS certificate.
+     * 
+     */
     public List<String> additionalServerSans() {
         return this.additionalServerSans;
     }
+    /**
+     * @return The API server endpoint of the cluster.
+     * 
+     */
     public String apiServerEndpoint() {
         return this.apiServerEndpoint;
     }
+    /**
+     * @return The audit policy of the cluster.
+     * 
+     */
     public String auditPolicy() {
         return this.auditPolicy;
     }
+    /**
+     * @return The authentication webhook configuration of the cluster.
+     * 
+     */
     public GetCksClusterAuthnWebhook authnWebhook() {
         return this.authnWebhook;
     }
+    /**
+     * @return The authorization webhook configuration of the cluster.
+     * 
+     */
     public GetCksClusterAuthzWebhook authzWebhook() {
         return this.authzWebhook;
     }
+    /**
+     * @return The ID of the cluster.
+     * 
+     */
     public String id() {
         return this.id;
     }
+    /**
+     * @return The internal load balancer CIDR names of the cluster.
+     * 
+     */
     public List<String> internalLbCidrNames() {
         return this.internalLbCidrNames;
     }
+    /**
+     * @return The IPv6 internal load balancer CIDR names of the cluster.
+     * 
+     */
     public List<String> internalLbCidrNamesV6s() {
         return this.internalLbCidrNamesV6s;
     }
+    /**
+     * @return The name of the cluster.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return The Kubernetes Service NodePort range.
+     * 
+     */
     public GetCksClusterNodePortRange nodePortRange() {
         return this.nodePortRange;
     }
+    /**
+     * @return The OIDC configuration of the cluster.
+     * 
+     */
     public GetCksClusterOidc oidc() {
         return this.oidc;
     }
+    /**
+     * @return The pod CIDR name of the cluster.
+     * 
+     */
     public String podCidrName() {
         return this.podCidrName;
     }
+    /**
+     * @return The IPv6 pod CIDR name of the cluster.
+     * 
+     */
     public String podCidrNameV6() {
         return this.podCidrNameV6;
     }
+    /**
+     * @return Whether the cluster is public.
+     * 
+     */
     public Boolean public_() {
         return this.public_;
     }
+    /**
+     * @return The URL of the OIDC issuer for the cluster&#39;s service account tokens. This value corresponds to the `--service-account-issuer` flag on the kube-apiserver.
+     * 
+     */
     public String serviceAccountOidcIssuerUrl() {
         return this.serviceAccountOidcIssuerUrl;
     }
+    /**
+     * @return The service CIDR name of the cluster.
+     * 
+     */
     public String serviceCidrName() {
         return this.serviceCidrName;
     }
+    /**
+     * @return The IPv6 service CIDR name of the cluster.
+     * 
+     */
     public String serviceCidrNameV6() {
         return this.serviceCidrNameV6;
     }
+    /**
+     * @return The `clusterId` of the cluster to share storage with. Must be enabled by CoreWeave suppport. Contact CoreWeave support if you are interested in this feature.
+     * 
+     */
     public String sharedStorageClusterId() {
         return this.sharedStorageClusterId;
     }
+    /**
+     * @return The status of the cluster.
+     * 
+     */
     public String status() {
         return this.status;
     }
+    /**
+     * @return The version of the cluster.
+     * 
+     */
     public String version() {
         return this.version;
     }
+    /**
+     * @return The VPC ID of the cluster.
+     * 
+     */
     public String vpcId() {
         return this.vpcId;
     }
+    /**
+     * @return The zone of the cluster.
+     * 
+     */
     public String zone() {
         return this.zone;
     }

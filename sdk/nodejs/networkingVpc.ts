@@ -6,6 +6,82 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Create and manage VPCs. Learn more about [CoreWeave VPCs](https://docs.coreweave.com/products/networking/vpc/about-vpcs).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as coreweave from "@pulumi/coreweave";
+ *
+ * const example = new coreweave.NetworkingVpc("example", {
+ *     name: "default",
+ *     zone: "US-EAST-04A",
+ *     hostPrefixes: [
+ *         {
+ *             name: "primary",
+ *             type: "PRIMARY",
+ *             prefixes: [
+ *                 "10.16.192.0/18",
+ *                 "2601:db8:aaaa::/48",
+ *             ],
+ *         },
+ *         {
+ *             name: "container-network",
+ *             type: "ROUTED",
+ *             prefixes: ["2601:db8:bbbb::/48"],
+ *             ipam: {
+ *                 prefixLength: 80,
+ *                 gatewayAddressPolicy: "FIRST_IP",
+ *             },
+ *         },
+ *         {
+ *             name: "attached-network",
+ *             type: "ATTACHED",
+ *             prefixes: ["2601:db8:cccc::/48"],
+ *             ipam: {
+ *                 prefixLength: 64,
+ *             },
+ *         },
+ *     ],
+ *     vpcPrefixes: [
+ *         {
+ *             name: "pod cidr",
+ *             value: "10.0.0.0/13",
+ *         },
+ *         {
+ *             name: "service cidr",
+ *             value: "10.16.0.0/22",
+ *         },
+ *         {
+ *             name: "internal lb cidr",
+ *             value: "10.32.4.0/22",
+ *         },
+ *     ],
+ *     egress: {
+ *         disablePublicAccess: false,
+ *     },
+ *     ingress: {
+ *         disablePublicServices: false,
+ *     },
+ *     dhcp: {
+ *         dns: {
+ *             servers: [
+ *                 "1.1.1.1",
+ *                 "8.8.8.8",
+ *             ],
+ *         },
+ *     },
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import coreweave:index/networkingVpc:NetworkingVpc default {{id}}
+ * ```
+ */
 export class NetworkingVpc extends pulumi.CustomResource {
     /**
      * Get an existing NetworkingVpc resource's state with the given name, ID, and optional extra

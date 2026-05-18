@@ -9,6 +9,43 @@ using Pulumi.Serialization;
 
 namespace Pulumi.CoreWeave
 {
+    /// <summary>
+    /// Versioning protects your data by preserving all versions of objects and preventing permanent deletion. When objects are deleted, they are "soft deleted" with delete markers, allowing you to restore previous versions and recover data. After creating a versioned bucket with Terraform, [use `Rclone` to manage versioned objects and delete markers](https://docs.coreweave.com/products/storage/object-storage/buckets/rclone-versioned-buckets).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using CoreWeave = Pulumi.CoreWeave;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new CoreWeave.ObjectStorageBucket("default", new()
+    ///     {
+    ///         Name = "bucket-versioning-example",
+    ///         Zone = "US-EAST-04A",
+    ///     });
+    /// 
+    ///     var defaultObjectStorageBucketVersioning = new CoreWeave.ObjectStorageBucketVersioning("default", new()
+    ///     {
+    ///         Bucket = @default.Name,
+    ///         VersioningConfiguration = new CoreWeave.Inputs.ObjectStorageBucketVersioningVersioningConfigurationArgs
+    ///         {
+    ///             Status = "Enabled",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import coreweave:index/objectStorageBucketVersioning:ObjectStorageBucketVersioning default {{bucket_name}}
+    /// ```
+    /// </summary>
     [CoreWeaveResourceType("coreweave:index/objectStorageBucketVersioning:ObjectStorageBucketVersioning")]
     public partial class ObjectStorageBucketVersioning : global::Pulumi.CustomResource
     {

@@ -6,6 +6,15 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Create and manage clusters on [CoreWeave Kubernetes Service (CKS)](https://docs.coreweave.com/products/cks/clusters/introduction).
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import coreweave:index/cksCluster:CksCluster default {{id}}
+ * ```
+ */
 export class CksCluster extends pulumi.CustomResource {
     /**
      * Get an existing CksCluster resource's state with the given name, ID, and optional extra

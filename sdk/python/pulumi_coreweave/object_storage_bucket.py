@@ -140,7 +140,28 @@ class ObjectStorageBucket(pulumi.CustomResource):
                  zone: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Create a ObjectStorageBucket resource with the given unique name, props, and options.
+        Buckets are the primary organizational containers for your data in CoreWeave AI Object Storage. Bucket names must be globally-unique and not begin with `cw-` or `vip-`, which are reserved for internal use. Learn more about [creating buckets](https://docs.coreweave.com/products/storage/object-storage/buckets/create-bucket).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_coreweave as coreweave
+
+        default = coreweave.ObjectStorageBucket("default",
+            name="my-tf-test-bucket",
+            zone="US-EAST-04A",
+            tags={
+                "foo": "bar",
+            })
+        ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import coreweave:index/objectStorageBucket:ObjectStorageBucket default {{name}}
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -155,7 +176,28 @@ class ObjectStorageBucket(pulumi.CustomResource):
                  args: ObjectStorageBucketArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a ObjectStorageBucket resource with the given unique name, props, and options.
+        Buckets are the primary organizational containers for your data in CoreWeave AI Object Storage. Bucket names must be globally-unique and not begin with `cw-` or `vip-`, which are reserved for internal use. Learn more about [creating buckets](https://docs.coreweave.com/products/storage/object-storage/buckets/create-bucket).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_coreweave as coreweave
+
+        default = coreweave.ObjectStorageBucket("default",
+            name="my-tf-test-bucket",
+            zone="US-EAST-04A",
+            tags={
+                "foo": "bar",
+            })
+        ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import coreweave:index/objectStorageBucket:ObjectStorageBucket default {{name}}
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param ObjectStorageBucketArgs args: The arguments to use to populate this resource's properties.

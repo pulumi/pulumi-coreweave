@@ -11,6 +11,33 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Query information about an existing CoreWeave Kubernetes Service (CKS) cluster by ID. See the [CKS API reference](https://docs.coreweave.com/products/cks/reference/cks-api).
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-coreweave/sdk/go/coreweave"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := coreweave.GetCksCluster(ctx, &coreweave.LookupCksClusterArgs{
+//				Id: "1063bce6-6e5b-4b0a-b73a-7e6106b2a77c",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupCksCluster(ctx *pulumi.Context, args *LookupCksClusterArgs, opts ...pulumi.InvokeOption) (*LookupCksClusterResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCksClusterResult
@@ -23,33 +50,56 @@ func LookupCksCluster(ctx *pulumi.Context, args *LookupCksClusterArgs, opts ...p
 
 // A collection of arguments for invoking getCksCluster.
 type LookupCksClusterArgs struct {
+	// The ID of the cluster.
 	Id string `pulumi:"id"`
 }
 
 // A collection of values returned by getCksCluster.
 type LookupCksClusterResult struct {
-	AdditionalServerSans        []string                   `pulumi:"additionalServerSans"`
-	ApiServerEndpoint           string                     `pulumi:"apiServerEndpoint"`
-	AuditPolicy                 string                     `pulumi:"auditPolicy"`
-	AuthnWebhook                GetCksClusterAuthnWebhook  `pulumi:"authnWebhook"`
-	AuthzWebhook                GetCksClusterAuthzWebhook  `pulumi:"authzWebhook"`
-	Id                          string                     `pulumi:"id"`
-	InternalLbCidrNames         []string                   `pulumi:"internalLbCidrNames"`
-	InternalLbCidrNamesV6s      []string                   `pulumi:"internalLbCidrNamesV6s"`
-	Name                        string                     `pulumi:"name"`
-	NodePortRange               GetCksClusterNodePortRange `pulumi:"nodePortRange"`
-	Oidc                        GetCksClusterOidc          `pulumi:"oidc"`
-	PodCidrName                 string                     `pulumi:"podCidrName"`
-	PodCidrNameV6               string                     `pulumi:"podCidrNameV6"`
-	Public                      bool                       `pulumi:"public"`
-	ServiceAccountOidcIssuerUrl string                     `pulumi:"serviceAccountOidcIssuerUrl"`
-	ServiceCidrName             string                     `pulumi:"serviceCidrName"`
-	ServiceCidrNameV6           string                     `pulumi:"serviceCidrNameV6"`
-	SharedStorageClusterId      string                     `pulumi:"sharedStorageClusterId"`
-	Status                      string                     `pulumi:"status"`
-	Version                     string                     `pulumi:"version"`
-	VpcId                       string                     `pulumi:"vpcId"`
-	Zone                        string                     `pulumi:"zone"`
+	// Additional Subject Alternative Names (SANs) included in the Kubernetes API server TLS certificate.
+	AdditionalServerSans []string `pulumi:"additionalServerSans"`
+	// The API server endpoint of the cluster.
+	ApiServerEndpoint string `pulumi:"apiServerEndpoint"`
+	// The audit policy of the cluster.
+	AuditPolicy string `pulumi:"auditPolicy"`
+	// The authentication webhook configuration of the cluster.
+	AuthnWebhook GetCksClusterAuthnWebhook `pulumi:"authnWebhook"`
+	// The authorization webhook configuration of the cluster.
+	AuthzWebhook GetCksClusterAuthzWebhook `pulumi:"authzWebhook"`
+	// The ID of the cluster.
+	Id string `pulumi:"id"`
+	// The internal load balancer CIDR names of the cluster.
+	InternalLbCidrNames []string `pulumi:"internalLbCidrNames"`
+	// The IPv6 internal load balancer CIDR names of the cluster.
+	InternalLbCidrNamesV6s []string `pulumi:"internalLbCidrNamesV6s"`
+	// The name of the cluster.
+	Name string `pulumi:"name"`
+	// The Kubernetes Service NodePort range.
+	NodePortRange GetCksClusterNodePortRange `pulumi:"nodePortRange"`
+	// The OIDC configuration of the cluster.
+	Oidc GetCksClusterOidc `pulumi:"oidc"`
+	// The pod CIDR name of the cluster.
+	PodCidrName string `pulumi:"podCidrName"`
+	// The IPv6 pod CIDR name of the cluster.
+	PodCidrNameV6 string `pulumi:"podCidrNameV6"`
+	// Whether the cluster is public.
+	Public bool `pulumi:"public"`
+	// The URL of the OIDC issuer for the cluster's service account tokens. This value corresponds to the `--service-account-issuer` flag on the kube-apiserver.
+	ServiceAccountOidcIssuerUrl string `pulumi:"serviceAccountOidcIssuerUrl"`
+	// The service CIDR name of the cluster.
+	ServiceCidrName string `pulumi:"serviceCidrName"`
+	// The IPv6 service CIDR name of the cluster.
+	ServiceCidrNameV6 string `pulumi:"serviceCidrNameV6"`
+	// The `clusterId` of the cluster to share storage with. Must be enabled by CoreWeave suppport. Contact CoreWeave support if you are interested in this feature.
+	SharedStorageClusterId string `pulumi:"sharedStorageClusterId"`
+	// The status of the cluster.
+	Status string `pulumi:"status"`
+	// The version of the cluster.
+	Version string `pulumi:"version"`
+	// The VPC ID of the cluster.
+	VpcId string `pulumi:"vpcId"`
+	// The zone of the cluster.
+	Zone string `pulumi:"zone"`
 }
 
 func LookupCksClusterOutput(ctx *pulumi.Context, args LookupCksClusterOutputArgs, opts ...pulumi.InvokeOption) LookupCksClusterResultOutput {
@@ -63,6 +113,7 @@ func LookupCksClusterOutput(ctx *pulumi.Context, args LookupCksClusterOutputArgs
 
 // A collection of arguments for invoking getCksCluster.
 type LookupCksClusterOutputArgs struct {
+	// The ID of the cluster.
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -85,90 +136,112 @@ func (o LookupCksClusterResultOutput) ToLookupCksClusterResultOutputWithContext(
 	return o
 }
 
+// Additional Subject Alternative Names (SANs) included in the Kubernetes API server TLS certificate.
 func (o LookupCksClusterResultOutput) AdditionalServerSans() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupCksClusterResult) []string { return v.AdditionalServerSans }).(pulumi.StringArrayOutput)
 }
 
+// The API server endpoint of the cluster.
 func (o LookupCksClusterResultOutput) ApiServerEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCksClusterResult) string { return v.ApiServerEndpoint }).(pulumi.StringOutput)
 }
 
+// The audit policy of the cluster.
 func (o LookupCksClusterResultOutput) AuditPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCksClusterResult) string { return v.AuditPolicy }).(pulumi.StringOutput)
 }
 
+// The authentication webhook configuration of the cluster.
 func (o LookupCksClusterResultOutput) AuthnWebhook() GetCksClusterAuthnWebhookOutput {
 	return o.ApplyT(func(v LookupCksClusterResult) GetCksClusterAuthnWebhook { return v.AuthnWebhook }).(GetCksClusterAuthnWebhookOutput)
 }
 
+// The authorization webhook configuration of the cluster.
 func (o LookupCksClusterResultOutput) AuthzWebhook() GetCksClusterAuthzWebhookOutput {
 	return o.ApplyT(func(v LookupCksClusterResult) GetCksClusterAuthzWebhook { return v.AuthzWebhook }).(GetCksClusterAuthzWebhookOutput)
 }
 
+// The ID of the cluster.
 func (o LookupCksClusterResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCksClusterResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The internal load balancer CIDR names of the cluster.
 func (o LookupCksClusterResultOutput) InternalLbCidrNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupCksClusterResult) []string { return v.InternalLbCidrNames }).(pulumi.StringArrayOutput)
 }
 
+// The IPv6 internal load balancer CIDR names of the cluster.
 func (o LookupCksClusterResultOutput) InternalLbCidrNamesV6s() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupCksClusterResult) []string { return v.InternalLbCidrNamesV6s }).(pulumi.StringArrayOutput)
 }
 
+// The name of the cluster.
 func (o LookupCksClusterResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCksClusterResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The Kubernetes Service NodePort range.
 func (o LookupCksClusterResultOutput) NodePortRange() GetCksClusterNodePortRangeOutput {
 	return o.ApplyT(func(v LookupCksClusterResult) GetCksClusterNodePortRange { return v.NodePortRange }).(GetCksClusterNodePortRangeOutput)
 }
 
+// The OIDC configuration of the cluster.
 func (o LookupCksClusterResultOutput) Oidc() GetCksClusterOidcOutput {
 	return o.ApplyT(func(v LookupCksClusterResult) GetCksClusterOidc { return v.Oidc }).(GetCksClusterOidcOutput)
 }
 
+// The pod CIDR name of the cluster.
 func (o LookupCksClusterResultOutput) PodCidrName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCksClusterResult) string { return v.PodCidrName }).(pulumi.StringOutput)
 }
 
+// The IPv6 pod CIDR name of the cluster.
 func (o LookupCksClusterResultOutput) PodCidrNameV6() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCksClusterResult) string { return v.PodCidrNameV6 }).(pulumi.StringOutput)
 }
 
+// Whether the cluster is public.
 func (o LookupCksClusterResultOutput) Public() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupCksClusterResult) bool { return v.Public }).(pulumi.BoolOutput)
 }
 
+// The URL of the OIDC issuer for the cluster's service account tokens. This value corresponds to the `--service-account-issuer` flag on the kube-apiserver.
 func (o LookupCksClusterResultOutput) ServiceAccountOidcIssuerUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCksClusterResult) string { return v.ServiceAccountOidcIssuerUrl }).(pulumi.StringOutput)
 }
 
+// The service CIDR name of the cluster.
 func (o LookupCksClusterResultOutput) ServiceCidrName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCksClusterResult) string { return v.ServiceCidrName }).(pulumi.StringOutput)
 }
 
+// The IPv6 service CIDR name of the cluster.
 func (o LookupCksClusterResultOutput) ServiceCidrNameV6() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCksClusterResult) string { return v.ServiceCidrNameV6 }).(pulumi.StringOutput)
 }
 
+// The `clusterId` of the cluster to share storage with. Must be enabled by CoreWeave suppport. Contact CoreWeave support if you are interested in this feature.
 func (o LookupCksClusterResultOutput) SharedStorageClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCksClusterResult) string { return v.SharedStorageClusterId }).(pulumi.StringOutput)
 }
 
+// The status of the cluster.
 func (o LookupCksClusterResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCksClusterResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
+// The version of the cluster.
 func (o LookupCksClusterResultOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCksClusterResult) string { return v.Version }).(pulumi.StringOutput)
 }
 
+// The VPC ID of the cluster.
 func (o LookupCksClusterResultOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCksClusterResult) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
+// The zone of the cluster.
 func (o LookupCksClusterResultOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCksClusterResult) string { return v.Zone }).(pulumi.StringOutput)
 }

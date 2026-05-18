@@ -20,6 +20,16 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * Create and manage clusters on [CoreWeave Kubernetes Service (CKS)](https://docs.coreweave.com/products/cks/clusters/introduction).
+ * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import coreweave:index/cksCluster:CksCluster default {{id}}
+ * ```
+ * 
+ */
 @ResourceType(type="coreweave:index/cksCluster:CksCluster")
 public class CksCluster extends com.pulumi.resources.CustomResource {
     /**

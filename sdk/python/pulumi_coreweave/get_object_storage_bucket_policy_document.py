@@ -45,21 +45,33 @@ class GetObjectStorageBucketPolicyDocumentResult:
     @_builtins.property
     @pulumi.getter
     def id(self) -> Optional[_builtins.str]:
+        """
+        An optional policy identifier
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
     def json(self) -> _builtins.str:
+        """
+        The rendered policy document as JSON
+        """
         return pulumi.get(self, "json")
 
     @_builtins.property
     @pulumi.getter
     def statements(self) -> Optional[Sequence['outputs.GetObjectStorageBucketPolicyDocumentStatementResult']]:
+        """
+        The main policy element that defines the access rules for buckets and objects. Multiple statement blocks can be specified.
+        """
         return pulumi.get(self, "statements")
 
     @_builtins.property
     @pulumi.getter
     def version(self) -> Optional[_builtins.str]:
+        """
+        The policy version, e.g. `"2012-10-17"`
+        """
         return pulumi.get(self, "version")
 
 
@@ -80,7 +92,30 @@ def get_object_storage_bucket_policy_document(id: Optional[_builtins.str] = None
                                               version: Optional[_builtins.str] = None,
                                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetObjectStorageBucketPolicyDocumentResult:
     """
-    Use this data source to access information about an existing resource.
+    [Bucket access policies](https://docs.coreweave.com/products/storage/object-storage/auth-access/bucket-access/bucket-policies) allow you to define precise, S3-compatible access control for one bucket. They are evaluated after organization access policies. See [Manage Bucket Policies](https://docs.coreweave.com/products/storage/object-storage/auth-access/bucket-access/manage-bucket-policies#example-policies) for examples and further information. This data source provides a type-safe data structure for creating an S3-compatible JSON bucket policy.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_coreweave as coreweave
+
+    default = coreweave.get_object_storage_bucket_policy_document(version="2012-10-17",
+        statements=[{
+            "sid": "allow-all",
+            "effect": "Allow",
+            "actions": ["s3:*"],
+            "resources": ["arn:aws:s3:::*"],
+            "principal": {
+                "CW": ["*"],
+            },
+        }])
+    ```
+
+
+    :param _builtins.str id: An optional policy identifier
+    :param Sequence[Union['GetObjectStorageBucketPolicyDocumentStatementArgs', 'GetObjectStorageBucketPolicyDocumentStatementArgsDict']] statements: The main policy element that defines the access rules for buckets and objects. Multiple statement blocks can be specified.
+    :param _builtins.str version: The policy version, e.g. `"2012-10-17"`
     """
     __args__ = dict()
     __args__['id'] = id
@@ -99,7 +134,30 @@ def get_object_storage_bucket_policy_document_output(id: Optional[pulumi.Input[O
                                                      version: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetObjectStorageBucketPolicyDocumentResult]:
     """
-    Use this data source to access information about an existing resource.
+    [Bucket access policies](https://docs.coreweave.com/products/storage/object-storage/auth-access/bucket-access/bucket-policies) allow you to define precise, S3-compatible access control for one bucket. They are evaluated after organization access policies. See [Manage Bucket Policies](https://docs.coreweave.com/products/storage/object-storage/auth-access/bucket-access/manage-bucket-policies#example-policies) for examples and further information. This data source provides a type-safe data structure for creating an S3-compatible JSON bucket policy.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_coreweave as coreweave
+
+    default = coreweave.get_object_storage_bucket_policy_document(version="2012-10-17",
+        statements=[{
+            "sid": "allow-all",
+            "effect": "Allow",
+            "actions": ["s3:*"],
+            "resources": ["arn:aws:s3:::*"],
+            "principal": {
+                "CW": ["*"],
+            },
+        }])
+    ```
+
+
+    :param _builtins.str id: An optional policy identifier
+    :param Sequence[Union['GetObjectStorageBucketPolicyDocumentStatementArgs', 'GetObjectStorageBucketPolicyDocumentStatementArgsDict']] statements: The main policy element that defines the access rules for buckets and objects. Multiple statement blocks can be specified.
+    :param _builtins.str version: The policy version, e.g. `"2012-10-17"`
     """
     __args__ = dict()
     __args__['id'] = id

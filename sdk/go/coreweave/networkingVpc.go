@@ -12,6 +12,99 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Create and manage VPCs. Learn more about [CoreWeave VPCs](https://docs.coreweave.com/products/networking/vpc/about-vpcs).
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-coreweave/sdk/go/coreweave"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := coreweave.NewNetworkingVpc(ctx, "example", &coreweave.NetworkingVpcArgs{
+//				Name: pulumi.String("default"),
+//				Zone: pulumi.String("US-EAST-04A"),
+//				HostPrefixes: coreweave.NetworkingVpcHostPrefixArray{
+//					&coreweave.NetworkingVpcHostPrefixArgs{
+//						Name: pulumi.String("primary"),
+//						Type: pulumi.String("PRIMARY"),
+//						Prefixes: pulumi.StringArray{
+//							pulumi.String("10.16.192.0/18"),
+//							pulumi.String("2601:db8:aaaa::/48"),
+//						},
+//					},
+//					&coreweave.NetworkingVpcHostPrefixArgs{
+//						Name: pulumi.String("container-network"),
+//						Type: pulumi.String("ROUTED"),
+//						Prefixes: pulumi.StringArray{
+//							pulumi.String("2601:db8:bbbb::/48"),
+//						},
+//						Ipam: &coreweave.NetworkingVpcHostPrefixIpamArgs{
+//							PrefixLength:         pulumi.Int(80),
+//							GatewayAddressPolicy: pulumi.String("FIRST_IP"),
+//						},
+//					},
+//					&coreweave.NetworkingVpcHostPrefixArgs{
+//						Name: pulumi.String("attached-network"),
+//						Type: pulumi.String("ATTACHED"),
+//						Prefixes: pulumi.StringArray{
+//							pulumi.String("2601:db8:cccc::/48"),
+//						},
+//						Ipam: &coreweave.NetworkingVpcHostPrefixIpamArgs{
+//							PrefixLength: pulumi.Int(64),
+//						},
+//					},
+//				},
+//				VpcPrefixes: coreweave.NetworkingVpcVpcPrefixArray{
+//					&coreweave.NetworkingVpcVpcPrefixArgs{
+//						Name:  pulumi.String("pod cidr"),
+//						Value: pulumi.String("10.0.0.0/13"),
+//					},
+//					&coreweave.NetworkingVpcVpcPrefixArgs{
+//						Name:  pulumi.String("service cidr"),
+//						Value: pulumi.String("10.16.0.0/22"),
+//					},
+//					&coreweave.NetworkingVpcVpcPrefixArgs{
+//						Name:  pulumi.String("internal lb cidr"),
+//						Value: pulumi.String("10.32.4.0/22"),
+//					},
+//				},
+//				Egress: &coreweave.NetworkingVpcEgressArgs{
+//					DisablePublicAccess: pulumi.Bool(false),
+//				},
+//				Ingress: &coreweave.NetworkingVpcIngressArgs{
+//					DisablePublicServices: pulumi.Bool(false),
+//				},
+//				Dhcp: &coreweave.NetworkingVpcDhcpArgs{
+//					Dns: &coreweave.NetworkingVpcDhcpDnsArgs{
+//						Servers: pulumi.StringArray{
+//							pulumi.String("1.1.1.1"),
+//							pulumi.String("8.8.8.8"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import coreweave:index/networkingVpc:NetworkingVpc default {{id}}
+// ```
 type NetworkingVpc struct {
 	pulumi.CustomResourceState
 

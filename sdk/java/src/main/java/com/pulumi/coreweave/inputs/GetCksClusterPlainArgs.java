@@ -13,9 +13,17 @@ public final class GetCksClusterPlainArgs extends com.pulumi.resources.InvokeArg
 
     public static final GetCksClusterPlainArgs Empty = new GetCksClusterPlainArgs();
 
+    /**
+     * The ID of the cluster.
+     * 
+     */
     @Import(name="id", required=true)
     private String id;
 
+    /**
+     * @return The ID of the cluster.
+     * 
+     */
     public String id() {
         return this.id;
     }
@@ -44,6 +52,12 @@ public final class GetCksClusterPlainArgs extends com.pulumi.resources.InvokeArg
             $ = new GetCksClusterPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param id The ID of the cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(String id) {
             $.id = id;
             return this;

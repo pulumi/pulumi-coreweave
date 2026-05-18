@@ -9,6 +9,134 @@ using Pulumi.Serialization;
 
 namespace Pulumi.CoreWeave
 {
+    /// <summary>
+    /// [Bucket access policies](https://docs.coreweave.com/products/storage/object-storage/auth-access/bucket-access/bucket-policies) allow you to define precise, S3-compatible access control for one bucket. These are optional, and are evaluated after organization access policies. See [Manage Bucket Policies](https://docs.coreweave.com/products/storage/object-storage/auth-access/bucket-access/manage-bucket-policies#example-policies) for examples and further information.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using CoreWeave = Pulumi.CoreWeave;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var raw = new CoreWeave.ObjectStorageBucket("raw", new()
+    ///     {
+    ///         Name = "bucket-policy-raw-example",
+    ///         Zone = "US-EAST-04A",
+    ///     });
+    /// 
+    ///     var bucketPolicy = 
+    ///     {
+    ///         { "version", "2012-10-17" },
+    ///         { "statement", new[]
+    ///         {
+    ///             
+    ///             {
+    ///                 { "sid", "allow-all" },
+    ///                 { "effect", "Allow" },
+    ///                 { "principal", 
+    ///                 {
+    ///                     { "CW", "*" },
+    ///                 } },
+    ///                 { "action", new[]
+    ///                 {
+    ///                     "s3:*",
+    ///                 } },
+    ///                 { "resource", new[]
+    ///                 {
+    ///                     raw.Name.Apply(name =&gt; $"arn:aws:s3:::{name}"),
+    ///                 } },
+    ///             },
+    ///         } },
+    ///     };
+    /// 
+    ///     var rawObjectStorageBucketPolicy = new CoreWeave.ObjectStorageBucketPolicy("raw", new()
+    ///     {
+    ///         Bucket = raw.Name,
+    ///         Policy = Output.JsonSerialize(Output.Create(bucketPolicy)),
+    ///     });
+    /// 
+    ///     //# Example using the coreweave_object_storage_bucket_policy_document data source
+    ///     var docObjectStorageBucket = new CoreWeave.ObjectStorageBucket("doc", new()
+    ///     {
+    ///         Name = "bucket-policy-doc-example",
+    ///         Zone = "US-EAST-04A",
+    ///     });
+    /// 
+    ///     var doc = CoreWeave.GetObjectStorageBucketPolicyDocument.Invoke(new()
+    ///     {
+    ///         Version = "2012-10-17",
+    ///         Statements = new[]
+    ///         {
+    ///             new CoreWeave.Inputs.GetObjectStorageBucketPolicyDocumentStatementInputArgs
+    ///             {
+    ///                 Sid = "allow-all",
+    ///                 Effect = "Allow",
+    ///                 Actions = new[]
+    ///                 {
+    ///                     "s3:*",
+    ///                 },
+    ///                 Resources = new[]
+    ///                 {
+    ///                     $"arn:aws:s3:::{docObjectStorageBucket.Name}",
+    ///                 },
+    ///                 Principal = 
+    ///                 {
+    ///                     { "CW", new[]
+    ///                     {
+    ///                         "*",
+    ///                     } },
+    ///                 },
+    ///             },
+    ///             new CoreWeave.Inputs.GetObjectStorageBucketPolicyDocumentStatementInputArgs
+    ///             {
+    ///                 Sid = "DenyIfPrefixEquals",
+    ///                 Effect = "Deny",
+    ///                 Actions = new[]
+    ///                 {
+    ///                     "s3:ListBucket",
+    ///                 },
+    ///                 Resources = new[]
+    ///                 {
+    ///                     $"arn:aws:s3:::{docObjectStorageBucket.Name}",
+    ///                 },
+    ///                 Principal = 
+    ///                 {
+    ///                     { "CW", new[]
+    ///                     {
+    ///                         "*",
+    ///                     } },
+    ///                 },
+    ///                 Condition = 
+    ///                 {
+    ///                     { "StringNotEquals", 
+    ///                     {
+    ///                         { "s3:prefix", "projects" },
+    ///                     } },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var docObjectStorageBucketPolicy = new CoreWeave.ObjectStorageBucketPolicy("doc", new()
+    ///     {
+    ///         Bucket = docObjectStorageBucket.Name,
+    ///         Policy = doc.Apply(getObjectStorageBucketPolicyDocumentResult =&gt; getObjectStorageBucketPolicyDocumentResult.Json),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import coreweave:index/objectStorageBucketPolicy:ObjectStorageBucketPolicy default {{bucket_name}}
+    /// ```
+    /// </summary>
     [CoreWeaveResourceType("coreweave:index/objectStorageBucketPolicy:ObjectStorageBucketPolicy")]
     public partial class ObjectStorageBucketPolicy : global::Pulumi.CustomResource
     {
@@ -19,7 +147,7 @@ namespace Pulumi.CoreWeave
         public Output<string> Bucket { get; private set; } = null!;
 
         /// <summary>
-        /// Text of the policy. Must be valid JSON. The coreweave.getObjectStorageBucketPolicyDocument data source may be used, simply reference the `.json` attribute of the data source.
+        /// Text of the policy. Must be valid JSON. The coreweave*object*storage*bucket*policy_document data source may be used, simply reference the `.json` attribute of the data source.
         /// </summary>
         [Output("policy")]
         public Output<string> Policy { get; private set; } = null!;
@@ -77,7 +205,7 @@ namespace Pulumi.CoreWeave
         public Input<string> Bucket { get; set; } = null!;
 
         /// <summary>
-        /// Text of the policy. Must be valid JSON. The coreweave.getObjectStorageBucketPolicyDocument data source may be used, simply reference the `.json` attribute of the data source.
+        /// Text of the policy. Must be valid JSON. The coreweave*object*storage*bucket*policy_document data source may be used, simply reference the `.json` attribute of the data source.
         /// </summary>
         [Input("policy", required: true)]
         public Input<string> Policy { get; set; } = null!;
@@ -97,7 +225,7 @@ namespace Pulumi.CoreWeave
         public Input<string>? Bucket { get; set; }
 
         /// <summary>
-        /// Text of the policy. Must be valid JSON. The coreweave.getObjectStorageBucketPolicyDocument data source may be used, simply reference the `.json` attribute of the data source.
+        /// Text of the policy. Must be valid JSON. The coreweave*object*storage*bucket*policy_document data source may be used, simply reference the `.json` attribute of the data source.
         /// </summary>
         [Input("policy")]
         public Input<string>? Policy { get; set; }

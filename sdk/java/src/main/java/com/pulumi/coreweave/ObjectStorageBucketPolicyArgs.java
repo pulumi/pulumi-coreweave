@@ -30,14 +30,14 @@ public final class ObjectStorageBucketPolicyArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Text of the policy. Must be valid JSON. The coreweave.getObjectStorageBucketPolicyDocument data source may be used, simply reference the `.json` attribute of the data source.
+     * Text of the policy. Must be valid JSON. The coreweave*object*storage*bucket*policy_document data source may be used, simply reference the `.json` attribute of the data source.
      * 
      */
     @Import(name="policy", required=true)
     private Output<String> policy;
 
     /**
-     * @return Text of the policy. Must be valid JSON. The coreweave.getObjectStorageBucketPolicyDocument data source may be used, simply reference the `.json` attribute of the data source.
+     * @return Text of the policy. Must be valid JSON. The coreweave*object*storage*bucket*policy_document data source may be used, simply reference the `.json` attribute of the data source.
      * 
      */
     public Output<String> policy() {
@@ -91,7 +91,7 @@ public final class ObjectStorageBucketPolicyArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param policy Text of the policy. Must be valid JSON. The coreweave.getObjectStorageBucketPolicyDocument data source may be used, simply reference the `.json` attribute of the data source.
+         * @param policy Text of the policy. Must be valid JSON. The coreweave*object*storage*bucket*policy_document data source may be used, simply reference the `.json` attribute of the data source.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class ObjectStorageBucketPolicyArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param policy Text of the policy. Must be valid JSON. The coreweave.getObjectStorageBucketPolicyDocument data source may be used, simply reference the `.json` attribute of the data source.
+         * @param policy Text of the policy. Must be valid JSON. The coreweave*object*storage*bucket*policy_document data source may be used, simply reference the `.json` attribute of the data source.
          * 
          * @return builder
          * 
