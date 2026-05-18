@@ -5,6 +5,11 @@ bin
 sdk/dotnet/version.txt
 sdk/python/venv
 sdk/nodejs/yarn.lock
+sdk/java/build
+sdk/java/.gradle
+sdk/java/gradle
+sdk/java/gradlew
+sdk/java/gradlew.bat
 provider/coverage.txt
 .pulumi
 
