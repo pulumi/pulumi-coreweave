@@ -61,7 +61,7 @@ func Provider() tfbridge.ProviderInfo {
 		//
 		// You may host a logo on a domain you control or add an PNG logo (100x100) for your package
 		// in your repository and use the raw content URL for that file as your logo URL.
-		LogoURL: "",
+		LogoURL: "https://raw.githubusercontent.com/pulumi/pulumi-coreweave/main/docs/logo.png",
 		// PluginDownloadURL is an optional URL used to download the Provider
 		// for use in Pulumi programs
 		// e.g. https://github.com/org/pulumi-provider-name/releases/download/v${VERSION}/
@@ -76,7 +76,7 @@ func Provider() tfbridge.ProviderInfo {
 		Repository: "https://github.com/pulumi/pulumi-coreweave",
 		// The GitHub Org for the provider - defaults to `terraform-providers`. Note that this should
 		// match the TF provider module's require directive, not any replace directives.
-		GitHubOrg:    "",
+		GitHubOrg:    "coreweave",
 		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// RespectSchemaVersion ensures the SDK is generated linking to the correct version of the provider.
@@ -108,6 +108,11 @@ func Provider() tfbridge.ProviderInfo {
 			// Use a wildcard import so NuGet will prefer the latest possible version.
 			PackageReferences: map[string]string{
 				"Pulumi": "3.*",
+			},
+			// Brand the .NET namespace/package as "CoreWeave" (matching DisplayName)
+			// rather than the default title-cased provider name "Coreweave".
+			Namespaces: map[string]string{
+				"coreweave": "CoreWeave",
 			},
 		},
 	}
