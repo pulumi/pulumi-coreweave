@@ -7,9 +7,9 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Coreweave
+namespace Pulumi.CoreWeave
 {
-    [CoreweaveResourceType("coreweave:index/objectStorageOrganizationAccessPolicy:ObjectStorageOrganizationAccessPolicy")]
+    [CoreWeaveResourceType("coreweave:index/objectStorageOrganizationAccessPolicy:ObjectStorageOrganizationAccessPolicy")]
     public partial class ObjectStorageOrganizationAccessPolicy : global::Pulumi.CustomResource
     {
         /// <summary>

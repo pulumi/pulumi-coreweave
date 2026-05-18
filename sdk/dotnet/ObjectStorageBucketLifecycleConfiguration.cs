@@ -7,9 +7,9 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Coreweave
+namespace Pulumi.CoreWeave
 {
-    [CoreweaveResourceType("coreweave:index/objectStorageBucketLifecycleConfiguration:ObjectStorageBucketLifecycleConfiguration")]
+    [CoreWeaveResourceType("coreweave:index/objectStorageBucketLifecycleConfiguration:ObjectStorageBucketLifecycleConfiguration")]
     public partial class ObjectStorageBucketLifecycleConfiguration : global::Pulumi.CustomResource
     {
         /// <summary>

@@ -8,8 +8,9 @@
     ],
     "homepage": "https://www.pulumi.com",
     "license": "Apache-2.0",
-    "attribution": "This Pulumi package is based on the [`coreweave` Terraform Provider](https://github.com/terraform-providers/terraform-provider-coreweave).",
+    "attribution": "This Pulumi package is based on the [`coreweave` Terraform Provider](https://github.com/coreweave/terraform-provider-coreweave).",
     "repository": "https://github.com/pulumi/pulumi-coreweave",
+    "logoUrl": "https://raw.githubusercontent.com/pulumi/pulumi-coreweave/main/docs/logo.png",
     "publisher": "Pulumi",
     "meta": {
         "moduleFormat": "(.*)(?:/[^/]*)"
@@ -18,6 +19,9 @@
         "csharp": {
             "packageReferences": {
                 "Pulumi": "3.*"
+            },
+            "namespaces": {
+                "coreweave": "CoreWeave"
             },
             "compatibility": "tfbridge20",
             "respectSchemaVersion": true
@@ -30,13 +34,13 @@
         },
         "nodejs": {
             "packageDescription": "A Pulumi package for creating and managing CoreWeave cloud resources.",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/terraform-providers/terraform-provider-coreweave)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-coreweave` repo](https://github.com/pulumi/pulumi-coreweave/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-coreweave` repo](https://github.com/terraform-providers/terraform-provider-coreweave/issues).",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/coreweave/terraform-provider-coreweave)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-coreweave` repo](https://github.com/pulumi/pulumi-coreweave/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-coreweave` repo](https://github.com/coreweave/terraform-provider-coreweave/issues).",
             "compatibility": "tfbridge20",
             "disableUnionOutputTypes": true,
             "respectSchemaVersion": true
         },
         "python": {
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/terraform-providers/terraform-provider-coreweave)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-coreweave` repo](https://github.com/pulumi/pulumi-coreweave/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-coreweave` repo](https://github.com/terraform-providers/terraform-provider-coreweave/issues).",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/coreweave/terraform-provider-coreweave)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-coreweave` repo](https://github.com/pulumi/pulumi-coreweave/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-coreweave` repo](https://github.com/coreweave/terraform-provider-coreweave/issues).",
             "compatibility": "tfbridge20",
             "respectSchemaVersion": true,
             "pyproject": {

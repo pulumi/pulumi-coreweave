@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Coreweave.Inputs
+namespace Pulumi.CoreWeave.Inputs
 {
 
     public sealed class NetworkingVpcHostPrefixIpamArgs : global::Pulumi.ResourceArgs

@@ -7,9 +7,9 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Coreweave
+namespace Pulumi.CoreWeave
 {
-    [CoreweaveResourceType("coreweave:index/objectStorageBucketVersioning:ObjectStorageBucketVersioning")]
+    [CoreWeaveResourceType("coreweave:index/objectStorageBucketVersioning:ObjectStorageBucketVersioning")]
     public partial class ObjectStorageBucketVersioning : global::Pulumi.CustomResource
     {
         /// <summary>

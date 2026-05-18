@@ -4,7 +4,7 @@
 using System;
 using System.Collections.Immutable;
 
-namespace Pulumi.Coreweave
+namespace Pulumi.CoreWeave
 {
     public static class Config
     {

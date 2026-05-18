@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Coreweave.Outputs
+namespace Pulumi.CoreWeave.Outputs
 {
 
     [OutputType]

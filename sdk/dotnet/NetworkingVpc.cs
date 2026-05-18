@@ -7,9 +7,9 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Coreweave
+namespace Pulumi.CoreWeave
 {
-    [CoreweaveResourceType("coreweave:index/networkingVpc:NetworkingVpc")]
+    [CoreWeaveResourceType("coreweave:index/networkingVpc:NetworkingVpc")]
     public partial class NetworkingVpc : global::Pulumi.CustomResource
     {
         /// <summary>
