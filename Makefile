@@ -42,7 +42,7 @@ LDFLAGS=$(LDFLAGS_PROJ_VERSION) $(LDFLAGS_UPSTREAM_VERSION) $(LDFLAGS_EXTRAS) $(
 _ := $(shell mkdir -p .make bin .pulumi/bin)
 
 # Build the provider and all SDKs and install ready for testing
-build: .make/mise_install provider build_sdks install_sdks
+build: .make/mise_install provider build_sdks install_sdks build_registry_docs
 build: | mise_env
 
 # Keep aliases for old targets to ensure backwards compatibility
@@ -53,10 +53,10 @@ only_build: build
 prepare_local_workspace: .make/mise_install upstream
 prepare_local_workspace: | mise_env
 # Creates all generated files which need to be committed
-generate: generate_sdks schema
-generate_sdks: generate_dotnet generate_go generate_nodejs generate_python
-build_sdks: build_dotnet build_go build_nodejs build_python
-install_sdks: install_dotnet_sdk install_go_sdk install_nodejs_sdk install_python_sdk
+generate: generate_sdks schema build_registry_docs
+generate_sdks: generate_nodejs generate_python generate_dotnet generate_go generate_java build_registry_docs
+build_sdks: build_nodejs build_python build_dotnet build_go build_java build_registry_docs
+install_sdks: install_nodejs_sdk install_python_sdk install_dotnet_sdk install_go_sdk install_java_sdk
 .PHONY: development only_build build generate generate_sdks build_sdks install_sdks mise_install mise_env
 
 # Installs all necessary tools with mise and records completion in a sentinel
@@ -106,7 +106,7 @@ help:
 	@echo "  build_[language]       Build the SDK to check correctness"
 	@echo "  install_[language]_sdk Install the SDK ready for testing"
 	@echo ""
-	@echo "  [language] = dotnet go nodejs python"
+	@echo "  [language] = nodejs python dotnet go java"
 	@echo ""
 .PHONY: help
 
@@ -188,6 +188,13 @@ build_python: .make/build_python
 		../venv/bin/python -m build .
 	@touch $@
 .PHONY: generate_python build_python
+# Run the bridge's registry-docs command to generated the content of the installation docs/ folder at provider repo root
+build_registry_docs: .make/build_registry_docs
+.make/build_registry_docs: .make/mise_install bin/$(CODEGEN)
+.make/build_registry_docs: | mise_env
+	bin/$(CODEGEN) registry-docs --out $(WORKING_DIR)/docs
+	@touch $@
+.PHONY: build_registry_docs
 
 clean:
 	rm -rf sdk/{dotnet,nodejs,go,python}

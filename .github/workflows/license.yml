@@ -42,7 +42,7 @@ jobs:
           private-key: ${{ steps.esc-secrets.outputs.PULUMI_PROVIDER_AUTOMATION_PRIVATE_KEY }}
           owner: ${{ github.repository_owner }}
       - name: Setup mise
-        uses: jdx/mise-action@5ad13376e30bbca3721f7f33f25bc0baff52c02d
+        uses: jdx/mise-action@8d3b0ba20a9cea7b883d922ea958553c941ab082
         env:
           MISE_FETCH_REMOTE_VERSIONS_TIMEOUT: 30s
         with:
@@ -58,12 +58,10 @@ jobs:
         with:
           module-path: provider
           ignore-modules: >-
-            buf.build/gen/go,
             github.com/aead/chacha20,
             github.com/apache/arrow/go/v12,
             github.com/apache/thrift/lib/go/thrift,
             github.com/cloudflare/circl,
-            github.com/coreweave,
             github.com/golang,
             github.com/gorhill/cronexpr,
             github.com/in-toto/in-toto-golang,

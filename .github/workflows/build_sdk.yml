@@ -27,10 +27,11 @@ jobs:
       fail-fast: ${{ ! contains(github.actor, 'renovate') }}
       matrix:
         language:
-        - dotnet
-        - go
         - nodejs
         - python
+        - dotnet
+        - go
+        - java
     permissions:
       contents: write # For Renovate SDKs.
       id-token: write # For ESC secrets.
@@ -61,7 +62,7 @@ jobs:
             .pulumi/examples-cache
           key: ${{ runner.os }}-${{ hashFiles('provider/go.sum') }}
       - name: Setup mise
-        uses: jdx/mise-action@5ad13376e30bbca3721f7f33f25bc0baff52c02d
+        uses: jdx/mise-action@8d3b0ba20a9cea7b883d922ea958553c941ab082
         env:
           MISE_FETCH_REMOTE_VERSIONS_TIMEOUT: 30s
         with:
