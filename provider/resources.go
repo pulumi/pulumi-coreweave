@@ -15,6 +15,7 @@
 package coreweave
 
 import (
+	"bytes"
 	"path"
 
 	// Allow embedding bridge-metadata.json in the provider.
@@ -40,6 +41,35 @@ const (
 
 //go:embed cmd/pulumi-resource-coreweave/bridge-metadata.json
 var metadata []byte
+
+// The upstream Terraform provider's index doc only ships a
+// provider-configuration example, which the bridge renders as a trivial
+// Example Usage on the registry. providerConfigExample is that upstream
+// snippet; exampleUsageHCL is a real resource example (a VPC + a CKS
+// cluster) substituted in its place so the registry shows usable code.
+// The bridge converts this HCL to every SDK language.
+const providerConfigExample = "provider \"coreweave\" {\n  token = \"CW-SECRET-XXXXXXXXXXXXX\"\n}"
+
+const exampleUsageHCL = `resource "coreweave_networking_vpc" "default" {
+  name = "default"
+  zone = "US-EAST-04A"
+  vpc_prefixes = [
+    { name = "pod cidr", value = "10.0.0.0/13" },
+    { name = "service cidr", value = "10.16.0.0/22" },
+    { name = "internal lb cidr", value = "10.32.4.0/22" },
+  ]
+}
+
+resource "coreweave_cks_cluster" "default" {
+  name                   = "default"
+  version                = "v1.35"
+  zone                   = "US-EAST-04A"
+  vpc_id                 = coreweave_networking_vpc.default.id
+  public                 = true
+  pod_cidr_name          = "pod cidr"
+  service_cidr_name      = "service cidr"
+  internal_lb_cidr_names = ["internal lb cidr"]
+}`
 
 // Provider returns additional overlaid schema and metadata associated with the provider.
 func Provider() tfbridge.ProviderInfo {
@@ -82,6 +112,18 @@ func Provider() tfbridge.ProviderInfo {
 		// (which cannot resolve the filesystem-replaced submodule).
 		UpstreamRepoPath: "./upstream",
 		MetadataInfo:     tfbridge.NewProviderMetadata(metadata),
+		DocRules: &tfbridge.DocRuleInfo{
+			EditRules: func(defaults []tfbridge.DocsEdit) []tfbridge.DocsEdit {
+				return append(defaults, tfbridge.DocsEdit{
+					Path: "index.md",
+					Edit: func(_ string, content []byte) ([]byte, error) {
+						return bytes.Replace(content,
+							[]byte(providerConfigExample),
+							[]byte(exampleUsageHCL), 1), nil
+					},
+				})
+			},
+		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// RespectSchemaVersion ensures the SDK is generated linking to the correct version of the provider.
 			RespectSchemaVersion: true,
