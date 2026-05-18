@@ -11,7 +11,6 @@ replace github.com/coreweave/terraform-provider-coreweave => ../upstream
 require (
 	github.com/coreweave/terraform-provider-coreweave/pulumi-shim v0.0.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.127.0
-	github.com/pulumi/pulumi/pkg/v3 v3.230.0
 )
 
 require (
@@ -190,6 +189,7 @@ require (
 	github.com/pulumi/pulumi-dotnet/pulumi-language-dotnet/v3 v3.103.0 // indirect
 	github.com/pulumi/pulumi-java/pkg v1.22.0 // indirect
 	github.com/pulumi/pulumi-yaml v1.31.1 // indirect
+	github.com/pulumi/pulumi/pkg/v3 v3.230.0 // indirect
 	github.com/pulumi/pulumi/sdk/v3 v3.230.0 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/rogpeppe/go-internal v1.14.1 // indirect
