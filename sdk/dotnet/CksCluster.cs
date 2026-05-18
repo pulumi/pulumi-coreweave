@@ -7,9 +7,9 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Coreweave
+namespace Pulumi.CoreWeave
 {
-    [CoreweaveResourceType("coreweave:index/cksCluster:CksCluster")]
+    [CoreWeaveResourceType("coreweave:index/cksCluster:CksCluster")]
     public partial class CksCluster : global::Pulumi.CustomResource
     {
         /// <summary>
