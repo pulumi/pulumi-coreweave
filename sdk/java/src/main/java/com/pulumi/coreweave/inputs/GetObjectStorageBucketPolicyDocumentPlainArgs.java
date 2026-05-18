@@ -16,23 +16,47 @@ public final class GetObjectStorageBucketPolicyDocumentPlainArgs extends com.pul
 
     public static final GetObjectStorageBucketPolicyDocumentPlainArgs Empty = new GetObjectStorageBucketPolicyDocumentPlainArgs();
 
+    /**
+     * An optional policy identifier
+     * 
+     */
     @Import(name="id")
     private @Nullable String id;
 
+    /**
+     * @return An optional policy identifier
+     * 
+     */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
 
+    /**
+     * The main policy element that defines the access rules for buckets and objects. Multiple statement blocks can be specified.
+     * 
+     */
     @Import(name="statements")
     private @Nullable List<GetObjectStorageBucketPolicyDocumentStatement> statements;
 
+    /**
+     * @return The main policy element that defines the access rules for buckets and objects. Multiple statement blocks can be specified.
+     * 
+     */
     public Optional<List<GetObjectStorageBucketPolicyDocumentStatement>> statements() {
         return Optional.ofNullable(this.statements);
     }
 
+    /**
+     * The policy version, e.g. `&#34;2012-10-17&#34;`
+     * 
+     */
     @Import(name="version")
     private @Nullable String version;
 
+    /**
+     * @return The policy version, e.g. `&#34;2012-10-17&#34;`
+     * 
+     */
     public Optional<String> version() {
         return Optional.ofNullable(this.version);
     }
@@ -63,20 +87,44 @@ public final class GetObjectStorageBucketPolicyDocumentPlainArgs extends com.pul
             $ = new GetObjectStorageBucketPolicyDocumentPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param id An optional policy identifier
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(@Nullable String id) {
             $.id = id;
             return this;
         }
 
+        /**
+         * @param statements The main policy element that defines the access rules for buckets and objects. Multiple statement blocks can be specified.
+         * 
+         * @return builder
+         * 
+         */
         public Builder statements(@Nullable List<GetObjectStorageBucketPolicyDocumentStatement> statements) {
             $.statements = statements;
             return this;
         }
 
+        /**
+         * @param statements The main policy element that defines the access rules for buckets and objects. Multiple statement blocks can be specified.
+         * 
+         * @return builder
+         * 
+         */
         public Builder statements(GetObjectStorageBucketPolicyDocumentStatement... statements) {
             return statements(List.of(statements));
         }
 
+        /**
+         * @param version The policy version, e.g. `&#34;2012-10-17&#34;`
+         * 
+         * @return builder
+         * 
+         */
         public Builder version(@Nullable String version) {
             $.version = version;
             return this;

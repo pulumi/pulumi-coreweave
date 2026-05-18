@@ -107,7 +107,28 @@ class ObjectStorageBucketSettings(pulumi.CustomResource):
                  bucket: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Create a ObjectStorageBucketSettings resource with the given unique name, props, and options.
+        Manages settings for an Object Storage Bucket.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_coreweave as coreweave
+
+        default = coreweave.ObjectStorageBucket("default",
+            name="my-bucket-with-settings",
+            zone="US-EAST-04A")
+        default_object_storage_bucket_settings = coreweave.ObjectStorageBucketSettings("default",
+            bucket=default.name,
+            audit_logging_enabled=True)
+        ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import coreweave:index/objectStorageBucketSettings:ObjectStorageBucketSettings default {{bucket_name}}
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -121,7 +142,28 @@ class ObjectStorageBucketSettings(pulumi.CustomResource):
                  args: ObjectStorageBucketSettingsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a ObjectStorageBucketSettings resource with the given unique name, props, and options.
+        Manages settings for an Object Storage Bucket.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_coreweave as coreweave
+
+        default = coreweave.ObjectStorageBucket("default",
+            name="my-bucket-with-settings",
+            zone="US-EAST-04A")
+        default_object_storage_bucket_settings = coreweave.ObjectStorageBucketSettings("default",
+            bucket=default.name,
+            audit_logging_enabled=True)
+        ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import coreweave:index/objectStorageBucketSettings:ObjectStorageBucketSettings default {{bucket_name}}
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param ObjectStorageBucketSettingsArgs args: The arguments to use to populate this resource's properties.

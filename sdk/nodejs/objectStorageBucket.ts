@@ -4,6 +4,30 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Buckets are the primary organizational containers for your data in CoreWeave AI Object Storage. Bucket names must be globally-unique and not begin with `cw-` or `vip-`, which are reserved for internal use. Learn more about [creating buckets](https://docs.coreweave.com/products/storage/object-storage/buckets/create-bucket).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as coreweave from "@pulumi/coreweave";
+ *
+ * const _default = new coreweave.ObjectStorageBucket("default", {
+ *     name: "my-tf-test-bucket",
+ *     zone: "US-EAST-04A",
+ *     tags: {
+ *         foo: "bar",
+ *     },
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import coreweave:index/objectStorageBucket:ObjectStorageBucket default {{name}}
+ * ```
+ */
 export class ObjectStorageBucket extends pulumi.CustomResource {
     /**
      * Get an existing ObjectStorageBucket resource's state with the given name, ID, and optional extra

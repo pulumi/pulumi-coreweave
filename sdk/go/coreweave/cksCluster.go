@@ -12,6 +12,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Create and manage clusters on [CoreWeave Kubernetes Service (CKS)](https://docs.coreweave.com/products/cks/clusters/introduction).
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import coreweave:index/cksCluster:CksCluster default {{id}}
+// ```
 type CksCluster struct {
 	pulumi.CustomResourceState
 

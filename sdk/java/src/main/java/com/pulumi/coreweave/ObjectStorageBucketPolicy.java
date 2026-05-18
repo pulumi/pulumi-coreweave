@@ -13,6 +13,103 @@ import com.pulumi.coreweave.inputs.ObjectStorageBucketPolicyState;
 import java.lang.String;
 import javax.annotation.Nullable;
 
+/**
+ * [Bucket access policies](https://docs.coreweave.com/products/storage/object-storage/auth-access/bucket-access/bucket-policies) allow you to define precise, S3-compatible access control for one bucket. These are optional, and are evaluated after organization access policies. See [Manage Bucket Policies](https://docs.coreweave.com/products/storage/object-storage/auth-access/bucket-access/manage-bucket-policies#example-policies) for examples and further information.
+ * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.coreweave.ObjectStorageBucket;
+ * import com.pulumi.coreweave.ObjectStorageBucketArgs;
+ * import com.pulumi.coreweave.ObjectStorageBucketPolicy;
+ * import com.pulumi.coreweave.ObjectStorageBucketPolicyArgs;
+ * import com.pulumi.coreweave.CoreweaveFunctions;
+ * import com.pulumi.coreweave.inputs.GetObjectStorageBucketPolicyDocumentArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var raw = new ObjectStorageBucket("raw", ObjectStorageBucketArgs.builder()
+ *             .name("bucket-policy-raw-example")
+ *             .zone("US-EAST-04A")
+ *             .build());
+ * 
+ *         final var bucketPolicy = Map.ofEntries(
+ *             Map.entry("version", "2012-10-17"),
+ *             Map.entry("statement", Map.ofEntries(
+ *                 Map.entry("sid", "allow-all"),
+ *                 Map.entry("effect", "Allow"),
+ *                 Map.entry("principal", Map.of("CW", "*")),
+ *                 Map.entry("action", "s3:*"),
+ *                 Map.entry("resource", raw.name().applyValue(_name -> String.format("arn:aws:s3:::%s", _name)))
+ *             ))
+ *         );
+ * 
+ *         var rawObjectStorageBucketPolicy = new ObjectStorageBucketPolicy("rawObjectStorageBucketPolicy", ObjectStorageBucketPolicyArgs.builder()
+ *             .bucket(raw.name())
+ *             .policy(serializeJson(
+ *                 bucketPolicy))
+ *             .build());
+ * 
+ *         //# Example using the coreweave_object_storage_bucket_policy_document data source
+ *         var docObjectStorageBucket = new ObjectStorageBucket("docObjectStorageBucket", ObjectStorageBucketArgs.builder()
+ *             .name("bucket-policy-doc-example")
+ *             .zone("US-EAST-04A")
+ *             .build());
+ * 
+ *         final var doc = CoreweaveFunctions.getObjectStorageBucketPolicyDocument(GetObjectStorageBucketPolicyDocumentArgs.builder()
+ *             .version("2012-10-17")
+ *             .statements(            
+ *                 GetObjectStorageBucketPolicyDocumentStatementArgs.builder()
+ *                     .sid("allow-all")
+ *                     .effect("Allow")
+ *                     .actions("s3:*")
+ *                     .resources(docObjectStorageBucket.name().applyValue(_name -> String.format("arn:aws:s3:::%s", _name)))
+ *                     .principal(Map.of("CW", "*"))
+ *                     .build(),
+ *                 GetObjectStorageBucketPolicyDocumentStatementArgs.builder()
+ *                     .sid("DenyIfPrefixEquals")
+ *                     .effect("Deny")
+ *                     .actions("s3:ListBucket")
+ *                     .resources(docObjectStorageBucket.name().applyValue(_name -> String.format("arn:aws:s3:::%s", _name)))
+ *                     .principal(Map.of("CW", "*"))
+ *                     .condition(Map.of("StringNotEquals", Map.of("s3:prefix", "projects")))
+ *                     .build())
+ *             .build());
+ * 
+ *         var docObjectStorageBucketPolicy = new ObjectStorageBucketPolicy("docObjectStorageBucketPolicy", ObjectStorageBucketPolicyArgs.builder()
+ *             .bucket(docObjectStorageBucket.name())
+ *             .policy(doc.applyValue(_doc -> _doc.json()))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import coreweave:index/objectStorageBucketPolicy:ObjectStorageBucketPolicy default {{bucket_name}}
+ * ```
+ * 
+ */
 @ResourceType(type="coreweave:index/objectStorageBucketPolicy:ObjectStorageBucketPolicy")
 public class ObjectStorageBucketPolicy extends com.pulumi.resources.CustomResource {
     /**
@@ -30,14 +127,14 @@ public class ObjectStorageBucketPolicy extends com.pulumi.resources.CustomResour
         return this.bucket;
     }
     /**
-     * Text of the policy. Must be valid JSON. The coreweave.getObjectStorageBucketPolicyDocument data source may be used, simply reference the `.json` attribute of the data source.
+     * Text of the policy. Must be valid JSON. The coreweave*object*storage*bucket*policy_document data source may be used, simply reference the `.json` attribute of the data source.
      * 
      */
     @Export(name="policy", refs={String.class}, tree="[0]")
     private Output<String> policy;
 
     /**
-     * @return Text of the policy. Must be valid JSON. The coreweave.getObjectStorageBucketPolicyDocument data source may be used, simply reference the `.json` attribute of the data source.
+     * @return Text of the policy. Must be valid JSON. The coreweave*object*storage*bucket*policy_document data source may be used, simply reference the `.json` attribute of the data source.
      * 
      */
     public Output<String> policy() {

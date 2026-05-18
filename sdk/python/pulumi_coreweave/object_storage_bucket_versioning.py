@@ -101,7 +101,30 @@ class ObjectStorageBucketVersioning(pulumi.CustomResource):
                  versioning_configuration: Optional[pulumi.Input[Union['ObjectStorageBucketVersioningVersioningConfigurationArgs', 'ObjectStorageBucketVersioningVersioningConfigurationArgsDict']]] = None,
                  __props__=None):
         """
-        Create a ObjectStorageBucketVersioning resource with the given unique name, props, and options.
+        Versioning protects your data by preserving all versions of objects and preventing permanent deletion. When objects are deleted, they are "soft deleted" with delete markers, allowing you to restore previous versions and recover data. After creating a versioned bucket with Terraform, [use `rclone` to manage versioned objects and delete markers](https://docs.coreweave.com/products/storage/object-storage/buckets/rclone-versioned-buckets).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_coreweave as coreweave
+
+        default = coreweave.ObjectStorageBucket("default",
+            name="bucket-versioning-example",
+            zone="US-EAST-04A")
+        default_object_storage_bucket_versioning = coreweave.ObjectStorageBucketVersioning("default",
+            bucket=default.name,
+            versioning_configuration={
+                "status": "Enabled",
+            })
+        ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import coreweave:index/objectStorageBucketVersioning:ObjectStorageBucketVersioning default {{bucket_name}}
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -114,7 +137,30 @@ class ObjectStorageBucketVersioning(pulumi.CustomResource):
                  args: ObjectStorageBucketVersioningArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a ObjectStorageBucketVersioning resource with the given unique name, props, and options.
+        Versioning protects your data by preserving all versions of objects and preventing permanent deletion. When objects are deleted, they are "soft deleted" with delete markers, allowing you to restore previous versions and recover data. After creating a versioned bucket with Terraform, [use `rclone` to manage versioned objects and delete markers](https://docs.coreweave.com/products/storage/object-storage/buckets/rclone-versioned-buckets).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_coreweave as coreweave
+
+        default = coreweave.ObjectStorageBucket("default",
+            name="bucket-versioning-example",
+            zone="US-EAST-04A")
+        default_object_storage_bucket_versioning = coreweave.ObjectStorageBucketVersioning("default",
+            bucket=default.name,
+            versioning_configuration={
+                "status": "Enabled",
+            })
+        ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import coreweave:index/objectStorageBucketVersioning:ObjectStorageBucketVersioning default {{bucket_name}}
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param ObjectStorageBucketVersioningArgs args: The arguments to use to populate this resource's properties.

@@ -9,6 +9,54 @@ using Pulumi.Serialization;
 
 namespace Pulumi.CoreWeave
 {
+    /// <summary>
+    /// [Organization access policies](https://docs.coreweave.com/products/storage/object-storage/auth-access/organization-policies/about) enforce permissions for AI Object Storage across your entire CoreWeave organization, automatically covering every resource, bucket, and user in your account. At least one organization access policy must be in place before you can create a bucket.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using CoreWeave = Pulumi.CoreWeave;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var test = new CoreWeave.ObjectStorageOrganizationAccessPolicy("test", new()
+    ///     {
+    ///         Name = "full-s3-api-access",
+    ///         Statements = new[]
+    ///         {
+    ///             new CoreWeave.Inputs.ObjectStorageOrganizationAccessPolicyStatementArgs
+    ///             {
+    ///                 Name = "allow-full-s3-api-access-to-all",
+    ///                 Effect = "Allow",
+    ///                 Resources = new[]
+    ///                 {
+    ///                     "*",
+    ///                 },
+    ///                 Principals = new[]
+    ///                 {
+    ///                     "*",
+    ///                 },
+    ///                 Actions = new[]
+    ///                 {
+    ///                     "s3:*",
+    ///                     "cwobject:*",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import coreweave:index/objectStorageOrganizationAccessPolicy:ObjectStorageOrganizationAccessPolicy default {{name}}
+    /// ```
+    /// </summary>
     [CoreWeaveResourceType("coreweave:index/objectStorageOrganizationAccessPolicy:ObjectStorageOrganizationAccessPolicy")]
     public partial class ObjectStorageOrganizationAccessPolicy : global::Pulumi.CustomResource
     {

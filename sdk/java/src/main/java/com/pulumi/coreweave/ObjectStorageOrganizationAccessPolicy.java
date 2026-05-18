@@ -15,6 +15,59 @@ import java.lang.String;
 import java.util.List;
 import javax.annotation.Nullable;
 
+/**
+ * [Organization access policies](https://docs.coreweave.com/products/storage/object-storage/auth-access/organization-policies/about) enforce permissions for AI Object Storage across your entire CoreWeave organization, automatically covering every resource, bucket, and user in your account. At least one organization access policy must be in place before you can create a bucket.
+ * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.coreweave.ObjectStorageOrganizationAccessPolicy;
+ * import com.pulumi.coreweave.ObjectStorageOrganizationAccessPolicyArgs;
+ * import com.pulumi.coreweave.inputs.ObjectStorageOrganizationAccessPolicyStatementArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var test = new ObjectStorageOrganizationAccessPolicy("test", ObjectStorageOrganizationAccessPolicyArgs.builder()
+ *             .name("full-s3-api-access")
+ *             .statements(ObjectStorageOrganizationAccessPolicyStatementArgs.builder()
+ *                 .name("allow-full-s3-api-access-to-all")
+ *                 .effect("Allow")
+ *                 .resources("*")
+ *                 .principals("*")
+ *                 .actions(                
+ *                     "s3:*",
+ *                     "cwobject:*")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import coreweave:index/objectStorageOrganizationAccessPolicy:ObjectStorageOrganizationAccessPolicy default {{name}}
+ * ```
+ * 
+ */
 @ResourceType(type="coreweave:index/objectStorageOrganizationAccessPolicy:ObjectStorageOrganizationAccessPolicy")
 public class ObjectStorageOrganizationAccessPolicy extends com.pulumi.resources.CustomResource {
     /**

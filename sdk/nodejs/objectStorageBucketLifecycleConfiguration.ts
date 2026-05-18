@@ -6,6 +6,71 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Lifecycle configurations automate object management by defining actions applied to objects over time, such as expiring objects after a specified period or transitioning them to different storage tiers. This helps optimize storage costs and maintain data hygiene. Lifecycle configurations automate object management by defining actions applied to objects over time, such as expiring objects after a specified period or transitioning them to different storage tiers. This helps optimize storage costs and maintain data hygiene. [Learn more about S3-compatible lifecycle bucket configurations](https://docs.coreweave.com/products/storage/object-storage/reference/object-storage-s3#bucket-lifecycles).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as coreweave from "@pulumi/coreweave";
+ *
+ * const _default = new coreweave.ObjectStorageBucket("default", {
+ *     name: "bucket-lifecycle-example",
+ *     zone: "US-EAST-04A",
+ * });
+ * const defaultObjectStorageBucketVersioning = new coreweave.ObjectStorageBucketVersioning("default", {
+ *     bucket: _default.name,
+ *     versioningConfiguration: {
+ *         status: "Enabled",
+ *     },
+ * });
+ * const defaultObjectStorageBucketLifecycleConfiguration = new coreweave.ObjectStorageBucketLifecycleConfiguration("default", {
+ *     bucket: _default.name,
+ *     rules: [
+ *         {
+ *             id: "cleanup-logs",
+ *             status: "Enabled",
+ *             filter: {
+ *                 and: {
+ *                     prefix: "logs/",
+ *                     objectSizeGreaterThan: 1000000,
+ *                     tags: {
+ *                         env: "prod",
+ *                     },
+ *                 },
+ *             },
+ *             expiration: {
+ *                 days: 30,
+ *             },
+ *             noncurrentVersionExpiration: {
+ *                 noncurrentDays: 7,
+ *                 newerNoncurrentVersions: 2,
+ *             },
+ *         },
+ *         {
+ *             id: "expire-traces",
+ *             prefix: "traces/",
+ *             status: "Enabled",
+ *             abortIncompleteMultipartUpload: {
+ *                 daysAfterInitiation: 5,
+ *             },
+ *             expiration: {
+ *                 date: "2026-01-01T00:00:00Z",
+ *             },
+ *         },
+ *     ],
+ * }, {
+ *     dependsOn: [defaultObjectStorageBucketVersioning],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import coreweave:index/objectStorageBucketLifecycleConfiguration:ObjectStorageBucketLifecycleConfiguration default {{bucket_name}}
+ * ```
+ */
 export class ObjectStorageBucketLifecycleConfiguration extends pulumi.CustomResource {
     /**
      * Get an existing ObjectStorageBucketLifecycleConfiguration resource's state with the given name, ID, and optional extra

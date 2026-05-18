@@ -59,47 +59,74 @@ class GetNetworkingVpcResult:
     @_builtins.property
     @pulumi.getter
     def dhcp(self) -> 'outputs.GetNetworkingVpcDhcpResult':
+        """
+        Settings affecting DHCP behavior within the VPC.
+        """
         return pulumi.get(self, "dhcp")
 
     @_builtins.property
     @pulumi.getter
     def egress(self) -> 'outputs.GetNetworkingVpcEgressResult':
+        """
+        Settings affecting traffic leaving the VPC.
+        """
         return pulumi.get(self, "egress")
 
     @_builtins.property
     @pulumi.getter(name="hostPrefix")
     @_utilities.deprecated("""Configure host_prefixes instead.""")
     def host_prefix(self) -> _builtins.str:
+        """
+        An IPv4 CIDR range used to allocate host addresses when booting compute into a VPC.
+        """
         return pulumi.get(self, "host_prefix")
 
     @_builtins.property
     @pulumi.getter(name="hostPrefixes")
     def host_prefixes(self) -> Sequence['outputs.GetNetworkingVpcHostPrefixResult']:
+        """
+        The IPv4 or IPv6 CIDR ranges used to allocate host addresses when booting compute into a VPC.
+        """
         return pulumi.get(self, "host_prefixes")
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        The ID of the VPC.
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
     def ingress(self) -> 'outputs.GetNetworkingVpcIngressResult':
+        """
+        Settings affecting traffic entering the VPC.
+        """
         return pulumi.get(self, "ingress")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
+        """
+        The name of the VPC.
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="vpcPrefixes")
     def vpc_prefixes(self) -> Sequence['outputs.GetNetworkingVpcVpcPrefixResult']:
+        """
+        A list of additional named IPv4 prefixes for the VPC.
+        """
         return pulumi.get(self, "vpc_prefixes")
 
     @_builtins.property
     @pulumi.getter
     def zone(self) -> _builtins.str:
+        """
+        The Availability Zone in which the VPC is located.
+        """
         return pulumi.get(self, "zone")
 
 
@@ -123,7 +150,19 @@ class AwaitableGetNetworkingVpcResult(GetNetworkingVpcResult):
 def get_networking_vpc(id: Optional[_builtins.str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNetworkingVpcResult:
     """
-    Use this data source to access information about an existing resource.
+    Query information about an existing VPC by ID. See the [CoreWeave VPC API reference](https://docs.coreweave.com/products/networking/vpc/vpc-api).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_coreweave as coreweave
+
+    default = coreweave.get_networking_vpc(id="1063bce6-6e5b-4b0a-b73a-7e6106b2a77c")
+    ```
+
+
+    :param _builtins.str id: The ID of the VPC.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -143,7 +182,19 @@ def get_networking_vpc(id: Optional[_builtins.str] = None,
 def get_networking_vpc_output(id: Optional[pulumi.Input[_builtins.str]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetworkingVpcResult]:
     """
-    Use this data source to access information about an existing resource.
+    Query information about an existing VPC by ID. See the [CoreWeave VPC API reference](https://docs.coreweave.com/products/networking/vpc/vpc-api).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_coreweave as coreweave
+
+    default = coreweave.get_networking_vpc(id="1063bce6-6e5b-4b0a-b73a-7e6106b2a77c")
+    ```
+
+
+    :param _builtins.str id: The ID of the VPC.
     """
     __args__ = dict()
     __args__['id'] = id

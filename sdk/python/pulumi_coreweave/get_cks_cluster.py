@@ -98,111 +98,177 @@ class GetCksClusterResult:
     @_builtins.property
     @pulumi.getter(name="additionalServerSans")
     def additional_server_sans(self) -> Sequence[_builtins.str]:
+        """
+        Additional Subject Alternative Names (SANs) included in the Kubernetes API server TLS certificate.
+        """
         return pulumi.get(self, "additional_server_sans")
 
     @_builtins.property
     @pulumi.getter(name="apiServerEndpoint")
     def api_server_endpoint(self) -> _builtins.str:
+        """
+        The API server endpoint of the cluster.
+        """
         return pulumi.get(self, "api_server_endpoint")
 
     @_builtins.property
     @pulumi.getter(name="auditPolicy")
     def audit_policy(self) -> _builtins.str:
+        """
+        The audit policy of the cluster.
+        """
         return pulumi.get(self, "audit_policy")
 
     @_builtins.property
     @pulumi.getter(name="authnWebhook")
     def authn_webhook(self) -> 'outputs.GetCksClusterAuthnWebhookResult':
+        """
+        The authentication webhook configuration of the cluster.
+        """
         return pulumi.get(self, "authn_webhook")
 
     @_builtins.property
     @pulumi.getter(name="authzWebhook")
     def authz_webhook(self) -> 'outputs.GetCksClusterAuthzWebhookResult':
+        """
+        The authorization webhook configuration of the cluster.
+        """
         return pulumi.get(self, "authz_webhook")
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        The ID of the cluster.
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="internalLbCidrNames")
     def internal_lb_cidr_names(self) -> Sequence[_builtins.str]:
+        """
+        The internal load balancer CIDR names of the cluster.
+        """
         return pulumi.get(self, "internal_lb_cidr_names")
 
     @_builtins.property
     @pulumi.getter(name="internalLbCidrNamesV6s")
     def internal_lb_cidr_names_v6s(self) -> Sequence[_builtins.str]:
+        """
+        The IPv6 internal load balancer CIDR names of the cluster.
+        """
         return pulumi.get(self, "internal_lb_cidr_names_v6s")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
+        """
+        The name of the cluster.
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="nodePortRange")
     def node_port_range(self) -> 'outputs.GetCksClusterNodePortRangeResult':
+        """
+        The Kubernetes Service NodePort range.
+        """
         return pulumi.get(self, "node_port_range")
 
     @_builtins.property
     @pulumi.getter
     def oidc(self) -> 'outputs.GetCksClusterOidcResult':
+        """
+        The OIDC configuration of the cluster.
+        """
         return pulumi.get(self, "oidc")
 
     @_builtins.property
     @pulumi.getter(name="podCidrName")
     def pod_cidr_name(self) -> _builtins.str:
+        """
+        The pod CIDR name of the cluster.
+        """
         return pulumi.get(self, "pod_cidr_name")
 
     @_builtins.property
     @pulumi.getter(name="podCidrNameV6")
     def pod_cidr_name_v6(self) -> _builtins.str:
+        """
+        The IPv6 pod CIDR name of the cluster.
+        """
         return pulumi.get(self, "pod_cidr_name_v6")
 
     @_builtins.property
     @pulumi.getter
     def public(self) -> _builtins.bool:
+        """
+        Whether the cluster is public.
+        """
         return pulumi.get(self, "public")
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountOidcIssuerUrl")
     def service_account_oidc_issuer_url(self) -> _builtins.str:
+        """
+        The URL of the OIDC issuer for the cluster's service account tokens. This value corresponds to the `--service-account-issuer` flag on the kube-apiserver.
+        """
         return pulumi.get(self, "service_account_oidc_issuer_url")
 
     @_builtins.property
     @pulumi.getter(name="serviceCidrName")
     def service_cidr_name(self) -> _builtins.str:
+        """
+        The service CIDR name of the cluster.
+        """
         return pulumi.get(self, "service_cidr_name")
 
     @_builtins.property
     @pulumi.getter(name="serviceCidrNameV6")
     def service_cidr_name_v6(self) -> _builtins.str:
+        """
+        The IPv6 service CIDR name of the cluster.
+        """
         return pulumi.get(self, "service_cidr_name_v6")
 
     @_builtins.property
     @pulumi.getter(name="sharedStorageClusterId")
     def shared_storage_cluster_id(self) -> _builtins.str:
+        """
+        The `cluster_id` of the cluster to share storage with. Must be enabled by CoreWeave suppport. Contact CoreWeave support if you are interested in this feature.
+        """
         return pulumi.get(self, "shared_storage_cluster_id")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> _builtins.str:
+        """
+        The status of the cluster.
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter
     def version(self) -> _builtins.str:
+        """
+        The version of the cluster.
+        """
         return pulumi.get(self, "version")
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> _builtins.str:
+        """
+        The VPC ID of the cluster.
+        """
         return pulumi.get(self, "vpc_id")
 
     @_builtins.property
     @pulumi.getter
     def zone(self) -> _builtins.str:
+        """
+        The zone of the cluster.
+        """
         return pulumi.get(self, "zone")
 
 
@@ -239,7 +305,19 @@ class AwaitableGetCksClusterResult(GetCksClusterResult):
 def get_cks_cluster(id: Optional[_builtins.str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCksClusterResult:
     """
-    Use this data source to access information about an existing resource.
+    Query information about an existing CoreWeave Kubernetes Service (CKS) cluster by ID. See the [CKS API reference](https://docs.coreweave.com/products/cks/reference/cks-api).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_coreweave as coreweave
+
+    default = coreweave.get_cks_cluster(id="1063bce6-6e5b-4b0a-b73a-7e6106b2a77c")
+    ```
+
+
+    :param _builtins.str id: The ID of the cluster.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -272,7 +350,19 @@ def get_cks_cluster(id: Optional[_builtins.str] = None,
 def get_cks_cluster_output(id: Optional[pulumi.Input[_builtins.str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCksClusterResult]:
     """
-    Use this data source to access information about an existing resource.
+    Query information about an existing CoreWeave Kubernetes Service (CKS) cluster by ID. See the [CKS API reference](https://docs.coreweave.com/products/cks/reference/cks-api).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_coreweave as coreweave
+
+    default = coreweave.get_cks_cluster(id="1063bce6-6e5b-4b0a-b73a-7e6106b2a77c")
+    ```
+
+
+    :param _builtins.str id: The ID of the cluster.
     """
     __args__ = dict()
     __args__['id'] = id

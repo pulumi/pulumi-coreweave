@@ -12,6 +12,49 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Versioning protects your data by preserving all versions of objects and preventing permanent deletion. When objects are deleted, they are "soft deleted" with delete markers, allowing you to restore previous versions and recover data. After creating a versioned bucket with Terraform, [use `rclone` to manage versioned objects and delete markers](https://docs.coreweave.com/products/storage/object-storage/buckets/rclone-versioned-buckets).
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-coreweave/sdk/go/coreweave"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := coreweave.NewObjectStorageBucket(ctx, "default", &coreweave.ObjectStorageBucketArgs{
+//				Name: pulumi.String("bucket-versioning-example"),
+//				Zone: pulumi.String("US-EAST-04A"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = coreweave.NewObjectStorageBucketVersioning(ctx, "default", &coreweave.ObjectStorageBucketVersioningArgs{
+//				Bucket: _default.Name,
+//				VersioningConfiguration: &coreweave.ObjectStorageBucketVersioningVersioningConfigurationArgs{
+//					Status: pulumi.String("Enabled"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import coreweave:index/objectStorageBucketVersioning:ObjectStorageBucketVersioning default {{bucket_name}}
+// ```
 type ObjectStorageBucketVersioning struct {
 	pulumi.CustomResourceState
 

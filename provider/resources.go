@@ -76,8 +76,12 @@ func Provider() tfbridge.ProviderInfo {
 		Repository: "https://github.com/pulumi/pulumi-coreweave",
 		// The GitHub Org for the provider - defaults to `terraform-providers`. Note that this should
 		// match the TF provider module's require directive, not any replace directives.
-		GitHubOrg:    "coreweave",
-		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
+		GitHubOrg: "coreweave",
+		// Path to the upstream provider's git submodule, so registry-docs
+		// reads upstream docs locally instead of via `go mod download`
+		// (which cannot resolve the filesystem-replaced submodule).
+		UpstreamRepoPath: "./upstream",
+		MetadataInfo:     tfbridge.NewProviderMetadata(metadata),
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// RespectSchemaVersion ensures the SDK is generated linking to the correct version of the provider.
 			RespectSchemaVersion: true,

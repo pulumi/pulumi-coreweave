@@ -11,12 +11,75 @@ namespace Pulumi.CoreWeave
 {
     public static class GetCksCluster
     {
+        /// <summary>
+        /// Query information about an existing CoreWeave Kubernetes Service (CKS) cluster by ID. See the [CKS API reference](https://docs.coreweave.com/products/cks/reference/cks-api).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using CoreWeave = Pulumi.CoreWeave;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = CoreWeave.GetCksCluster.Invoke(new()
+        ///     {
+        ///         Id = "1063bce6-6e5b-4b0a-b73a-7e6106b2a77c",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetCksClusterResult> InvokeAsync(GetCksClusterArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCksClusterResult>("coreweave:index/getCksCluster:getCksCluster", args ?? new GetCksClusterArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Query information about an existing CoreWeave Kubernetes Service (CKS) cluster by ID. See the [CKS API reference](https://docs.coreweave.com/products/cks/reference/cks-api).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using CoreWeave = Pulumi.CoreWeave;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = CoreWeave.GetCksCluster.Invoke(new()
+        ///     {
+        ///         Id = "1063bce6-6e5b-4b0a-b73a-7e6106b2a77c",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetCksClusterResult> Invoke(GetCksClusterInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCksClusterResult>("coreweave:index/getCksCluster:getCksCluster", args ?? new GetCksClusterInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Query information about an existing CoreWeave Kubernetes Service (CKS) cluster by ID. See the [CKS API reference](https://docs.coreweave.com/products/cks/reference/cks-api).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using CoreWeave = Pulumi.CoreWeave;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = CoreWeave.GetCksCluster.Invoke(new()
+        ///     {
+        ///         Id = "1063bce6-6e5b-4b0a-b73a-7e6106b2a77c",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetCksClusterResult> Invoke(GetCksClusterInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetCksClusterResult>("coreweave:index/getCksCluster:getCksCluster", args ?? new GetCksClusterInvokeArgs(), options.WithDefaults());
     }
@@ -24,6 +87,9 @@ namespace Pulumi.CoreWeave
 
     public sealed class GetCksClusterArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The ID of the cluster.
+        /// </summary>
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
 
@@ -35,6 +101,9 @@ namespace Pulumi.CoreWeave
 
     public sealed class GetCksClusterInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The ID of the cluster.
+        /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 
@@ -48,27 +117,93 @@ namespace Pulumi.CoreWeave
     [OutputType]
     public sealed class GetCksClusterResult
     {
+        /// <summary>
+        /// Additional Subject Alternative Names (SANs) included in the Kubernetes API server TLS certificate.
+        /// </summary>
         public readonly ImmutableArray<string> AdditionalServerSans;
+        /// <summary>
+        /// The API server endpoint of the cluster.
+        /// </summary>
         public readonly string ApiServerEndpoint;
+        /// <summary>
+        /// The audit policy of the cluster.
+        /// </summary>
         public readonly string AuditPolicy;
+        /// <summary>
+        /// The authentication webhook configuration of the cluster.
+        /// </summary>
         public readonly Outputs.GetCksClusterAuthnWebhookResult AuthnWebhook;
+        /// <summary>
+        /// The authorization webhook configuration of the cluster.
+        /// </summary>
         public readonly Outputs.GetCksClusterAuthzWebhookResult AuthzWebhook;
+        /// <summary>
+        /// The ID of the cluster.
+        /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The internal load balancer CIDR names of the cluster.
+        /// </summary>
         public readonly ImmutableArray<string> InternalLbCidrNames;
+        /// <summary>
+        /// The IPv6 internal load balancer CIDR names of the cluster.
+        /// </summary>
         public readonly ImmutableArray<string> InternalLbCidrNamesV6s;
+        /// <summary>
+        /// The name of the cluster.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The Kubernetes Service NodePort range.
+        /// </summary>
         public readonly Outputs.GetCksClusterNodePortRangeResult NodePortRange;
+        /// <summary>
+        /// The OIDC configuration of the cluster.
+        /// </summary>
         public readonly Outputs.GetCksClusterOidcResult Oidc;
+        /// <summary>
+        /// The pod CIDR name of the cluster.
+        /// </summary>
         public readonly string PodCidrName;
+        /// <summary>
+        /// The IPv6 pod CIDR name of the cluster.
+        /// </summary>
         public readonly string PodCidrNameV6;
+        /// <summary>
+        /// Whether the cluster is public.
+        /// </summary>
         public readonly bool Public;
+        /// <summary>
+        /// The URL of the OIDC issuer for the cluster's service account tokens. This value corresponds to the `--service-account-issuer` flag on the kube-apiserver.
+        /// </summary>
         public readonly string ServiceAccountOidcIssuerUrl;
+        /// <summary>
+        /// The service CIDR name of the cluster.
+        /// </summary>
         public readonly string ServiceCidrName;
+        /// <summary>
+        /// The IPv6 service CIDR name of the cluster.
+        /// </summary>
         public readonly string ServiceCidrNameV6;
+        /// <summary>
+        /// The `ClusterId` of the cluster to share storage with. Must be enabled by CoreWeave suppport. Contact CoreWeave support if you are interested in this feature.
+        /// </summary>
         public readonly string SharedStorageClusterId;
+        /// <summary>
+        /// The status of the cluster.
+        /// </summary>
         public readonly string Status;
+        /// <summary>
+        /// The version of the cluster.
+        /// </summary>
         public readonly string Version;
+        /// <summary>
+        /// The VPC ID of the cluster.
+        /// </summary>
         public readonly string VpcId;
+        /// <summary>
+        /// The zone of the cluster.
+        /// </summary>
         public readonly string Zone;
 
         [OutputConstructor]

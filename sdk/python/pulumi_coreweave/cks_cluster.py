@@ -684,7 +684,14 @@ class CksCluster(pulumi.CustomResource):
                  zone: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Create a CksCluster resource with the given unique name, props, and options.
+        Create and manage clusters on [CoreWeave Kubernetes Service (CKS)](https://docs.coreweave.com/products/cks/clusters/introduction).
+
+        ## Import
+
+        ```sh
+        $ pulumi import coreweave:index/cksCluster:CksCluster default {{id}}
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -715,7 +722,14 @@ class CksCluster(pulumi.CustomResource):
                  args: CksClusterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a CksCluster resource with the given unique name, props, and options.
+        Create and manage clusters on [CoreWeave Kubernetes Service (CKS)](https://docs.coreweave.com/products/cks/clusters/introduction).
+
+        ## Import
+
+        ```sh
+        $ pulumi import coreweave:index/cksCluster:CksCluster default {{id}}
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param CksClusterArgs args: The arguments to use to populate this resource's properties.

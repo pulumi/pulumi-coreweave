@@ -109,7 +109,66 @@ class ObjectStorageBucketLifecycleConfiguration(pulumi.CustomResource):
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ObjectStorageBucketLifecycleConfigurationRuleArgs', 'ObjectStorageBucketLifecycleConfigurationRuleArgsDict']]]]] = None,
                  __props__=None):
         """
-        Create a ObjectStorageBucketLifecycleConfiguration resource with the given unique name, props, and options.
+        Lifecycle configurations automate object management by defining actions applied to objects over time, such as expiring objects after a specified period or transitioning them to different storage tiers. This helps optimize storage costs and maintain data hygiene. Lifecycle configurations automate object management by defining actions applied to objects over time, such as expiring objects after a specified period or transitioning them to different storage tiers. This helps optimize storage costs and maintain data hygiene. [Learn more about S3-compatible lifecycle bucket configurations](https://docs.coreweave.com/products/storage/object-storage/reference/object-storage-s3#bucket-lifecycles).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_coreweave as coreweave
+
+        default = coreweave.ObjectStorageBucket("default",
+            name="bucket-lifecycle-example",
+            zone="US-EAST-04A")
+        default_object_storage_bucket_versioning = coreweave.ObjectStorageBucketVersioning("default",
+            bucket=default.name,
+            versioning_configuration={
+                "status": "Enabled",
+            })
+        default_object_storage_bucket_lifecycle_configuration = coreweave.ObjectStorageBucketLifecycleConfiguration("default",
+            bucket=default.name,
+            rules=[
+                {
+                    "id": "cleanup-logs",
+                    "status": "Enabled",
+                    "filter": {
+                        "and_": {
+                            "prefix": "logs/",
+                            "object_size_greater_than": 1000000,
+                            "tags": {
+                                "env": "prod",
+                            },
+                        },
+                    },
+                    "expiration": {
+                        "days": 30,
+                    },
+                    "noncurrent_version_expiration": {
+                        "noncurrent_days": 7,
+                        "newer_noncurrent_versions": 2,
+                    },
+                },
+                {
+                    "id": "expire-traces",
+                    "prefix": "traces/",
+                    "status": "Enabled",
+                    "abort_incomplete_multipart_upload": {
+                        "days_after_initiation": 5,
+                    },
+                    "expiration": {
+                        "date": "2026-01-01T00:00:00Z",
+                    },
+                },
+            ],
+            opts = pulumi.ResourceOptions(depends_on=[default_object_storage_bucket_versioning]))
+        ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import coreweave:index/objectStorageBucketLifecycleConfiguration:ObjectStorageBucketLifecycleConfiguration default {{bucket_name}}
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -123,7 +182,66 @@ class ObjectStorageBucketLifecycleConfiguration(pulumi.CustomResource):
                  args: ObjectStorageBucketLifecycleConfigurationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a ObjectStorageBucketLifecycleConfiguration resource with the given unique name, props, and options.
+        Lifecycle configurations automate object management by defining actions applied to objects over time, such as expiring objects after a specified period or transitioning them to different storage tiers. This helps optimize storage costs and maintain data hygiene. Lifecycle configurations automate object management by defining actions applied to objects over time, such as expiring objects after a specified period or transitioning them to different storage tiers. This helps optimize storage costs and maintain data hygiene. [Learn more about S3-compatible lifecycle bucket configurations](https://docs.coreweave.com/products/storage/object-storage/reference/object-storage-s3#bucket-lifecycles).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_coreweave as coreweave
+
+        default = coreweave.ObjectStorageBucket("default",
+            name="bucket-lifecycle-example",
+            zone="US-EAST-04A")
+        default_object_storage_bucket_versioning = coreweave.ObjectStorageBucketVersioning("default",
+            bucket=default.name,
+            versioning_configuration={
+                "status": "Enabled",
+            })
+        default_object_storage_bucket_lifecycle_configuration = coreweave.ObjectStorageBucketLifecycleConfiguration("default",
+            bucket=default.name,
+            rules=[
+                {
+                    "id": "cleanup-logs",
+                    "status": "Enabled",
+                    "filter": {
+                        "and_": {
+                            "prefix": "logs/",
+                            "object_size_greater_than": 1000000,
+                            "tags": {
+                                "env": "prod",
+                            },
+                        },
+                    },
+                    "expiration": {
+                        "days": 30,
+                    },
+                    "noncurrent_version_expiration": {
+                        "noncurrent_days": 7,
+                        "newer_noncurrent_versions": 2,
+                    },
+                },
+                {
+                    "id": "expire-traces",
+                    "prefix": "traces/",
+                    "status": "Enabled",
+                    "abort_incomplete_multipart_upload": {
+                        "days_after_initiation": 5,
+                    },
+                    "expiration": {
+                        "date": "2026-01-01T00:00:00Z",
+                    },
+                },
+            ],
+            opts = pulumi.ResourceOptions(depends_on=[default_object_storage_bucket_versioning]))
+        ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import coreweave:index/objectStorageBucketLifecycleConfiguration:ObjectStorageBucketLifecycleConfiguration default {{bucket_name}}
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param ObjectStorageBucketLifecycleConfigurationArgs args: The arguments to use to populate this resource's properties.

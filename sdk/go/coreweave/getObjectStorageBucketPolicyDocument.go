@@ -11,6 +11,50 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [Bucket access policies](https://docs.coreweave.com/products/storage/object-storage/auth-access/bucket-access/bucket-policies) allow you to define precise, S3-compatible access control for one bucket. They are evaluated after organization access policies. See [Manage Bucket Policies](https://docs.coreweave.com/products/storage/object-storage/auth-access/bucket-access/manage-bucket-policies#example-policies) for examples and further information. This data source provides a type-safe data structure for creating an S3-compatible JSON bucket policy.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-coreweave/sdk/go/coreweave"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := coreweave.GetObjectStorageBucketPolicyDocument(ctx, &coreweave.GetObjectStorageBucketPolicyDocumentArgs{
+//				Version: pulumi.StringRef("2012-10-17"),
+//				Statements: []coreweave.GetObjectStorageBucketPolicyDocumentStatement{
+//					{
+//						Sid:    pulumi.StringRef("allow-all"),
+//						Effect: pulumi.StringRef("Allow"),
+//						Actions: []string{
+//							"s3:*",
+//						},
+//						Resources: []string{
+//							"arn:aws:s3:::*",
+//						},
+//						Principal: {
+//							"CW": []string{
+//								"*",
+//							},
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetObjectStorageBucketPolicyDocument(ctx *pulumi.Context, args *GetObjectStorageBucketPolicyDocumentArgs, opts ...pulumi.InvokeOption) (*GetObjectStorageBucketPolicyDocumentResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetObjectStorageBucketPolicyDocumentResult
@@ -23,17 +67,24 @@ func GetObjectStorageBucketPolicyDocument(ctx *pulumi.Context, args *GetObjectSt
 
 // A collection of arguments for invoking getObjectStorageBucketPolicyDocument.
 type GetObjectStorageBucketPolicyDocumentArgs struct {
-	Id         *string                                         `pulumi:"id"`
+	// An optional policy identifier
+	Id *string `pulumi:"id"`
+	// The main policy element that defines the access rules for buckets and objects. Multiple statement blocks can be specified.
 	Statements []GetObjectStorageBucketPolicyDocumentStatement `pulumi:"statements"`
-	Version    *string                                         `pulumi:"version"`
+	// The policy version, e.g. `"2012-10-17"`
+	Version *string `pulumi:"version"`
 }
 
 // A collection of values returned by getObjectStorageBucketPolicyDocument.
 type GetObjectStorageBucketPolicyDocumentResult struct {
-	Id         *string                                         `pulumi:"id"`
-	Json       string                                          `pulumi:"json"`
+	// An optional policy identifier
+	Id *string `pulumi:"id"`
+	// The rendered policy document as JSON
+	Json string `pulumi:"json"`
+	// The main policy element that defines the access rules for buckets and objects. Multiple statement blocks can be specified.
 	Statements []GetObjectStorageBucketPolicyDocumentStatement `pulumi:"statements"`
-	Version    *string                                         `pulumi:"version"`
+	// The policy version, e.g. `"2012-10-17"`
+	Version *string `pulumi:"version"`
 }
 
 func GetObjectStorageBucketPolicyDocumentOutput(ctx *pulumi.Context, args GetObjectStorageBucketPolicyDocumentOutputArgs, opts ...pulumi.InvokeOption) GetObjectStorageBucketPolicyDocumentResultOutput {
@@ -47,9 +98,12 @@ func GetObjectStorageBucketPolicyDocumentOutput(ctx *pulumi.Context, args GetObj
 
 // A collection of arguments for invoking getObjectStorageBucketPolicyDocument.
 type GetObjectStorageBucketPolicyDocumentOutputArgs struct {
-	Id         pulumi.StringPtrInput                                   `pulumi:"id"`
+	// An optional policy identifier
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The main policy element that defines the access rules for buckets and objects. Multiple statement blocks can be specified.
 	Statements GetObjectStorageBucketPolicyDocumentStatementArrayInput `pulumi:"statements"`
-	Version    pulumi.StringPtrInput                                   `pulumi:"version"`
+	// The policy version, e.g. `"2012-10-17"`
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (GetObjectStorageBucketPolicyDocumentOutputArgs) ElementType() reflect.Type {
@@ -71,20 +125,24 @@ func (o GetObjectStorageBucketPolicyDocumentResultOutput) ToGetObjectStorageBuck
 	return o
 }
 
+// An optional policy identifier
 func (o GetObjectStorageBucketPolicyDocumentResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetObjectStorageBucketPolicyDocumentResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The rendered policy document as JSON
 func (o GetObjectStorageBucketPolicyDocumentResultOutput) Json() pulumi.StringOutput {
 	return o.ApplyT(func(v GetObjectStorageBucketPolicyDocumentResult) string { return v.Json }).(pulumi.StringOutput)
 }
 
+// The main policy element that defines the access rules for buckets and objects. Multiple statement blocks can be specified.
 func (o GetObjectStorageBucketPolicyDocumentResultOutput) Statements() GetObjectStorageBucketPolicyDocumentStatementArrayOutput {
 	return o.ApplyT(func(v GetObjectStorageBucketPolicyDocumentResult) []GetObjectStorageBucketPolicyDocumentStatement {
 		return v.Statements
 	}).(GetObjectStorageBucketPolicyDocumentStatementArrayOutput)
 }
 
+// The policy version, e.g. `"2012-10-17"`
 func (o GetObjectStorageBucketPolicyDocumentResultOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetObjectStorageBucketPolicyDocumentResult) *string { return v.Version }).(pulumi.StringPtrOutput)
 }

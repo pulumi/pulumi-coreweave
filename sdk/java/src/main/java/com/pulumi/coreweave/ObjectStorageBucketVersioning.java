@@ -15,6 +15,60 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * Versioning protects your data by preserving all versions of objects and preventing permanent deletion. When objects are deleted, they are &#34;soft deleted&#34; with delete markers, allowing you to restore previous versions and recover data. After creating a versioned bucket with Terraform, [use `rclone` to manage versioned objects and delete markers](https://docs.coreweave.com/products/storage/object-storage/buckets/rclone-versioned-buckets).
+ * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.coreweave.ObjectStorageBucket;
+ * import com.pulumi.coreweave.ObjectStorageBucketArgs;
+ * import com.pulumi.coreweave.ObjectStorageBucketVersioning;
+ * import com.pulumi.coreweave.ObjectStorageBucketVersioningArgs;
+ * import com.pulumi.coreweave.inputs.ObjectStorageBucketVersioningVersioningConfigurationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new ObjectStorageBucket("default", ObjectStorageBucketArgs.builder()
+ *             .name("bucket-versioning-example")
+ *             .zone("US-EAST-04A")
+ *             .build());
+ * 
+ *         var defaultObjectStorageBucketVersioning = new ObjectStorageBucketVersioning("defaultObjectStorageBucketVersioning", ObjectStorageBucketVersioningArgs.builder()
+ *             .bucket(default_.name())
+ *             .versioningConfiguration(ObjectStorageBucketVersioningVersioningConfigurationArgs.builder()
+ *                 .status("Enabled")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import coreweave:index/objectStorageBucketVersioning:ObjectStorageBucketVersioning default {{bucket_name}}
+ * ```
+ * 
+ */
 @ResourceType(type="coreweave:index/objectStorageBucketVersioning:ObjectStorageBucketVersioning")
 public class ObjectStorageBucketVersioning extends com.pulumi.resources.CustomResource {
     /**

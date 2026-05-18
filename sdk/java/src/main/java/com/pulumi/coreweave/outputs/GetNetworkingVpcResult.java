@@ -16,30 +16,74 @@ import java.util.Objects;
 
 @CustomType
 public final class GetNetworkingVpcResult {
+    /**
+     * @return Settings affecting DHCP behavior within the VPC.
+     * 
+     */
     private GetNetworkingVpcDhcp dhcp;
+    /**
+     * @return Settings affecting traffic leaving the VPC.
+     * 
+     */
     private GetNetworkingVpcEgress egress;
     /**
+     * @return An IPv4 CIDR range used to allocate host addresses when booting compute into a VPC.
+     * 
      * @deprecated
      * Configure hostPrefixes instead.
      * 
      */
     @Deprecated /* Configure hostPrefixes instead. */
     private String hostPrefix;
+    /**
+     * @return The IPv4 or IPv6 CIDR ranges used to allocate host addresses when booting compute into a VPC.
+     * 
+     */
     private List<GetNetworkingVpcHostPrefix> hostPrefixes;
+    /**
+     * @return The ID of the VPC.
+     * 
+     */
     private String id;
+    /**
+     * @return Settings affecting traffic entering the VPC.
+     * 
+     */
     private GetNetworkingVpcIngress ingress;
+    /**
+     * @return The name of the VPC.
+     * 
+     */
     private String name;
+    /**
+     * @return A list of additional named IPv4 prefixes for the VPC.
+     * 
+     */
     private List<GetNetworkingVpcVpcPrefix> vpcPrefixes;
+    /**
+     * @return The Availability Zone in which the VPC is located.
+     * 
+     */
     private String zone;
 
     private GetNetworkingVpcResult() {}
+    /**
+     * @return Settings affecting DHCP behavior within the VPC.
+     * 
+     */
     public GetNetworkingVpcDhcp dhcp() {
         return this.dhcp;
     }
+    /**
+     * @return Settings affecting traffic leaving the VPC.
+     * 
+     */
     public GetNetworkingVpcEgress egress() {
         return this.egress;
     }
     /**
+     * @return An IPv4 CIDR range used to allocate host addresses when booting compute into a VPC.
+     * 
      * @deprecated
      * Configure hostPrefixes instead.
      * 
@@ -48,21 +92,45 @@ public final class GetNetworkingVpcResult {
     public String hostPrefix() {
         return this.hostPrefix;
     }
+    /**
+     * @return The IPv4 or IPv6 CIDR ranges used to allocate host addresses when booting compute into a VPC.
+     * 
+     */
     public List<GetNetworkingVpcHostPrefix> hostPrefixes() {
         return this.hostPrefixes;
     }
+    /**
+     * @return The ID of the VPC.
+     * 
+     */
     public String id() {
         return this.id;
     }
+    /**
+     * @return Settings affecting traffic entering the VPC.
+     * 
+     */
     public GetNetworkingVpcIngress ingress() {
         return this.ingress;
     }
+    /**
+     * @return The name of the VPC.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return A list of additional named IPv4 prefixes for the VPC.
+     * 
+     */
     public List<GetNetworkingVpcVpcPrefix> vpcPrefixes() {
         return this.vpcPrefixes;
     }
+    /**
+     * @return The Availability Zone in which the VPC is located.
+     * 
+     */
     public String zone() {
         return this.zone;
     }

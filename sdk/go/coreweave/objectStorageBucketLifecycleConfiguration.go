@@ -12,6 +12,90 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Lifecycle configurations automate object management by defining actions applied to objects over time, such as expiring objects after a specified period or transitioning them to different storage tiers. This helps optimize storage costs and maintain data hygiene. Lifecycle configurations automate object management by defining actions applied to objects over time, such as expiring objects after a specified period or transitioning them to different storage tiers. This helps optimize storage costs and maintain data hygiene. [Learn more about S3-compatible lifecycle bucket configurations](https://docs.coreweave.com/products/storage/object-storage/reference/object-storage-s3#bucket-lifecycles).
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-coreweave/sdk/go/coreweave"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := coreweave.NewObjectStorageBucket(ctx, "default", &coreweave.ObjectStorageBucketArgs{
+//				Name: pulumi.String("bucket-lifecycle-example"),
+//				Zone: pulumi.String("US-EAST-04A"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultObjectStorageBucketVersioning, err := coreweave.NewObjectStorageBucketVersioning(ctx, "default", &coreweave.ObjectStorageBucketVersioningArgs{
+//				Bucket: _default.Name,
+//				VersioningConfiguration: &coreweave.ObjectStorageBucketVersioningVersioningConfigurationArgs{
+//					Status: pulumi.String("Enabled"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = coreweave.NewObjectStorageBucketLifecycleConfiguration(ctx, "default", &coreweave.ObjectStorageBucketLifecycleConfigurationArgs{
+//				Bucket: _default.Name,
+//				Rules: coreweave.ObjectStorageBucketLifecycleConfigurationRuleArray{
+//					&coreweave.ObjectStorageBucketLifecycleConfigurationRuleArgs{
+//						Id:     pulumi.String("cleanup-logs"),
+//						Status: pulumi.String("Enabled"),
+//						Filter: &coreweave.ObjectStorageBucketLifecycleConfigurationRuleFilterArgs{
+//							And: &coreweave.ObjectStorageBucketLifecycleConfigurationRuleFilterAndArgs{
+//								Prefix:                pulumi.String("logs/"),
+//								ObjectSizeGreaterThan: pulumi.Int(1000000),
+//								Tags: pulumi.StringMap{
+//									"env": pulumi.String("prod"),
+//								},
+//							},
+//						},
+//						Expiration: &coreweave.ObjectStorageBucketLifecycleConfigurationRuleExpirationArgs{
+//							Days: pulumi.Int(30),
+//						},
+//						NoncurrentVersionExpiration: &coreweave.ObjectStorageBucketLifecycleConfigurationRuleNoncurrentVersionExpirationArgs{
+//							NoncurrentDays:          pulumi.Int(7),
+//							NewerNoncurrentVersions: pulumi.Int(2),
+//						},
+//					},
+//					&coreweave.ObjectStorageBucketLifecycleConfigurationRuleArgs{
+//						Id:     pulumi.String("expire-traces"),
+//						Prefix: pulumi.String("traces/"),
+//						Status: pulumi.String("Enabled"),
+//						AbortIncompleteMultipartUpload: &coreweave.ObjectStorageBucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadArgs{
+//							DaysAfterInitiation: pulumi.Int(5),
+//						},
+//						Expiration: &coreweave.ObjectStorageBucketLifecycleConfigurationRuleExpirationArgs{
+//							Date: pulumi.String("2026-01-01T00:00:00Z"),
+//						},
+//					},
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				defaultObjectStorageBucketVersioning,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import coreweave:index/objectStorageBucketLifecycleConfiguration:ObjectStorageBucketLifecycleConfiguration default {{bucket_name}}
+// ```
 type ObjectStorageBucketLifecycleConfiguration struct {
 	pulumi.CustomResourceState
 

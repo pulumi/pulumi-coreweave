@@ -12,6 +12,47 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Manages settings for an Object Storage Bucket.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-coreweave/sdk/go/coreweave"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := coreweave.NewObjectStorageBucket(ctx, "default", &coreweave.ObjectStorageBucketArgs{
+//				Name: pulumi.String("my-bucket-with-settings"),
+//				Zone: pulumi.String("US-EAST-04A"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = coreweave.NewObjectStorageBucketSettings(ctx, "default", &coreweave.ObjectStorageBucketSettingsArgs{
+//				Bucket:              _default.Name,
+//				AuditLoggingEnabled: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import coreweave:index/objectStorageBucketSettings:ObjectStorageBucketSettings default {{bucket_name}}
+// ```
 type ObjectStorageBucketSettings struct {
 	pulumi.CustomResourceState
 

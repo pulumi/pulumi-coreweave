@@ -15,6 +15,17 @@ The CoreWeave provider is available as a package in all Pulumi languages:
 * .NET: [`Pulumi.Coreweave`](https://www.nuget.org/packages/Pulumi.Coreweave)
 * Java: [`com.pulumi/coreweave`](https://central.sonatype.com/artifact/com.pulumi/coreweave)
 
+## Example Usage
+
+```yaml
+# Pulumi.yaml provider configuration file
+name: configuration-example
+runtime:
+config:
+    coreweave:token:
+        value: CW-SECRET-XXXXXXXXXXXXX
+
+```
 ## Configuration Reference
 
 - `endpoint` (String) CoreWeave API Endpoint. This can also be set via the COREWEAVE_API_ENDPOINT environment variable, which takes precedence. Defaults to `https://api.coreweave.com/`

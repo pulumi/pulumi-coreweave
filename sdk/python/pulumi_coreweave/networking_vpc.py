@@ -323,7 +323,80 @@ class NetworkingVpc(pulumi.CustomResource):
                  zone: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Create a NetworkingVpc resource with the given unique name, props, and options.
+        Create and manage VPCs. Learn more about [CoreWeave VPCs](https://docs.coreweave.com/products/networking/vpc/about-vpcs).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_coreweave as coreweave
+
+        example = coreweave.NetworkingVpc("example",
+            name="default",
+            zone="US-EAST-04A",
+            host_prefixes=[
+                {
+                    "name": "primary",
+                    "type": "PRIMARY",
+                    "prefixes": [
+                        "10.16.192.0/18",
+                        "2601:db8:aaaa::/48",
+                    ],
+                },
+                {
+                    "name": "container-network",
+                    "type": "ROUTED",
+                    "prefixes": ["2601:db8:bbbb::/48"],
+                    "ipam": {
+                        "prefix_length": 80,
+                        "gateway_address_policy": "FIRST_IP",
+                    },
+                },
+                {
+                    "name": "attached-network",
+                    "type": "ATTACHED",
+                    "prefixes": ["2601:db8:cccc::/48"],
+                    "ipam": {
+                        "prefix_length": 64,
+                    },
+                },
+            ],
+            vpc_prefixes=[
+                {
+                    "name": "pod cidr",
+                    "value": "10.0.0.0/13",
+                },
+                {
+                    "name": "service cidr",
+                    "value": "10.16.0.0/22",
+                },
+                {
+                    "name": "internal lb cidr",
+                    "value": "10.32.4.0/22",
+                },
+            ],
+            egress={
+                "disable_public_access": False,
+            },
+            ingress={
+                "disable_public_services": False,
+            },
+            dhcp={
+                "dns": {
+                    "servers": [
+                        "1.1.1.1",
+                        "8.8.8.8",
+                    ],
+                },
+            })
+        ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import coreweave:index/networkingVpc:NetworkingVpc default {{id}}
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -345,7 +418,80 @@ class NetworkingVpc(pulumi.CustomResource):
                  args: NetworkingVpcArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a NetworkingVpc resource with the given unique name, props, and options.
+        Create and manage VPCs. Learn more about [CoreWeave VPCs](https://docs.coreweave.com/products/networking/vpc/about-vpcs).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_coreweave as coreweave
+
+        example = coreweave.NetworkingVpc("example",
+            name="default",
+            zone="US-EAST-04A",
+            host_prefixes=[
+                {
+                    "name": "primary",
+                    "type": "PRIMARY",
+                    "prefixes": [
+                        "10.16.192.0/18",
+                        "2601:db8:aaaa::/48",
+                    ],
+                },
+                {
+                    "name": "container-network",
+                    "type": "ROUTED",
+                    "prefixes": ["2601:db8:bbbb::/48"],
+                    "ipam": {
+                        "prefix_length": 80,
+                        "gateway_address_policy": "FIRST_IP",
+                    },
+                },
+                {
+                    "name": "attached-network",
+                    "type": "ATTACHED",
+                    "prefixes": ["2601:db8:cccc::/48"],
+                    "ipam": {
+                        "prefix_length": 64,
+                    },
+                },
+            ],
+            vpc_prefixes=[
+                {
+                    "name": "pod cidr",
+                    "value": "10.0.0.0/13",
+                },
+                {
+                    "name": "service cidr",
+                    "value": "10.16.0.0/22",
+                },
+                {
+                    "name": "internal lb cidr",
+                    "value": "10.32.4.0/22",
+                },
+            ],
+            egress={
+                "disable_public_access": False,
+            },
+            ingress={
+                "disable_public_services": False,
+            },
+            dhcp={
+                "dns": {
+                    "servers": [
+                        "1.1.1.1",
+                        "8.8.8.8",
+                    ],
+                },
+            })
+        ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import coreweave:index/networkingVpc:NetworkingVpc default {{id}}
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param NetworkingVpcArgs args: The arguments to use to populate this resource's properties.

@@ -11,6 +11,33 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Query information about an existing VPC by ID. See the [CoreWeave VPC API reference](https://docs.coreweave.com/products/networking/vpc/vpc-api).
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-coreweave/sdk/go/coreweave"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := coreweave.GetNetworkingVpc(ctx, &coreweave.LookupNetworkingVpcArgs{
+//				Id: "1063bce6-6e5b-4b0a-b73a-7e6106b2a77c",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupNetworkingVpc(ctx *pulumi.Context, args *LookupNetworkingVpcArgs, opts ...pulumi.InvokeOption) (*LookupNetworkingVpcResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkingVpcResult
@@ -23,21 +50,32 @@ func LookupNetworkingVpc(ctx *pulumi.Context, args *LookupNetworkingVpcArgs, opt
 
 // A collection of arguments for invoking getNetworkingVpc.
 type LookupNetworkingVpcArgs struct {
+	// The ID of the VPC.
 	Id string `pulumi:"id"`
 }
 
 // A collection of values returned by getNetworkingVpc.
 type LookupNetworkingVpcResult struct {
-	Dhcp   GetNetworkingVpcDhcp   `pulumi:"dhcp"`
+	// Settings affecting DHCP behavior within the VPC.
+	Dhcp GetNetworkingVpcDhcp `pulumi:"dhcp"`
+	// Settings affecting traffic leaving the VPC.
 	Egress GetNetworkingVpcEgress `pulumi:"egress"`
+	// An IPv4 CIDR range used to allocate host addresses when booting compute into a VPC.
+	//
 	// Deprecated: Configure hostPrefixes instead.
-	HostPrefix   string                       `pulumi:"hostPrefix"`
+	HostPrefix string `pulumi:"hostPrefix"`
+	// The IPv4 or IPv6 CIDR ranges used to allocate host addresses when booting compute into a VPC.
 	HostPrefixes []GetNetworkingVpcHostPrefix `pulumi:"hostPrefixes"`
-	Id           string                       `pulumi:"id"`
-	Ingress      GetNetworkingVpcIngress      `pulumi:"ingress"`
-	Name         string                       `pulumi:"name"`
-	VpcPrefixes  []GetNetworkingVpcVpcPrefix  `pulumi:"vpcPrefixes"`
-	Zone         string                       `pulumi:"zone"`
+	// The ID of the VPC.
+	Id string `pulumi:"id"`
+	// Settings affecting traffic entering the VPC.
+	Ingress GetNetworkingVpcIngress `pulumi:"ingress"`
+	// The name of the VPC.
+	Name string `pulumi:"name"`
+	// A list of additional named IPv4 prefixes for the VPC.
+	VpcPrefixes []GetNetworkingVpcVpcPrefix `pulumi:"vpcPrefixes"`
+	// The Availability Zone in which the VPC is located.
+	Zone string `pulumi:"zone"`
 }
 
 func LookupNetworkingVpcOutput(ctx *pulumi.Context, args LookupNetworkingVpcOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkingVpcResultOutput {
@@ -51,6 +89,7 @@ func LookupNetworkingVpcOutput(ctx *pulumi.Context, args LookupNetworkingVpcOutp
 
 // A collection of arguments for invoking getNetworkingVpc.
 type LookupNetworkingVpcOutputArgs struct {
+	// The ID of the VPC.
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -73,39 +112,49 @@ func (o LookupNetworkingVpcResultOutput) ToLookupNetworkingVpcResultOutputWithCo
 	return o
 }
 
+// Settings affecting DHCP behavior within the VPC.
 func (o LookupNetworkingVpcResultOutput) Dhcp() GetNetworkingVpcDhcpOutput {
 	return o.ApplyT(func(v LookupNetworkingVpcResult) GetNetworkingVpcDhcp { return v.Dhcp }).(GetNetworkingVpcDhcpOutput)
 }
 
+// Settings affecting traffic leaving the VPC.
 func (o LookupNetworkingVpcResultOutput) Egress() GetNetworkingVpcEgressOutput {
 	return o.ApplyT(func(v LookupNetworkingVpcResult) GetNetworkingVpcEgress { return v.Egress }).(GetNetworkingVpcEgressOutput)
 }
 
+// An IPv4 CIDR range used to allocate host addresses when booting compute into a VPC.
+//
 // Deprecated: Configure hostPrefixes instead.
 func (o LookupNetworkingVpcResultOutput) HostPrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkingVpcResult) string { return v.HostPrefix }).(pulumi.StringOutput)
 }
 
+// The IPv4 or IPv6 CIDR ranges used to allocate host addresses when booting compute into a VPC.
 func (o LookupNetworkingVpcResultOutput) HostPrefixes() GetNetworkingVpcHostPrefixArrayOutput {
 	return o.ApplyT(func(v LookupNetworkingVpcResult) []GetNetworkingVpcHostPrefix { return v.HostPrefixes }).(GetNetworkingVpcHostPrefixArrayOutput)
 }
 
+// The ID of the VPC.
 func (o LookupNetworkingVpcResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkingVpcResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Settings affecting traffic entering the VPC.
 func (o LookupNetworkingVpcResultOutput) Ingress() GetNetworkingVpcIngressOutput {
 	return o.ApplyT(func(v LookupNetworkingVpcResult) GetNetworkingVpcIngress { return v.Ingress }).(GetNetworkingVpcIngressOutput)
 }
 
+// The name of the VPC.
 func (o LookupNetworkingVpcResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkingVpcResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// A list of additional named IPv4 prefixes for the VPC.
 func (o LookupNetworkingVpcResultOutput) VpcPrefixes() GetNetworkingVpcVpcPrefixArrayOutput {
 	return o.ApplyT(func(v LookupNetworkingVpcResult) []GetNetworkingVpcVpcPrefix { return v.VpcPrefixes }).(GetNetworkingVpcVpcPrefixArrayOutput)
 }
 
+// The Availability Zone in which the VPC is located.
 func (o LookupNetworkingVpcResultOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkingVpcResult) string { return v.Zone }).(pulumi.StringOutput)
 }

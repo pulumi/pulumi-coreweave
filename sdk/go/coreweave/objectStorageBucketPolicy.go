@@ -12,12 +12,142 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [Bucket access policies](https://docs.coreweave.com/products/storage/object-storage/auth-access/bucket-access/bucket-policies) allow you to define precise, S3-compatible access control for one bucket. These are optional, and are evaluated after organization access policies. See [Manage Bucket Policies](https://docs.coreweave.com/products/storage/object-storage/auth-access/bucket-access/manage-bucket-policies#example-policies) for examples and further information.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-coreweave/sdk/go/coreweave"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			raw, err := coreweave.NewObjectStorageBucket(ctx, "raw", &coreweave.ObjectStorageBucketArgs{
+//				Name: pulumi.String("bucket-policy-raw-example"),
+//				Zone: pulumi.String("US-EAST-04A"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			bucketPolicy := map[string]interface{}{
+//				"version": "2012-10-17",
+//				"statement": []map[string]interface{}{
+//					map[string]interface{}{
+//						"sid":    "allow-all",
+//						"effect": "Allow",
+//						"principal": map[string]interface{}{
+//							"CW": "*",
+//						},
+//						"action": []string{
+//							"s3:*",
+//						},
+//						"resource": pulumi.StringArray{
+//							raw.Name.ApplyT(func(name string) (string, error) {
+//								return fmt.Sprintf("arn:aws:s3:::%v", name), nil
+//							}).(pulumi.StringOutput),
+//						},
+//					},
+//				},
+//			}
+//			tmpJSON0, err := json.Marshal(bucketPolicy)
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			_, err = coreweave.NewObjectStorageBucketPolicy(ctx, "raw", &coreweave.ObjectStorageBucketPolicyArgs{
+//				Bucket: raw.Name,
+//				Policy: json0,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// # Example using the coreweave_object_storage_bucket_policy_document data source
+//			docObjectStorageBucket, err := coreweave.NewObjectStorageBucket(ctx, "doc", &coreweave.ObjectStorageBucketArgs{
+//				Name: pulumi.String("bucket-policy-doc-example"),
+//				Zone: pulumi.String("US-EAST-04A"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			doc := coreweave.GetObjectStorageBucketPolicyDocumentOutput(ctx, coreweave.GetObjectStorageBucketPolicyDocumentOutputArgs{
+//				Version: pulumi.String("2012-10-17"),
+//				Statements: coreweave.GetObjectStorageBucketPolicyDocumentStatementArray{
+//					&coreweave.GetObjectStorageBucketPolicyDocumentStatementArgs{
+//						Sid:    pulumi.String("allow-all"),
+//						Effect: pulumi.String("Allow"),
+//						Actions: pulumi.StringArray{
+//							pulumi.String("s3:*"),
+//						},
+//						Resources: pulumi.StringArray{
+//							docObjectStorageBucket.Name.ApplyT(func(name string) (string, error) {
+//								return fmt.Sprintf("arn:aws:s3:::%v", name), nil
+//							}).(pulumi.StringOutput),
+//						},
+//						Principal: pulumi.StringArrayMap{
+//							"CW": pulumi.StringArray{
+//								pulumi.String("*"),
+//							},
+//						},
+//					},
+//					&coreweave.GetObjectStorageBucketPolicyDocumentStatementArgs{
+//						Sid:    pulumi.String("DenyIfPrefixEquals"),
+//						Effect: pulumi.String("Deny"),
+//						Actions: pulumi.StringArray{
+//							pulumi.String("s3:ListBucket"),
+//						},
+//						Resources: pulumi.StringArray{
+//							docObjectStorageBucket.Name.ApplyT(func(name string) (string, error) {
+//								return fmt.Sprintf("arn:aws:s3:::%v", name), nil
+//							}).(pulumi.StringOutput),
+//						},
+//						Principal: pulumi.StringArrayMap{
+//							"CW": pulumi.StringArray{
+//								pulumi.String("*"),
+//							},
+//						},
+//						Condition: pulumi.StringMapMap{
+//							"StringNotEquals": pulumi.StringMap{
+//								"s3:prefix": pulumi.String("projects"),
+//							},
+//						},
+//					},
+//				},
+//			}, nil)
+//			_, err = coreweave.NewObjectStorageBucketPolicy(ctx, "doc", &coreweave.ObjectStorageBucketPolicyArgs{
+//				Bucket: docObjectStorageBucket.Name,
+//				Policy: pulumi.String(doc.ApplyT(func(doc coreweave.GetObjectStorageBucketPolicyDocumentResult) (*string, error) {
+//					return &doc.Json, nil
+//				}).(pulumi.StringPtrOutput)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import coreweave:index/objectStorageBucketPolicy:ObjectStorageBucketPolicy default {{bucket_name}}
+// ```
 type ObjectStorageBucketPolicy struct {
 	pulumi.CustomResourceState
 
 	// The name of the bucket for which to apply this policy.
 	Bucket pulumi.StringOutput `pulumi:"bucket"`
-	// Text of the policy. Must be valid JSON. The getObjectStorageBucketPolicyDocument data source may be used, simply reference the `.json` attribute of the data source.
+	// Text of the policy. Must be valid JSON. The coreweave*object*storage*bucket*policy_document data source may be used, simply reference the `.json` attribute of the data source.
 	Policy pulumi.StringOutput `pulumi:"policy"`
 }
 
@@ -59,14 +189,14 @@ func GetObjectStorageBucketPolicy(ctx *pulumi.Context,
 type objectStorageBucketPolicyState struct {
 	// The name of the bucket for which to apply this policy.
 	Bucket *string `pulumi:"bucket"`
-	// Text of the policy. Must be valid JSON. The getObjectStorageBucketPolicyDocument data source may be used, simply reference the `.json` attribute of the data source.
+	// Text of the policy. Must be valid JSON. The coreweave*object*storage*bucket*policy_document data source may be used, simply reference the `.json` attribute of the data source.
 	Policy *string `pulumi:"policy"`
 }
 
 type ObjectStorageBucketPolicyState struct {
 	// The name of the bucket for which to apply this policy.
 	Bucket pulumi.StringPtrInput
-	// Text of the policy. Must be valid JSON. The getObjectStorageBucketPolicyDocument data source may be used, simply reference the `.json` attribute of the data source.
+	// Text of the policy. Must be valid JSON. The coreweave*object*storage*bucket*policy_document data source may be used, simply reference the `.json` attribute of the data source.
 	Policy pulumi.StringPtrInput
 }
 
@@ -77,7 +207,7 @@ func (ObjectStorageBucketPolicyState) ElementType() reflect.Type {
 type objectStorageBucketPolicyArgs struct {
 	// The name of the bucket for which to apply this policy.
 	Bucket string `pulumi:"bucket"`
-	// Text of the policy. Must be valid JSON. The getObjectStorageBucketPolicyDocument data source may be used, simply reference the `.json` attribute of the data source.
+	// Text of the policy. Must be valid JSON. The coreweave*object*storage*bucket*policy_document data source may be used, simply reference the `.json` attribute of the data source.
 	Policy string `pulumi:"policy"`
 }
 
@@ -85,7 +215,7 @@ type objectStorageBucketPolicyArgs struct {
 type ObjectStorageBucketPolicyArgs struct {
 	// The name of the bucket for which to apply this policy.
 	Bucket pulumi.StringInput
-	// Text of the policy. Must be valid JSON. The getObjectStorageBucketPolicyDocument data source may be used, simply reference the `.json` attribute of the data source.
+	// Text of the policy. Must be valid JSON. The coreweave*object*storage*bucket*policy_document data source may be used, simply reference the `.json` attribute of the data source.
 	Policy pulumi.StringInput
 }
 
@@ -181,7 +311,7 @@ func (o ObjectStorageBucketPolicyOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v *ObjectStorageBucketPolicy) pulumi.StringOutput { return v.Bucket }).(pulumi.StringOutput)
 }
 
-// Text of the policy. Must be valid JSON. The getObjectStorageBucketPolicyDocument data source may be used, simply reference the `.json` attribute of the data source.
+// Text of the policy. Must be valid JSON. The coreweave*object*storage*bucket*policy_document data source may be used, simply reference the `.json` attribute of the data source.
 func (o ObjectStorageBucketPolicyOutput) Policy() pulumi.StringOutput {
 	return o.ApplyT(func(v *ObjectStorageBucketPolicy) pulumi.StringOutput { return v.Policy }).(pulumi.StringOutput)
 }

@@ -20,6 +20,108 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * Create and manage VPCs. Learn more about [CoreWeave VPCs](https://docs.coreweave.com/products/networking/vpc/about-vpcs).
+ * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.coreweave.NetworkingVpc;
+ * import com.pulumi.coreweave.NetworkingVpcArgs;
+ * import com.pulumi.coreweave.inputs.NetworkingVpcHostPrefixArgs;
+ * import com.pulumi.coreweave.inputs.NetworkingVpcHostPrefixIpamArgs;
+ * import com.pulumi.coreweave.inputs.NetworkingVpcVpcPrefixArgs;
+ * import com.pulumi.coreweave.inputs.NetworkingVpcEgressArgs;
+ * import com.pulumi.coreweave.inputs.NetworkingVpcIngressArgs;
+ * import com.pulumi.coreweave.inputs.NetworkingVpcDhcpArgs;
+ * import com.pulumi.coreweave.inputs.NetworkingVpcDhcpDnsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new NetworkingVpc("example", NetworkingVpcArgs.builder()
+ *             .name("default")
+ *             .zone("US-EAST-04A")
+ *             .hostPrefixes(            
+ *                 NetworkingVpcHostPrefixArgs.builder()
+ *                     .name("primary")
+ *                     .type("PRIMARY")
+ *                     .prefixes(                    
+ *                         "10.16.192.0/18",
+ *                         "2601:db8:aaaa::/48")
+ *                     .build(),
+ *                 NetworkingVpcHostPrefixArgs.builder()
+ *                     .name("container-network")
+ *                     .type("ROUTED")
+ *                     .prefixes("2601:db8:bbbb::/48")
+ *                     .ipam(NetworkingVpcHostPrefixIpamArgs.builder()
+ *                         .prefixLength(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(80) (example.pp:12,30-32)))
+ *                         .gatewayAddressPolicy("FIRST_IP")
+ *                         .build())
+ *                     .build(),
+ *                 NetworkingVpcHostPrefixArgs.builder()
+ *                     .name("attached-network")
+ *                     .type("ATTACHED")
+ *                     .prefixes("2601:db8:cccc::/48")
+ *                     .ipam(NetworkingVpcHostPrefixIpamArgs.builder()
+ *                         .prefixLength(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(64) (example.pp:20,22-24)))
+ *                         .build())
+ *                     .build())
+ *             .vpcPrefixes(            
+ *                 NetworkingVpcVpcPrefixArgs.builder()
+ *                     .name("pod cidr")
+ *                     .value("10.0.0.0/13")
+ *                     .build(),
+ *                 NetworkingVpcVpcPrefixArgs.builder()
+ *                     .name("service cidr")
+ *                     .value("10.16.0.0/22")
+ *                     .build(),
+ *                 NetworkingVpcVpcPrefixArgs.builder()
+ *                     .name("internal lb cidr")
+ *                     .value("10.32.4.0/22")
+ *                     .build())
+ *             .egress(NetworkingVpcEgressArgs.builder()
+ *                 .disablePublicAccess(false)
+ *                 .build())
+ *             .ingress(NetworkingVpcIngressArgs.builder()
+ *                 .disablePublicServices(false)
+ *                 .build())
+ *             .dhcp(NetworkingVpcDhcpArgs.builder()
+ *                 .dns(NetworkingVpcDhcpDnsArgs.builder()
+ *                     .servers(                    
+ *                         "1.1.1.1",
+ *                         "8.8.8.8")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import coreweave:index/networkingVpc:NetworkingVpc default {{id}}
+ * ```
+ * 
+ */
 @ResourceType(type="coreweave:index/networkingVpc:NetworkingVpc")
 public class NetworkingVpc extends com.pulumi.resources.CustomResource {
     /**

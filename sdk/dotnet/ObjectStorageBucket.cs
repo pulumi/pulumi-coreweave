@@ -9,6 +9,38 @@ using Pulumi.Serialization;
 
 namespace Pulumi.CoreWeave
 {
+    /// <summary>
+    /// Buckets are the primary organizational containers for your data in CoreWeave AI Object Storage. Bucket names must be globally-unique and not begin with `cw-` or `vip-`, which are reserved for internal use. Learn more about [creating buckets](https://docs.coreweave.com/products/storage/object-storage/buckets/create-bucket).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using CoreWeave = Pulumi.CoreWeave;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new CoreWeave.ObjectStorageBucket("default", new()
+    ///     {
+    ///         Name = "my-tf-test-bucket",
+    ///         Zone = "US-EAST-04A",
+    ///         Tags = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import coreweave:index/objectStorageBucket:ObjectStorageBucket default {{name}}
+    /// ```
+    /// </summary>
     [CoreWeaveResourceType("coreweave:index/objectStorageBucket:ObjectStorageBucket")]
     public partial class ObjectStorageBucket : global::Pulumi.CustomResource
     {

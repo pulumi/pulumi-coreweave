@@ -14,21 +14,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetObjectStorageBucketPolicyDocumentResult {
+    /**
+     * @return An optional policy identifier
+     * 
+     */
     private @Nullable String id;
+    /**
+     * @return The rendered policy document as JSON
+     * 
+     */
     private String json;
+    /**
+     * @return The main policy element that defines the access rules for buckets and objects. Multiple statement blocks can be specified.
+     * 
+     */
     private @Nullable List<GetObjectStorageBucketPolicyDocumentStatement> statements;
+    /**
+     * @return The policy version, e.g. `&#34;2012-10-17&#34;`
+     * 
+     */
     private @Nullable String version;
 
     private GetObjectStorageBucketPolicyDocumentResult() {}
+    /**
+     * @return An optional policy identifier
+     * 
+     */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
+    /**
+     * @return The rendered policy document as JSON
+     * 
+     */
     public String json() {
         return this.json;
     }
+    /**
+     * @return The main policy element that defines the access rules for buckets and objects. Multiple statement blocks can be specified.
+     * 
+     */
     public List<GetObjectStorageBucketPolicyDocumentStatement> statements() {
         return this.statements == null ? List.of() : this.statements;
     }
+    /**
+     * @return The policy version, e.g. `&#34;2012-10-17&#34;`
+     * 
+     */
     public Optional<String> version() {
         return Optional.ofNullable(this.version);
     }

@@ -12,6 +12,55 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [Organization access policies](https://docs.coreweave.com/products/storage/object-storage/auth-access/organization-policies/about) enforce permissions for AI Object Storage across your entire CoreWeave organization, automatically covering every resource, bucket, and user in your account. At least one organization access policy must be in place before you can create a bucket.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-coreweave/sdk/go/coreweave"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := coreweave.NewObjectStorageOrganizationAccessPolicy(ctx, "test", &coreweave.ObjectStorageOrganizationAccessPolicyArgs{
+//				Name: pulumi.String("full-s3-api-access"),
+//				Statements: coreweave.ObjectStorageOrganizationAccessPolicyStatementArray{
+//					&coreweave.ObjectStorageOrganizationAccessPolicyStatementArgs{
+//						Name:   pulumi.String("allow-full-s3-api-access-to-all"),
+//						Effect: pulumi.String("Allow"),
+//						Resources: pulumi.StringArray{
+//							pulumi.String("*"),
+//						},
+//						Principals: pulumi.StringArray{
+//							pulumi.String("*"),
+//						},
+//						Actions: pulumi.StringArray{
+//							pulumi.String("s3:*"),
+//							pulumi.String("cwobject:*"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import coreweave:index/objectStorageOrganizationAccessPolicy:ObjectStorageOrganizationAccessPolicy default {{name}}
+// ```
 type ObjectStorageOrganizationAccessPolicy struct {
 	pulumi.CustomResourceState
 

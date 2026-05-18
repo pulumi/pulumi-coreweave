@@ -4,6 +4,31 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Manages settings for an Object Storage Bucket.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as coreweave from "@pulumi/coreweave";
+ *
+ * const _default = new coreweave.ObjectStorageBucket("default", {
+ *     name: "my-bucket-with-settings",
+ *     zone: "US-EAST-04A",
+ * });
+ * const defaultObjectStorageBucketSettings = new coreweave.ObjectStorageBucketSettings("default", {
+ *     bucket: _default.name,
+ *     auditLoggingEnabled: true,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import coreweave:index/objectStorageBucketSettings:ObjectStorageBucketSettings default {{bucket_name}}
+ * ```
+ */
 export class ObjectStorageBucketSettings extends pulumi.CustomResource {
     /**
      * Get an existing ObjectStorageBucketSettings resource's state with the given name, ID, and optional extra

@@ -9,6 +9,40 @@ using Pulumi.Serialization;
 
 namespace Pulumi.CoreWeave
 {
+    /// <summary>
+    /// Manages settings for an Object Storage Bucket.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using CoreWeave = Pulumi.CoreWeave;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new CoreWeave.ObjectStorageBucket("default", new()
+    ///     {
+    ///         Name = "my-bucket-with-settings",
+    ///         Zone = "US-EAST-04A",
+    ///     });
+    /// 
+    ///     var defaultObjectStorageBucketSettings = new CoreWeave.ObjectStorageBucketSettings("default", new()
+    ///     {
+    ///         Bucket = @default.Name,
+    ///         AuditLoggingEnabled = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import coreweave:index/objectStorageBucketSettings:ObjectStorageBucketSettings default {{bucket_name}}
+    /// ```
+    /// </summary>
     [CoreWeaveResourceType("coreweave:index/objectStorageBucketSettings:ObjectStorageBucketSettings")]
     public partial class ObjectStorageBucketSettings : global::Pulumi.CustomResource
     {
