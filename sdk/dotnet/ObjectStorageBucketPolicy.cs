@@ -113,7 +113,7 @@ namespace Pulumi.CoreWeave
     ///                 },
     ///                 Condition = 
     ///                 {
-    ///                     { "StringNotEquals", 
+    ///                     { "StringNotEquals", new InputMap&lt;string&gt;
     ///                     {
     ///                         { "s3:prefix", "projects" },
     ///                     } },

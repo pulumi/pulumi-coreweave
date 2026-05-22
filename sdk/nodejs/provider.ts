@@ -81,19 +81,19 @@ export interface ProviderArgs {
     /**
      * CoreWeave API Endpoint. This can also be set via the COREWEAVE_API_ENDPOINT environment variable, which takes precedence. Defaults to `https://api.coreweave.com/`
      */
-    endpoint?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string | undefined>;
     /**
      * Timeout duration for the HTTP client to use. This can also be set via the COREWEAVE_HTTP_TIMEOUT environment variable, which takes precedence. If unset, defaults to 10 seconds
      */
-    httpTimeout?: pulumi.Input<string>;
+    httpTimeout?: pulumi.Input<string | undefined>;
     /**
      * CoreWeave S3 Endpoint, used for CoreWeave Object Storage. This can also be set via the COREWEAVE_S3_ENDPOINT environment variable, which takes precedence. Defaults to `https://cwobject.com`
      */
-    s3Endpoint?: pulumi.Input<string>;
+    s3Endpoint?: pulumi.Input<string | undefined>;
     /**
      * CoreWeave API Token in the form `CW-SECRET-<secret>`. This can also be set via the COREWEAVE_API_TOKEN environment variable, which takes precedence.
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
 }
 
 export namespace Provider {

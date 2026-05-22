@@ -32,8 +32,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.coreweave.CoreweaveFunctions;
  * import com.pulumi.coreweave.inputs.GetObjectStorageBucketPolicyDocumentArgs;
  * import static com.pulumi.codegen.internal.Serialization.*;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -52,13 +52,13 @@ import javax.annotation.Nullable;
  * 
  *         final var bucketPolicy = Map.ofEntries(
  *             Map.entry("version", "2012-10-17"),
- *             Map.entry("statement", Map.ofEntries(
+ *             Map.entry("statement", Arrays.asList(Map.ofEntries(
  *                 Map.entry("sid", "allow-all"),
  *                 Map.entry("effect", "Allow"),
  *                 Map.entry("principal", Map.of("CW", "*")),
- *                 Map.entry("action", "s3:*"),
- *                 Map.entry("resource", raw.name().applyValue(_name -> String.format("arn:aws:s3:::%s", _name)))
- *             ))
+ *                 Map.entry("action", Arrays.asList("s3:*")),
+ *                 Map.entry("resource", Arrays.asList(raw.name().applyValue(_name -> String.format("arn:aws:s3:::%s", _name))))
+ *             )))
  *         );
  * 
  *         var rawObjectStorageBucketPolicy = new ObjectStorageBucketPolicy("rawObjectStorageBucketPolicy", ObjectStorageBucketPolicyArgs.builder()
@@ -81,14 +81,14 @@ import javax.annotation.Nullable;
  *                     .effect("Allow")
  *                     .actions("s3:*")
  *                     .resources(docObjectStorageBucket.name().applyValue(_name -> String.format("arn:aws:s3:::%s", _name)))
- *                     .principal(Map.of("CW", "*"))
+ *                     .principal(Map.of("CW", Arrays.asList("*")))
  *                     .build(),
  *                 GetObjectStorageBucketPolicyDocumentStatementArgs.builder()
  *                     .sid("DenyIfPrefixEquals")
  *                     .effect("Deny")
  *                     .actions("s3:ListBucket")
  *                     .resources(docObjectStorageBucket.name().applyValue(_name -> String.format("arn:aws:s3:::%s", _name)))
- *                     .principal(Map.of("CW", "*"))
+ *                     .principal(Map.of("CW", Arrays.asList("*")))
  *                     .condition(Map.of("StringNotEquals", Map.of("s3:prefix", "projects")))
  *                     .build())
  *             .build());

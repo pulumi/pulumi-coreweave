@@ -106,15 +106,15 @@ export interface ObjectStorageBucketState {
     /**
      * The name of the bucket, must be unique
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Map of tags to assign to the bucket.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The Availability Zone in which the bucket is located.
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -124,11 +124,11 @@ export interface ObjectStorageBucketArgs {
     /**
      * The name of the bucket, must be unique
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Map of tags to assign to the bucket.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The Availability Zone in which the bucket is located.
      */

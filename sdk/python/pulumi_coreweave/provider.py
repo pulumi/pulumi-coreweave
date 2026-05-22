@@ -19,10 +19,10 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
-                 endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_timeout: Optional[pulumi.Input[_builtins.str]] = None,
-                 s3_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None):
+                 endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_timeout: pulumi.Input[Optional[_builtins.str]] = None,
+                 s3_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Provider resource.
 
@@ -42,50 +42,50 @@ class ProviderArgs:
 
     @_builtins.property
     @pulumi.getter
-    def endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         CoreWeave API Endpoint. This can also be set via the COREWEAVE_API_ENDPOINT environment variable, which takes precedence. Defaults to `https://api.coreweave.com/`
         """
         return pulumi.get(self, "endpoint")
 
     @endpoint.setter
-    def endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="httpTimeout")
-    def http_timeout(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def http_timeout(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timeout duration for the HTTP client to use. This can also be set via the COREWEAVE_HTTP_TIMEOUT environment variable, which takes precedence. If unset, defaults to 10 seconds
         """
         return pulumi.get(self, "http_timeout")
 
     @http_timeout.setter
-    def http_timeout(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def http_timeout(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "http_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="s3Endpoint")
-    def s3_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def s3_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         CoreWeave S3 Endpoint, used for CoreWeave Object Storage. This can also be set via the COREWEAVE_S3_ENDPOINT environment variable, which takes precedence. Defaults to `https://cwobject.com`
         """
         return pulumi.get(self, "s3_endpoint")
 
     @s3_endpoint.setter
-    def s3_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def s3_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "s3_endpoint", value)
 
     @_builtins.property
     @pulumi.getter
-    def token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         CoreWeave API Token in the form `CW-SECRET-<secret>`. This can also be set via the COREWEAVE_API_TOKEN environment variable, which takes precedence.
         """
         return pulumi.get(self, "token")
 
     @token.setter
-    def token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token", value)
 
 
@@ -95,10 +95,10 @@ class Provider(pulumi.ProviderResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_timeout: Optional[pulumi.Input[_builtins.str]] = None,
-                 s3_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None,
+                 endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_timeout: pulumi.Input[Optional[_builtins.str]] = None,
+                 s3_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The provider type for the coreweave package. By default, resources use package-wide configuration
@@ -142,10 +142,10 @@ class Provider(pulumi.ProviderResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_timeout: Optional[pulumi.Input[_builtins.str]] = None,
-                 s3_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None,
+                 endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_timeout: pulumi.Input[Optional[_builtins.str]] = None,
+                 s3_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

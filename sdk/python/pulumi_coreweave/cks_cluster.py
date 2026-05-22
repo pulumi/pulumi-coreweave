@@ -27,18 +27,18 @@ class CksClusterArgs:
                  version: pulumi.Input[_builtins.str],
                  vpc_id: pulumi.Input[_builtins.str],
                  zone: pulumi.Input[_builtins.str],
-                 additional_server_sans: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 audit_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 authn_webhook: Optional[pulumi.Input['CksClusterAuthnWebhookArgs']] = None,
-                 authz_webhook: Optional[pulumi.Input['CksClusterAuthzWebhookArgs']] = None,
-                 internal_lb_cidr_names_v6s: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_port_range: Optional[pulumi.Input['CksClusterNodePortRangeArgs']] = None,
-                 oidc: Optional[pulumi.Input['CksClusterOidcArgs']] = None,
-                 pod_cidr_name_v6: Optional[pulumi.Input[_builtins.str]] = None,
-                 public: Optional[pulumi.Input[_builtins.bool]] = None,
-                 service_cidr_name_v6: Optional[pulumi.Input[_builtins.str]] = None,
-                 shared_storage_cluster_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 additional_server_sans: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 audit_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 authn_webhook: pulumi.Input[Optional['CksClusterAuthnWebhookArgs']] = None,
+                 authz_webhook: pulumi.Input[Optional['CksClusterAuthzWebhookArgs']] = None,
+                 internal_lb_cidr_names_v6s: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_port_range: pulumi.Input[Optional['CksClusterNodePortRangeArgs']] = None,
+                 oidc: pulumi.Input[Optional['CksClusterOidcArgs']] = None,
+                 pod_cidr_name_v6: pulumi.Input[Optional[_builtins.str]] = None,
+                 public: pulumi.Input[Optional[_builtins.bool]] = None,
+                 service_cidr_name_v6: pulumi.Input[Optional[_builtins.str]] = None,
+                 shared_storage_cluster_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a CksCluster resource.
 
@@ -168,173 +168,173 @@ class CksClusterArgs:
 
     @_builtins.property
     @pulumi.getter(name="additionalServerSans")
-    def additional_server_sans(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def additional_server_sans(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Additional Subject Alternative Names (SANs) to include in the Kubernetes API server TLS certificate. Maximum 10 entries.
         """
         return pulumi.get(self, "additional_server_sans")
 
     @additional_server_sans.setter
-    def additional_server_sans(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def additional_server_sans(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "additional_server_sans", value)
 
     @_builtins.property
     @pulumi.getter(name="auditPolicy")
-    def audit_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def audit_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Audit policy for the cluster. Must be provided as a base64-encoded JSON/YAML string.
         """
         return pulumi.get(self, "audit_policy")
 
     @audit_policy.setter
-    def audit_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def audit_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "audit_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="authnWebhook")
-    def authn_webhook(self) -> Optional[pulumi.Input['CksClusterAuthnWebhookArgs']]:
+    def authn_webhook(self) -> pulumi.Input[Optional['CksClusterAuthnWebhookArgs']]:
         """
         Authentication webhook configuration for the cluster.
         """
         return pulumi.get(self, "authn_webhook")
 
     @authn_webhook.setter
-    def authn_webhook(self, value: Optional[pulumi.Input['CksClusterAuthnWebhookArgs']]):
+    def authn_webhook(self, value: pulumi.Input[Optional['CksClusterAuthnWebhookArgs']]):
         pulumi.set(self, "authn_webhook", value)
 
     @_builtins.property
     @pulumi.getter(name="authzWebhook")
-    def authz_webhook(self) -> Optional[pulumi.Input['CksClusterAuthzWebhookArgs']]:
+    def authz_webhook(self) -> pulumi.Input[Optional['CksClusterAuthzWebhookArgs']]:
         """
         Authorization webhook configuration for the cluster.
         """
         return pulumi.get(self, "authz_webhook")
 
     @authz_webhook.setter
-    def authz_webhook(self, value: Optional[pulumi.Input['CksClusterAuthzWebhookArgs']]):
+    def authz_webhook(self, value: pulumi.Input[Optional['CksClusterAuthzWebhookArgs']]):
         pulumi.set(self, "authz_webhook", value)
 
     @_builtins.property
     @pulumi.getter(name="internalLbCidrNamesV6s")
-    def internal_lb_cidr_names_v6s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def internal_lb_cidr_names_v6s(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         IPv6 Internal Load Balancer CIDR names. If any IPv6 field is set, then ALL IPv6 fields must be set.
         """
         return pulumi.get(self, "internal_lb_cidr_names_v6s")
 
     @internal_lb_cidr_names_v6s.setter
-    def internal_lb_cidr_names_v6s(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def internal_lb_cidr_names_v6s(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "internal_lb_cidr_names_v6s", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the cluster. Must not be longer than 30 characters.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="nodePortRange")
-    def node_port_range(self) -> Optional[pulumi.Input['CksClusterNodePortRangeArgs']]:
+    def node_port_range(self) -> pulumi.Input[Optional['CksClusterNodePortRangeArgs']]:
         """
         Kubernetes Service NodePort range. NodePort range can be expanded in existing clusters but not shrunk. Updating the NodePort range to a smaller range will require a replacement of the cluster.
         """
         return pulumi.get(self, "node_port_range")
 
     @node_port_range.setter
-    def node_port_range(self, value: Optional[pulumi.Input['CksClusterNodePortRangeArgs']]):
+    def node_port_range(self, value: pulumi.Input[Optional['CksClusterNodePortRangeArgs']]):
         pulumi.set(self, "node_port_range", value)
 
     @_builtins.property
     @pulumi.getter
-    def oidc(self) -> Optional[pulumi.Input['CksClusterOidcArgs']]:
+    def oidc(self) -> pulumi.Input[Optional['CksClusterOidcArgs']]:
         """
         OpenID Connect (OIDC) configuration for authentication to the api-server.
         """
         return pulumi.get(self, "oidc")
 
     @oidc.setter
-    def oidc(self, value: Optional[pulumi.Input['CksClusterOidcArgs']]):
+    def oidc(self, value: pulumi.Input[Optional['CksClusterOidcArgs']]):
         pulumi.set(self, "oidc", value)
 
     @_builtins.property
     @pulumi.getter(name="podCidrNameV6")
-    def pod_cidr_name_v6(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pod_cidr_name_v6(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IPv6 Pod CIDR name. If any IPv6 field is set, then ALL IPv6 fields must be set.
         """
         return pulumi.get(self, "pod_cidr_name_v6")
 
     @pod_cidr_name_v6.setter
-    def pod_cidr_name_v6(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pod_cidr_name_v6(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pod_cidr_name_v6", value)
 
     @_builtins.property
     @pulumi.getter
-    def public(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def public(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the cluster's api-server is publicly accessible from the internet.
         """
         return pulumi.get(self, "public")
 
     @public.setter
-    def public(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def public(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "public", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceCidrNameV6")
-    def service_cidr_name_v6(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_cidr_name_v6(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IPv6 Service CIDR name. If any IPv6 field is set, then ALL IPv6 fields must be set.
         """
         return pulumi.get(self, "service_cidr_name_v6")
 
     @service_cidr_name_v6.setter
-    def service_cidr_name_v6(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_cidr_name_v6(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_cidr_name_v6", value)
 
     @_builtins.property
     @pulumi.getter(name="sharedStorageClusterId")
-    def shared_storage_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def shared_storage_cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The `cluster_id` of the cluster to share storage with. Must be enabled by CoreWeave suppport. Contact CoreWeave support if you are interested in this feature.
         """
         return pulumi.get(self, "shared_storage_cluster_id")
 
     @shared_storage_cluster_id.setter
-    def shared_storage_cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def shared_storage_cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "shared_storage_cluster_id", value)
 
 
 @pulumi.input_type
 class _CksClusterState:
     def __init__(__self__, *,
-                 additional_server_sans: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 api_server_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 audit_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 authn_webhook: Optional[pulumi.Input['CksClusterAuthnWebhookArgs']] = None,
-                 authz_webhook: Optional[pulumi.Input['CksClusterAuthzWebhookArgs']] = None,
-                 internal_lb_cidr_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 internal_lb_cidr_names_v6s: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_port_range: Optional[pulumi.Input['CksClusterNodePortRangeArgs']] = None,
-                 oidc: Optional[pulumi.Input['CksClusterOidcArgs']] = None,
-                 pod_cidr_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 pod_cidr_name_v6: Optional[pulumi.Input[_builtins.str]] = None,
-                 public: Optional[pulumi.Input[_builtins.bool]] = None,
-                 service_account_oidc_issuer_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_cidr_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_cidr_name_v6: Optional[pulumi.Input[_builtins.str]] = None,
-                 shared_storage_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 additional_server_sans: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 api_server_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 audit_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 authn_webhook: pulumi.Input[Optional['CksClusterAuthnWebhookArgs']] = None,
+                 authz_webhook: pulumi.Input[Optional['CksClusterAuthzWebhookArgs']] = None,
+                 internal_lb_cidr_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 internal_lb_cidr_names_v6s: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_port_range: pulumi.Input[Optional['CksClusterNodePortRangeArgs']] = None,
+                 oidc: pulumi.Input[Optional['CksClusterOidcArgs']] = None,
+                 pod_cidr_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 pod_cidr_name_v6: pulumi.Input[Optional[_builtins.str]] = None,
+                 public: pulumi.Input[Optional[_builtins.bool]] = None,
+                 service_account_oidc_issuer_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_cidr_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_cidr_name_v6: pulumi.Input[Optional[_builtins.str]] = None,
+                 shared_storage_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CksCluster resources.
 
@@ -406,67 +406,67 @@ class _CksClusterState:
 
     @_builtins.property
     @pulumi.getter(name="additionalServerSans")
-    def additional_server_sans(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def additional_server_sans(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Additional Subject Alternative Names (SANs) to include in the Kubernetes API server TLS certificate. Maximum 10 entries.
         """
         return pulumi.get(self, "additional_server_sans")
 
     @additional_server_sans.setter
-    def additional_server_sans(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def additional_server_sans(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "additional_server_sans", value)
 
     @_builtins.property
     @pulumi.getter(name="apiServerEndpoint")
-    def api_server_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api_server_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The endpoint for the cluster's api-server.
         """
         return pulumi.get(self, "api_server_endpoint")
 
     @api_server_endpoint.setter
-    def api_server_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api_server_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api_server_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="auditPolicy")
-    def audit_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def audit_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Audit policy for the cluster. Must be provided as a base64-encoded JSON/YAML string.
         """
         return pulumi.get(self, "audit_policy")
 
     @audit_policy.setter
-    def audit_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def audit_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "audit_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="authnWebhook")
-    def authn_webhook(self) -> Optional[pulumi.Input['CksClusterAuthnWebhookArgs']]:
+    def authn_webhook(self) -> pulumi.Input[Optional['CksClusterAuthnWebhookArgs']]:
         """
         Authentication webhook configuration for the cluster.
         """
         return pulumi.get(self, "authn_webhook")
 
     @authn_webhook.setter
-    def authn_webhook(self, value: Optional[pulumi.Input['CksClusterAuthnWebhookArgs']]):
+    def authn_webhook(self, value: pulumi.Input[Optional['CksClusterAuthnWebhookArgs']]):
         pulumi.set(self, "authn_webhook", value)
 
     @_builtins.property
     @pulumi.getter(name="authzWebhook")
-    def authz_webhook(self) -> Optional[pulumi.Input['CksClusterAuthzWebhookArgs']]:
+    def authz_webhook(self) -> pulumi.Input[Optional['CksClusterAuthzWebhookArgs']]:
         """
         Authorization webhook configuration for the cluster.
         """
         return pulumi.get(self, "authz_webhook")
 
     @authz_webhook.setter
-    def authz_webhook(self, value: Optional[pulumi.Input['CksClusterAuthzWebhookArgs']]):
+    def authz_webhook(self, value: pulumi.Input[Optional['CksClusterAuthzWebhookArgs']]):
         pulumi.set(self, "authz_webhook", value)
 
     @_builtins.property
     @pulumi.getter(name="internalLbCidrNames")
-    def internal_lb_cidr_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def internal_lb_cidr_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The names of the vpc prefixes to use as internal load balancer CIDR ranges. Internal load balancers are reachable within the VPC but not accessible from the internet.
         The prefixes must exist in the cluster's VPC. This field is append-only.
@@ -474,187 +474,187 @@ class _CksClusterState:
         return pulumi.get(self, "internal_lb_cidr_names")
 
     @internal_lb_cidr_names.setter
-    def internal_lb_cidr_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def internal_lb_cidr_names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "internal_lb_cidr_names", value)
 
     @_builtins.property
     @pulumi.getter(name="internalLbCidrNamesV6s")
-    def internal_lb_cidr_names_v6s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def internal_lb_cidr_names_v6s(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         IPv6 Internal Load Balancer CIDR names. If any IPv6 field is set, then ALL IPv6 fields must be set.
         """
         return pulumi.get(self, "internal_lb_cidr_names_v6s")
 
     @internal_lb_cidr_names_v6s.setter
-    def internal_lb_cidr_names_v6s(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def internal_lb_cidr_names_v6s(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "internal_lb_cidr_names_v6s", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the cluster. Must not be longer than 30 characters.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="nodePortRange")
-    def node_port_range(self) -> Optional[pulumi.Input['CksClusterNodePortRangeArgs']]:
+    def node_port_range(self) -> pulumi.Input[Optional['CksClusterNodePortRangeArgs']]:
         """
         Kubernetes Service NodePort range. NodePort range can be expanded in existing clusters but not shrunk. Updating the NodePort range to a smaller range will require a replacement of the cluster.
         """
         return pulumi.get(self, "node_port_range")
 
     @node_port_range.setter
-    def node_port_range(self, value: Optional[pulumi.Input['CksClusterNodePortRangeArgs']]):
+    def node_port_range(self, value: pulumi.Input[Optional['CksClusterNodePortRangeArgs']]):
         pulumi.set(self, "node_port_range", value)
 
     @_builtins.property
     @pulumi.getter
-    def oidc(self) -> Optional[pulumi.Input['CksClusterOidcArgs']]:
+    def oidc(self) -> pulumi.Input[Optional['CksClusterOidcArgs']]:
         """
         OpenID Connect (OIDC) configuration for authentication to the api-server.
         """
         return pulumi.get(self, "oidc")
 
     @oidc.setter
-    def oidc(self, value: Optional[pulumi.Input['CksClusterOidcArgs']]):
+    def oidc(self, value: pulumi.Input[Optional['CksClusterOidcArgs']]):
         pulumi.set(self, "oidc", value)
 
     @_builtins.property
     @pulumi.getter(name="podCidrName")
-    def pod_cidr_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pod_cidr_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the vpc prefix to use as the pod CIDR range. The prefix must exist in the cluster's VPC.
         """
         return pulumi.get(self, "pod_cidr_name")
 
     @pod_cidr_name.setter
-    def pod_cidr_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pod_cidr_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pod_cidr_name", value)
 
     @_builtins.property
     @pulumi.getter(name="podCidrNameV6")
-    def pod_cidr_name_v6(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pod_cidr_name_v6(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IPv6 Pod CIDR name. If any IPv6 field is set, then ALL IPv6 fields must be set.
         """
         return pulumi.get(self, "pod_cidr_name_v6")
 
     @pod_cidr_name_v6.setter
-    def pod_cidr_name_v6(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pod_cidr_name_v6(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pod_cidr_name_v6", value)
 
     @_builtins.property
     @pulumi.getter
-    def public(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def public(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the cluster's api-server is publicly accessible from the internet.
         """
         return pulumi.get(self, "public")
 
     @public.setter
-    def public(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def public(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "public", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountOidcIssuerUrl")
-    def service_account_oidc_issuer_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account_oidc_issuer_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL of the OIDC issuer for the cluster's service account tokens. This value corresponds to the `--service-account-issuer` flag on the kube-apiserver.
         """
         return pulumi.get(self, "service_account_oidc_issuer_url")
 
     @service_account_oidc_issuer_url.setter
-    def service_account_oidc_issuer_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account_oidc_issuer_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account_oidc_issuer_url", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceCidrName")
-    def service_cidr_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_cidr_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the vpc prefix to use as the service CIDR range. The prefix must exist in the cluster's VPC.
         """
         return pulumi.get(self, "service_cidr_name")
 
     @service_cidr_name.setter
-    def service_cidr_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_cidr_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_cidr_name", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceCidrNameV6")
-    def service_cidr_name_v6(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_cidr_name_v6(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IPv6 Service CIDR name. If any IPv6 field is set, then ALL IPv6 fields must be set.
         """
         return pulumi.get(self, "service_cidr_name_v6")
 
     @service_cidr_name_v6.setter
-    def service_cidr_name_v6(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_cidr_name_v6(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_cidr_name_v6", value)
 
     @_builtins.property
     @pulumi.getter(name="sharedStorageClusterId")
-    def shared_storage_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def shared_storage_cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The `cluster_id` of the cluster to share storage with. Must be enabled by CoreWeave suppport. Contact CoreWeave support if you are interested in this feature.
         """
         return pulumi.get(self, "shared_storage_cluster_id")
 
     @shared_storage_cluster_id.setter
-    def shared_storage_cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def shared_storage_cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "shared_storage_cluster_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The current status of the cluster.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of Kubernetes to run on the cluster, in minor version format (e.g. 'v1.35'). Patch versions are automatically applied by CKS as they are released.
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VPC in which the cluster is located. Must be a VPC in the same Availability Zone as the cluster.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Availability Zone in which the cluster is located.
         """
         return pulumi.get(self, "zone")
 
     @zone.setter
-    def zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone", value)
 
 
@@ -664,24 +664,24 @@ class CksCluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 additional_server_sans: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 audit_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 authn_webhook: Optional[pulumi.Input[Union['CksClusterAuthnWebhookArgs', 'CksClusterAuthnWebhookArgsDict']]] = None,
-                 authz_webhook: Optional[pulumi.Input[Union['CksClusterAuthzWebhookArgs', 'CksClusterAuthzWebhookArgsDict']]] = None,
-                 internal_lb_cidr_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 internal_lb_cidr_names_v6s: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_port_range: Optional[pulumi.Input[Union['CksClusterNodePortRangeArgs', 'CksClusterNodePortRangeArgsDict']]] = None,
-                 oidc: Optional[pulumi.Input[Union['CksClusterOidcArgs', 'CksClusterOidcArgsDict']]] = None,
-                 pod_cidr_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 pod_cidr_name_v6: Optional[pulumi.Input[_builtins.str]] = None,
-                 public: Optional[pulumi.Input[_builtins.bool]] = None,
-                 service_cidr_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_cidr_name_v6: Optional[pulumi.Input[_builtins.str]] = None,
-                 shared_storage_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 additional_server_sans: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 audit_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 authn_webhook: pulumi.Input[Optional[Union['CksClusterAuthnWebhookArgs', 'CksClusterAuthnWebhookArgsDict']]] = None,
+                 authz_webhook: pulumi.Input[Optional[Union['CksClusterAuthzWebhookArgs', 'CksClusterAuthzWebhookArgsDict']]] = None,
+                 internal_lb_cidr_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 internal_lb_cidr_names_v6s: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_port_range: pulumi.Input[Optional[Union['CksClusterNodePortRangeArgs', 'CksClusterNodePortRangeArgsDict']]] = None,
+                 oidc: pulumi.Input[Optional[Union['CksClusterOidcArgs', 'CksClusterOidcArgsDict']]] = None,
+                 pod_cidr_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 pod_cidr_name_v6: pulumi.Input[Optional[_builtins.str]] = None,
+                 public: pulumi.Input[Optional[_builtins.bool]] = None,
+                 service_cidr_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_cidr_name_v6: pulumi.Input[Optional[_builtins.str]] = None,
+                 shared_storage_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Create and manage clusters on [CoreWeave Kubernetes Service (CKS)](https://docs.coreweave.com/products/cks/clusters/introduction).
@@ -746,24 +746,24 @@ class CksCluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 additional_server_sans: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 audit_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 authn_webhook: Optional[pulumi.Input[Union['CksClusterAuthnWebhookArgs', 'CksClusterAuthnWebhookArgsDict']]] = None,
-                 authz_webhook: Optional[pulumi.Input[Union['CksClusterAuthzWebhookArgs', 'CksClusterAuthzWebhookArgsDict']]] = None,
-                 internal_lb_cidr_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 internal_lb_cidr_names_v6s: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_port_range: Optional[pulumi.Input[Union['CksClusterNodePortRangeArgs', 'CksClusterNodePortRangeArgsDict']]] = None,
-                 oidc: Optional[pulumi.Input[Union['CksClusterOidcArgs', 'CksClusterOidcArgsDict']]] = None,
-                 pod_cidr_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 pod_cidr_name_v6: Optional[pulumi.Input[_builtins.str]] = None,
-                 public: Optional[pulumi.Input[_builtins.bool]] = None,
-                 service_cidr_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_cidr_name_v6: Optional[pulumi.Input[_builtins.str]] = None,
-                 shared_storage_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 additional_server_sans: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 audit_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 authn_webhook: pulumi.Input[Optional[Union['CksClusterAuthnWebhookArgs', 'CksClusterAuthnWebhookArgsDict']]] = None,
+                 authz_webhook: pulumi.Input[Optional[Union['CksClusterAuthzWebhookArgs', 'CksClusterAuthzWebhookArgsDict']]] = None,
+                 internal_lb_cidr_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 internal_lb_cidr_names_v6s: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_port_range: pulumi.Input[Optional[Union['CksClusterNodePortRangeArgs', 'CksClusterNodePortRangeArgsDict']]] = None,
+                 oidc: pulumi.Input[Optional[Union['CksClusterOidcArgs', 'CksClusterOidcArgsDict']]] = None,
+                 pod_cidr_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 pod_cidr_name_v6: pulumi.Input[Optional[_builtins.str]] = None,
+                 public: pulumi.Input[Optional[_builtins.bool]] = None,
+                 service_cidr_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_cidr_name_v6: pulumi.Input[Optional[_builtins.str]] = None,
+                 shared_storage_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -816,27 +816,27 @@ class CksCluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            additional_server_sans: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            api_server_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-            audit_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            authn_webhook: Optional[pulumi.Input[Union['CksClusterAuthnWebhookArgs', 'CksClusterAuthnWebhookArgsDict']]] = None,
-            authz_webhook: Optional[pulumi.Input[Union['CksClusterAuthzWebhookArgs', 'CksClusterAuthzWebhookArgsDict']]] = None,
-            internal_lb_cidr_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            internal_lb_cidr_names_v6s: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            node_port_range: Optional[pulumi.Input[Union['CksClusterNodePortRangeArgs', 'CksClusterNodePortRangeArgsDict']]] = None,
-            oidc: Optional[pulumi.Input[Union['CksClusterOidcArgs', 'CksClusterOidcArgsDict']]] = None,
-            pod_cidr_name: Optional[pulumi.Input[_builtins.str]] = None,
-            pod_cidr_name_v6: Optional[pulumi.Input[_builtins.str]] = None,
-            public: Optional[pulumi.Input[_builtins.bool]] = None,
-            service_account_oidc_issuer_url: Optional[pulumi.Input[_builtins.str]] = None,
-            service_cidr_name: Optional[pulumi.Input[_builtins.str]] = None,
-            service_cidr_name_v6: Optional[pulumi.Input[_builtins.str]] = None,
-            shared_storage_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            version: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            zone: Optional[pulumi.Input[_builtins.str]] = None) -> 'CksCluster':
+            additional_server_sans: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            api_server_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            audit_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            authn_webhook: pulumi.Input[Optional[Union['CksClusterAuthnWebhookArgs', 'CksClusterAuthnWebhookArgsDict']]] = None,
+            authz_webhook: pulumi.Input[Optional[Union['CksClusterAuthzWebhookArgs', 'CksClusterAuthzWebhookArgsDict']]] = None,
+            internal_lb_cidr_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            internal_lb_cidr_names_v6s: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            node_port_range: pulumi.Input[Optional[Union['CksClusterNodePortRangeArgs', 'CksClusterNodePortRangeArgsDict']]] = None,
+            oidc: pulumi.Input[Optional[Union['CksClusterOidcArgs', 'CksClusterOidcArgsDict']]] = None,
+            pod_cidr_name: pulumi.Input[Optional[_builtins.str]] = None,
+            pod_cidr_name_v6: pulumi.Input[Optional[_builtins.str]] = None,
+            public: pulumi.Input[Optional[_builtins.bool]] = None,
+            service_account_oidc_issuer_url: pulumi.Input[Optional[_builtins.str]] = None,
+            service_cidr_name: pulumi.Input[Optional[_builtins.str]] = None,
+            service_cidr_name_v6: pulumi.Input[Optional[_builtins.str]] = None,
+            shared_storage_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone: pulumi.Input[Optional[_builtins.str]] = None) -> 'CksCluster':
         """
         Get an existing CksCluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

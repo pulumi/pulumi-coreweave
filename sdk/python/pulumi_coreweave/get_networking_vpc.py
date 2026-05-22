@@ -179,7 +179,7 @@ def get_networking_vpc(id: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         vpc_prefixes=pulumi.get(__ret__, 'vpc_prefixes'),
         zone=pulumi.get(__ret__, 'zone'))
-def get_networking_vpc_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_networking_vpc_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetworkingVpcResult]:
     """
     Query information about an existing VPC by ID. See the [CoreWeave VPC API reference](https://docs.coreweave.com/products/networking/vpc/vpc-api).

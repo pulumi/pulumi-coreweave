@@ -22,7 +22,7 @@ __all__ = ['ObjectStorageOrganizationAccessPolicyArgs', 'ObjectStorageOrganizati
 class ObjectStorageOrganizationAccessPolicyArgs:
     def __init__(__self__, *,
                  statements: pulumi.Input[Sequence[pulumi.Input['ObjectStorageOrganizationAccessPolicyStatementArgs']]],
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ObjectStorageOrganizationAccessPolicy resource.
 
@@ -47,22 +47,22 @@ class ObjectStorageOrganizationAccessPolicyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the organization access policy, must be unique.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _ObjectStorageOrganizationAccessPolicyState:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 statements: Optional[pulumi.Input[Sequence[pulumi.Input['ObjectStorageOrganizationAccessPolicyStatementArgs']]]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 statements: pulumi.Input[Optional[Sequence[pulumi.Input['ObjectStorageOrganizationAccessPolicyStatementArgs']]]] = None):
         """
         Input properties used for looking up and filtering ObjectStorageOrganizationAccessPolicy resources.
 
@@ -76,26 +76,26 @@ class _ObjectStorageOrganizationAccessPolicyState:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the organization access policy, must be unique.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def statements(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ObjectStorageOrganizationAccessPolicyStatementArgs']]]]:
+    def statements(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ObjectStorageOrganizationAccessPolicyStatementArgs']]]]:
         """
         The list of access policy statements associated with this policy. At least one statement is required.
         """
         return pulumi.get(self, "statements")
 
     @statements.setter
-    def statements(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ObjectStorageOrganizationAccessPolicyStatementArgs']]]]):
+    def statements(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ObjectStorageOrganizationAccessPolicyStatementArgs']]]]):
         pulumi.set(self, "statements", value)
 
 
@@ -105,8 +105,8 @@ class ObjectStorageOrganizationAccessPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 statements: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ObjectStorageOrganizationAccessPolicyStatementArgs', 'ObjectStorageOrganizationAccessPolicyStatementArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 statements: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ObjectStorageOrganizationAccessPolicyStatementArgs', 'ObjectStorageOrganizationAccessPolicyStatementArgsDict']]]]] = None,
                  __props__=None):
         """
         [Organization access policies](https://docs.coreweave.com/products/storage/object-storage/auth-access/organization-policies/about) enforce permissions for AI Object Storage across your entire CoreWeave organization, automatically covering every resource, bucket, and user in your account. At least one organization access policy must be in place before you can create a bucket.
@@ -194,8 +194,8 @@ class ObjectStorageOrganizationAccessPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 statements: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ObjectStorageOrganizationAccessPolicyStatementArgs', 'ObjectStorageOrganizationAccessPolicyStatementArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 statements: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ObjectStorageOrganizationAccessPolicyStatementArgs', 'ObjectStorageOrganizationAccessPolicyStatementArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -219,8 +219,8 @@ class ObjectStorageOrganizationAccessPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            statements: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ObjectStorageOrganizationAccessPolicyStatementArgs', 'ObjectStorageOrganizationAccessPolicyStatementArgsDict']]]]] = None) -> 'ObjectStorageOrganizationAccessPolicy':
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            statements: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ObjectStorageOrganizationAccessPolicyStatementArgs', 'ObjectStorageOrganizationAccessPolicyStatementArgsDict']]]]] = None) -> 'ObjectStorageOrganizationAccessPolicy':
         """
         Get an existing ObjectStorageOrganizationAccessPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
