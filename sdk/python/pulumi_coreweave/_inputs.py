@@ -68,7 +68,7 @@ class CksClusterAuthnWebhookArgsDict(TypedDict):
     """
     The URL of the webhook server.
     """
-    ca: NotRequired[pulumi.Input[_builtins.str]]
+    ca: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The CA certificate for the webhook server. Must be a base64-encoded PEM-encoded certificate.
     """
@@ -77,7 +77,7 @@ class CksClusterAuthnWebhookArgsDict(TypedDict):
 class CksClusterAuthnWebhookArgs:
     def __init__(__self__, *,
                  server: pulumi.Input[_builtins.str],
-                 ca: Optional[pulumi.Input[_builtins.str]] = None):
+                 ca: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] server: The URL of the webhook server.
         :param pulumi.Input[_builtins.str] ca: The CA certificate for the webhook server. Must be a base64-encoded PEM-encoded certificate.
@@ -100,14 +100,14 @@ class CksClusterAuthnWebhookArgs:
 
     @_builtins.property
     @pulumi.getter
-    def ca(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ca(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CA certificate for the webhook server. Must be a base64-encoded PEM-encoded certificate.
         """
         return pulumi.get(self, "ca")
 
     @ca.setter
-    def ca(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ca(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ca", value)
 
 
@@ -116,7 +116,7 @@ class CksClusterAuthzWebhookArgsDict(TypedDict):
     """
     The URL of the webhook server.
     """
-    ca: NotRequired[pulumi.Input[_builtins.str]]
+    ca: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The CA certificate for the webhook server. Must be a base64-encoded PEM-encoded certificate.
     """
@@ -125,7 +125,7 @@ class CksClusterAuthzWebhookArgsDict(TypedDict):
 class CksClusterAuthzWebhookArgs:
     def __init__(__self__, *,
                  server: pulumi.Input[_builtins.str],
-                 ca: Optional[pulumi.Input[_builtins.str]] = None):
+                 ca: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] server: The URL of the webhook server.
         :param pulumi.Input[_builtins.str] ca: The CA certificate for the webhook server. Must be a base64-encoded PEM-encoded certificate.
@@ -148,26 +148,26 @@ class CksClusterAuthzWebhookArgs:
 
     @_builtins.property
     @pulumi.getter
-    def ca(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ca(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CA certificate for the webhook server. Must be a base64-encoded PEM-encoded certificate.
         """
         return pulumi.get(self, "ca")
 
     @ca.setter
-    def ca(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ca(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ca", value)
 
 
 class CksClusterNodePortRangeArgsDict(TypedDict):
-    end: NotRequired[pulumi.Input[_builtins.int]]
-    start: NotRequired[pulumi.Input[_builtins.int]]
+    end: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    start: NotRequired[pulumi.Input[Optional[_builtins.int]]]
 
 @pulumi.input_type
 class CksClusterNodePortRangeArgs:
     def __init__(__self__, *,
-                 end: Optional[pulumi.Input[_builtins.int]] = None,
-                 start: Optional[pulumi.Input[_builtins.int]] = None):
+                 end: pulumi.Input[Optional[_builtins.int]] = None,
+                 start: pulumi.Input[Optional[_builtins.int]] = None):
         if end is not None:
             pulumi.set(__self__, "end", end)
         if start is not None:
@@ -175,20 +175,20 @@ class CksClusterNodePortRangeArgs:
 
     @_builtins.property
     @pulumi.getter
-    def end(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def end(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "end")
 
     @end.setter
-    def end(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def end(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "end", value)
 
     @_builtins.property
     @pulumi.getter
-    def start(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def start(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "start")
 
     @start.setter
-    def start(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def start(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "start", value)
 
 
@@ -201,35 +201,35 @@ class CksClusterOidcArgsDict(TypedDict):
     """
     The URL of the OIDC issuer.
     """
-    admin_group_binding: NotRequired[pulumi.Input[_builtins.str]]
+    admin_group_binding: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The OIDC group that is bound to the cluster-admin role for bootstrap access to the cluster.
     """
-    ca: NotRequired[pulumi.Input[_builtins.str]]
+    ca: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The CA certificate for the OIDC issuer. Must be a base64-encoded PEM-encoded certificate.
     """
-    groups_claim: NotRequired[pulumi.Input[_builtins.str]]
+    groups_claim: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The claim to use as the groups.
     """
-    groups_prefix: NotRequired[pulumi.Input[_builtins.str]]
+    groups_prefix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The prefix to use for the groups.
     """
-    required_claim: NotRequired[pulumi.Input[_builtins.str]]
+    required_claim: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The claim to require for authentication.
     """
-    signing_algs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    signing_algs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     A list of signing algorithms that the OpenID Connect discovery endpoint uses.
     """
-    username_claim: NotRequired[pulumi.Input[_builtins.str]]
+    username_claim: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The claim to use as the username.
     """
-    username_prefix: NotRequired[pulumi.Input[_builtins.str]]
+    username_prefix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The prefix to use for the username.
     """
@@ -239,14 +239,14 @@ class CksClusterOidcArgs:
     def __init__(__self__, *,
                  client_id: pulumi.Input[_builtins.str],
                  issuer_url: pulumi.Input[_builtins.str],
-                 admin_group_binding: Optional[pulumi.Input[_builtins.str]] = None,
-                 ca: Optional[pulumi.Input[_builtins.str]] = None,
-                 groups_claim: Optional[pulumi.Input[_builtins.str]] = None,
-                 groups_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 required_claim: Optional[pulumi.Input[_builtins.str]] = None,
-                 signing_algs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 username_claim: Optional[pulumi.Input[_builtins.str]] = None,
-                 username_prefix: Optional[pulumi.Input[_builtins.str]] = None):
+                 admin_group_binding: pulumi.Input[Optional[_builtins.str]] = None,
+                 ca: pulumi.Input[Optional[_builtins.str]] = None,
+                 groups_claim: pulumi.Input[Optional[_builtins.str]] = None,
+                 groups_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 required_claim: pulumi.Input[Optional[_builtins.str]] = None,
+                 signing_algs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 username_claim: pulumi.Input[Optional[_builtins.str]] = None,
+                 username_prefix: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] client_id: The client ID for the OIDC client.
         :param pulumi.Input[_builtins.str] issuer_url: The URL of the OIDC issuer.
@@ -304,103 +304,103 @@ class CksClusterOidcArgs:
 
     @_builtins.property
     @pulumi.getter(name="adminGroupBinding")
-    def admin_group_binding(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def admin_group_binding(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The OIDC group that is bound to the cluster-admin role for bootstrap access to the cluster.
         """
         return pulumi.get(self, "admin_group_binding")
 
     @admin_group_binding.setter
-    def admin_group_binding(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def admin_group_binding(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "admin_group_binding", value)
 
     @_builtins.property
     @pulumi.getter
-    def ca(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ca(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CA certificate for the OIDC issuer. Must be a base64-encoded PEM-encoded certificate.
         """
         return pulumi.get(self, "ca")
 
     @ca.setter
-    def ca(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ca(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ca", value)
 
     @_builtins.property
     @pulumi.getter(name="groupsClaim")
-    def groups_claim(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def groups_claim(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The claim to use as the groups.
         """
         return pulumi.get(self, "groups_claim")
 
     @groups_claim.setter
-    def groups_claim(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def groups_claim(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "groups_claim", value)
 
     @_builtins.property
     @pulumi.getter(name="groupsPrefix")
-    def groups_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def groups_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The prefix to use for the groups.
         """
         return pulumi.get(self, "groups_prefix")
 
     @groups_prefix.setter
-    def groups_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def groups_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "groups_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="requiredClaim")
-    def required_claim(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def required_claim(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The claim to require for authentication.
         """
         return pulumi.get(self, "required_claim")
 
     @required_claim.setter
-    def required_claim(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def required_claim(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "required_claim", value)
 
     @_builtins.property
     @pulumi.getter(name="signingAlgs")
-    def signing_algs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def signing_algs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of signing algorithms that the OpenID Connect discovery endpoint uses.
         """
         return pulumi.get(self, "signing_algs")
 
     @signing_algs.setter
-    def signing_algs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def signing_algs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "signing_algs", value)
 
     @_builtins.property
     @pulumi.getter(name="usernameClaim")
-    def username_claim(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username_claim(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The claim to use as the username.
         """
         return pulumi.get(self, "username_claim")
 
     @username_claim.setter
-    def username_claim(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username_claim(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username_claim", value)
 
     @_builtins.property
     @pulumi.getter(name="usernamePrefix")
-    def username_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The prefix to use for the username.
         """
         return pulumi.get(self, "username_prefix")
 
     @username_prefix.setter
-    def username_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username_prefix", value)
 
 
 class NetworkingVpcDhcpArgsDict(TypedDict):
-    dns: NotRequired[pulumi.Input['NetworkingVpcDhcpDnsArgsDict']]
+    dns: NotRequired[pulumi.Input[Optional['NetworkingVpcDhcpDnsArgsDict']]]
     """
     Settings affecting DNS for DHCP within the VPC
     """
@@ -408,7 +408,7 @@ class NetworkingVpcDhcpArgsDict(TypedDict):
 @pulumi.input_type
 class NetworkingVpcDhcpArgs:
     def __init__(__self__, *,
-                 dns: Optional[pulumi.Input['NetworkingVpcDhcpDnsArgs']] = None):
+                 dns: pulumi.Input[Optional['NetworkingVpcDhcpDnsArgs']] = None):
         """
         :param pulumi.Input['NetworkingVpcDhcpDnsArgs'] dns: Settings affecting DNS for DHCP within the VPC
         """
@@ -417,19 +417,19 @@ class NetworkingVpcDhcpArgs:
 
     @_builtins.property
     @pulumi.getter
-    def dns(self) -> Optional[pulumi.Input['NetworkingVpcDhcpDnsArgs']]:
+    def dns(self) -> pulumi.Input[Optional['NetworkingVpcDhcpDnsArgs']]:
         """
         Settings affecting DNS for DHCP within the VPC
         """
         return pulumi.get(self, "dns")
 
     @dns.setter
-    def dns(self, value: Optional[pulumi.Input['NetworkingVpcDhcpDnsArgs']]):
+    def dns(self, value: pulumi.Input[Optional['NetworkingVpcDhcpDnsArgs']]):
         pulumi.set(self, "dns", value)
 
 
 class NetworkingVpcDhcpDnsArgsDict(TypedDict):
-    servers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    servers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The DNS servers to be used by DHCP clients within the VPC.
     """
@@ -437,7 +437,7 @@ class NetworkingVpcDhcpDnsArgsDict(TypedDict):
 @pulumi.input_type
 class NetworkingVpcDhcpDnsArgs:
     def __init__(__self__, *,
-                 servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] servers: The DNS servers to be used by DHCP clients within the VPC.
         """
@@ -446,19 +446,19 @@ class NetworkingVpcDhcpDnsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The DNS servers to be used by DHCP clients within the VPC.
         """
         return pulumi.get(self, "servers")
 
     @servers.setter
-    def servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "servers", value)
 
 
 class NetworkingVpcEgressArgsDict(TypedDict):
-    disable_public_access: NotRequired[pulumi.Input[_builtins.bool]]
+    disable_public_access: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Specifies whether the VPC should be blocked from consuming public Internet.
     """
@@ -466,7 +466,7 @@ class NetworkingVpcEgressArgsDict(TypedDict):
 @pulumi.input_type
 class NetworkingVpcEgressArgs:
     def __init__(__self__, *,
-                 disable_public_access: Optional[pulumi.Input[_builtins.bool]] = None):
+                 disable_public_access: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] disable_public_access: Specifies whether the VPC should be blocked from consuming public Internet.
         """
@@ -475,14 +475,14 @@ class NetworkingVpcEgressArgs:
 
     @_builtins.property
     @pulumi.getter(name="disablePublicAccess")
-    def disable_public_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_public_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether the VPC should be blocked from consuming public Internet.
         """
         return pulumi.get(self, "disable_public_access")
 
     @disable_public_access.setter
-    def disable_public_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_public_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_public_access", value)
 
 
@@ -499,7 +499,7 @@ class NetworkingVpcHostPrefixArgsDict(TypedDict):
     """
     Controls network connectivity from the prefix to the host. Must be one of: `PRIMARY`, `ROUTED`, `ATTACHED`.
     """
-    ipam: NotRequired[pulumi.Input['NetworkingVpcHostPrefixIpamArgsDict']]
+    ipam: NotRequired[pulumi.Input[Optional['NetworkingVpcHostPrefixIpamArgsDict']]]
     """
     The configuration for a secondary host prefix.
     """
@@ -510,7 +510,7 @@ class NetworkingVpcHostPrefixArgs:
                  name: pulumi.Input[_builtins.str],
                  prefixes: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  type: pulumi.Input[_builtins.str],
-                 ipam: Optional[pulumi.Input['NetworkingVpcHostPrefixIpamArgs']] = None):
+                 ipam: pulumi.Input[Optional['NetworkingVpcHostPrefixIpamArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] name: The user-specified name of the host prefix.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] prefixes: The VPC-wide aggregates from which host-specific prefixes are allocated. May be IPv4 or IPv6.
@@ -561,14 +561,14 @@ class NetworkingVpcHostPrefixArgs:
 
     @_builtins.property
     @pulumi.getter
-    def ipam(self) -> Optional[pulumi.Input['NetworkingVpcHostPrefixIpamArgs']]:
+    def ipam(self) -> pulumi.Input[Optional['NetworkingVpcHostPrefixIpamArgs']]:
         """
         The configuration for a secondary host prefix.
         """
         return pulumi.get(self, "ipam")
 
     @ipam.setter
-    def ipam(self, value: Optional[pulumi.Input['NetworkingVpcHostPrefixIpamArgs']]):
+    def ipam(self, value: pulumi.Input[Optional['NetworkingVpcHostPrefixIpamArgs']]):
         pulumi.set(self, "ipam", value)
 
 
@@ -577,7 +577,7 @@ class NetworkingVpcHostPrefixIpamArgsDict(TypedDict):
     """
     The desired length for each Node's allocation from the VPC-wide aggregate prefix.
     """
-    gateway_address_policy: NotRequired[pulumi.Input[_builtins.str]]
+    gateway_address_policy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Describes which IP address from the prefix is allocated to the network gateway. Must be one of: `UNSPECIFIED`, `EUI64`, `FIRST_IP`, `LAST_IP`.
     """
@@ -586,7 +586,7 @@ class NetworkingVpcHostPrefixIpamArgsDict(TypedDict):
 class NetworkingVpcHostPrefixIpamArgs:
     def __init__(__self__, *,
                  prefix_length: pulumi.Input[_builtins.int],
-                 gateway_address_policy: Optional[pulumi.Input[_builtins.str]] = None):
+                 gateway_address_policy: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] prefix_length: The desired length for each Node's allocation from the VPC-wide aggregate prefix.
         :param pulumi.Input[_builtins.str] gateway_address_policy: Describes which IP address from the prefix is allocated to the network gateway. Must be one of: `UNSPECIFIED`, `EUI64`, `FIRST_IP`, `LAST_IP`.
@@ -609,19 +609,19 @@ class NetworkingVpcHostPrefixIpamArgs:
 
     @_builtins.property
     @pulumi.getter(name="gatewayAddressPolicy")
-    def gateway_address_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gateway_address_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Describes which IP address from the prefix is allocated to the network gateway. Must be one of: `UNSPECIFIED`, `EUI64`, `FIRST_IP`, `LAST_IP`.
         """
         return pulumi.get(self, "gateway_address_policy")
 
     @gateway_address_policy.setter
-    def gateway_address_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gateway_address_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gateway_address_policy", value)
 
 
 class NetworkingVpcIngressArgsDict(TypedDict):
-    disable_public_services: NotRequired[pulumi.Input[_builtins.bool]]
+    disable_public_services: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Specifies whether the VPC should prevent public prefixes advertised from Nodes from being imported into public-facing networks, making them inaccessible from the Internet.
     """
@@ -629,7 +629,7 @@ class NetworkingVpcIngressArgsDict(TypedDict):
 @pulumi.input_type
 class NetworkingVpcIngressArgs:
     def __init__(__self__, *,
-                 disable_public_services: Optional[pulumi.Input[_builtins.bool]] = None):
+                 disable_public_services: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] disable_public_services: Specifies whether the VPC should prevent public prefixes advertised from Nodes from being imported into public-facing networks, making them inaccessible from the Internet.
         """
@@ -638,14 +638,14 @@ class NetworkingVpcIngressArgs:
 
     @_builtins.property
     @pulumi.getter(name="disablePublicServices")
-    def disable_public_services(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_public_services(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether the VPC should prevent public prefixes advertised from Nodes from being imported into public-facing networks, making them inaccessible from the Internet.
         """
         return pulumi.get(self, "disable_public_services")
 
     @disable_public_services.setter
-    def disable_public_services(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_public_services(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_public_services", value)
 
 
@@ -685,33 +685,33 @@ class ObjectStorageBucketLifecycleConfigurationRuleArgsDict(TypedDict):
     """
     Rule status: Enabled or Disabled
     """
-    abort_incomplete_multipart_upload: NotRequired[pulumi.Input['ObjectStorageBucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadArgsDict']]
-    expiration: NotRequired[pulumi.Input['ObjectStorageBucketLifecycleConfigurationRuleExpirationArgsDict']]
-    filter: NotRequired[pulumi.Input['ObjectStorageBucketLifecycleConfigurationRuleFilterArgsDict']]
-    id: NotRequired[pulumi.Input[_builtins.str]]
+    abort_incomplete_multipart_upload: NotRequired[pulumi.Input[Optional['ObjectStorageBucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadArgsDict']]]
+    expiration: NotRequired[pulumi.Input[Optional['ObjectStorageBucketLifecycleConfigurationRuleExpirationArgsDict']]]
+    filter: NotRequired[pulumi.Input[Optional['ObjectStorageBucketLifecycleConfigurationRuleFilterArgsDict']]]
+    id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Unique identifier for the rule
     """
-    noncurrent_version_expiration: NotRequired[pulumi.Input['ObjectStorageBucketLifecycleConfigurationRuleNoncurrentVersionExpirationArgsDict']]
-    noncurrent_version_transitions: NotRequired[pulumi.Input[Sequence[pulumi.Input['ObjectStorageBucketLifecycleConfigurationRuleNoncurrentVersionTransitionArgsDict']]]]
-    prefix: NotRequired[pulumi.Input[_builtins.str]]
+    noncurrent_version_expiration: NotRequired[pulumi.Input[Optional['ObjectStorageBucketLifecycleConfigurationRuleNoncurrentVersionExpirationArgsDict']]]
+    noncurrent_version_transitions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ObjectStorageBucketLifecycleConfigurationRuleNoncurrentVersionTransitionArgsDict']]]]]
+    prefix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Object key prefix to which the rule applies
     """
-    transitions: NotRequired[pulumi.Input[Sequence[pulumi.Input['ObjectStorageBucketLifecycleConfigurationRuleTransitionArgsDict']]]]
+    transitions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ObjectStorageBucketLifecycleConfigurationRuleTransitionArgsDict']]]]]
 
 @pulumi.input_type
 class ObjectStorageBucketLifecycleConfigurationRuleArgs:
     def __init__(__self__, *,
                  status: pulumi.Input[_builtins.str],
-                 abort_incomplete_multipart_upload: Optional[pulumi.Input['ObjectStorageBucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadArgs']] = None,
-                 expiration: Optional[pulumi.Input['ObjectStorageBucketLifecycleConfigurationRuleExpirationArgs']] = None,
-                 filter: Optional[pulumi.Input['ObjectStorageBucketLifecycleConfigurationRuleFilterArgs']] = None,
-                 id: Optional[pulumi.Input[_builtins.str]] = None,
-                 noncurrent_version_expiration: Optional[pulumi.Input['ObjectStorageBucketLifecycleConfigurationRuleNoncurrentVersionExpirationArgs']] = None,
-                 noncurrent_version_transitions: Optional[pulumi.Input[Sequence[pulumi.Input['ObjectStorageBucketLifecycleConfigurationRuleNoncurrentVersionTransitionArgs']]]] = None,
-                 prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 transitions: Optional[pulumi.Input[Sequence[pulumi.Input['ObjectStorageBucketLifecycleConfigurationRuleTransitionArgs']]]] = None):
+                 abort_incomplete_multipart_upload: pulumi.Input[Optional['ObjectStorageBucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadArgs']] = None,
+                 expiration: pulumi.Input[Optional['ObjectStorageBucketLifecycleConfigurationRuleExpirationArgs']] = None,
+                 filter: pulumi.Input[Optional['ObjectStorageBucketLifecycleConfigurationRuleFilterArgs']] = None,
+                 id: pulumi.Input[Optional[_builtins.str]] = None,
+                 noncurrent_version_expiration: pulumi.Input[Optional['ObjectStorageBucketLifecycleConfigurationRuleNoncurrentVersionExpirationArgs']] = None,
+                 noncurrent_version_transitions: pulumi.Input[Optional[Sequence[pulumi.Input['ObjectStorageBucketLifecycleConfigurationRuleNoncurrentVersionTransitionArgs']]]] = None,
+                 prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 transitions: pulumi.Input[Optional[Sequence[pulumi.Input['ObjectStorageBucketLifecycleConfigurationRuleTransitionArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] status: Rule status: Enabled or Disabled
         :param pulumi.Input[_builtins.str] id: Unique identifier for the rule
@@ -749,85 +749,85 @@ class ObjectStorageBucketLifecycleConfigurationRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="abortIncompleteMultipartUpload")
-    def abort_incomplete_multipart_upload(self) -> Optional[pulumi.Input['ObjectStorageBucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadArgs']]:
+    def abort_incomplete_multipart_upload(self) -> pulumi.Input[Optional['ObjectStorageBucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadArgs']]:
         return pulumi.get(self, "abort_incomplete_multipart_upload")
 
     @abort_incomplete_multipart_upload.setter
-    def abort_incomplete_multipart_upload(self, value: Optional[pulumi.Input['ObjectStorageBucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadArgs']]):
+    def abort_incomplete_multipart_upload(self, value: pulumi.Input[Optional['ObjectStorageBucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadArgs']]):
         pulumi.set(self, "abort_incomplete_multipart_upload", value)
 
     @_builtins.property
     @pulumi.getter
-    def expiration(self) -> Optional[pulumi.Input['ObjectStorageBucketLifecycleConfigurationRuleExpirationArgs']]:
+    def expiration(self) -> pulumi.Input[Optional['ObjectStorageBucketLifecycleConfigurationRuleExpirationArgs']]:
         return pulumi.get(self, "expiration")
 
     @expiration.setter
-    def expiration(self, value: Optional[pulumi.Input['ObjectStorageBucketLifecycleConfigurationRuleExpirationArgs']]):
+    def expiration(self, value: pulumi.Input[Optional['ObjectStorageBucketLifecycleConfigurationRuleExpirationArgs']]):
         pulumi.set(self, "expiration", value)
 
     @_builtins.property
     @pulumi.getter
-    def filter(self) -> Optional[pulumi.Input['ObjectStorageBucketLifecycleConfigurationRuleFilterArgs']]:
+    def filter(self) -> pulumi.Input[Optional['ObjectStorageBucketLifecycleConfigurationRuleFilterArgs']]:
         return pulumi.get(self, "filter")
 
     @filter.setter
-    def filter(self, value: Optional[pulumi.Input['ObjectStorageBucketLifecycleConfigurationRuleFilterArgs']]):
+    def filter(self, value: pulumi.Input[Optional['ObjectStorageBucketLifecycleConfigurationRuleFilterArgs']]):
         pulumi.set(self, "filter", value)
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier for the rule
         """
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "id", value)
 
     @_builtins.property
     @pulumi.getter(name="noncurrentVersionExpiration")
-    def noncurrent_version_expiration(self) -> Optional[pulumi.Input['ObjectStorageBucketLifecycleConfigurationRuleNoncurrentVersionExpirationArgs']]:
+    def noncurrent_version_expiration(self) -> pulumi.Input[Optional['ObjectStorageBucketLifecycleConfigurationRuleNoncurrentVersionExpirationArgs']]:
         return pulumi.get(self, "noncurrent_version_expiration")
 
     @noncurrent_version_expiration.setter
-    def noncurrent_version_expiration(self, value: Optional[pulumi.Input['ObjectStorageBucketLifecycleConfigurationRuleNoncurrentVersionExpirationArgs']]):
+    def noncurrent_version_expiration(self, value: pulumi.Input[Optional['ObjectStorageBucketLifecycleConfigurationRuleNoncurrentVersionExpirationArgs']]):
         pulumi.set(self, "noncurrent_version_expiration", value)
 
     @_builtins.property
     @pulumi.getter(name="noncurrentVersionTransitions")
-    def noncurrent_version_transitions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ObjectStorageBucketLifecycleConfigurationRuleNoncurrentVersionTransitionArgs']]]]:
+    def noncurrent_version_transitions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ObjectStorageBucketLifecycleConfigurationRuleNoncurrentVersionTransitionArgs']]]]:
         return pulumi.get(self, "noncurrent_version_transitions")
 
     @noncurrent_version_transitions.setter
-    def noncurrent_version_transitions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ObjectStorageBucketLifecycleConfigurationRuleNoncurrentVersionTransitionArgs']]]]):
+    def noncurrent_version_transitions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ObjectStorageBucketLifecycleConfigurationRuleNoncurrentVersionTransitionArgs']]]]):
         pulumi.set(self, "noncurrent_version_transitions", value)
 
     @_builtins.property
     @pulumi.getter
-    def prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Object key prefix to which the rule applies
         """
         return pulumi.get(self, "prefix")
 
     @prefix.setter
-    def prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "prefix", value)
 
     @_builtins.property
     @pulumi.getter
-    def transitions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ObjectStorageBucketLifecycleConfigurationRuleTransitionArgs']]]]:
+    def transitions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ObjectStorageBucketLifecycleConfigurationRuleTransitionArgs']]]]:
         return pulumi.get(self, "transitions")
 
     @transitions.setter
-    def transitions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ObjectStorageBucketLifecycleConfigurationRuleTransitionArgs']]]]):
+    def transitions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ObjectStorageBucketLifecycleConfigurationRuleTransitionArgs']]]]):
         pulumi.set(self, "transitions", value)
 
 
 class ObjectStorageBucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadArgsDict(TypedDict):
-    days_after_initiation: NotRequired[pulumi.Input[_builtins.int]]
+    days_after_initiation: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Days after initiation to abort multipart uploads
     """
@@ -835,7 +835,7 @@ class ObjectStorageBucketLifecycleConfigurationRuleAbortIncompleteMultipartUploa
 @pulumi.input_type
 class ObjectStorageBucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadArgs:
     def __init__(__self__, *,
-                 days_after_initiation: Optional[pulumi.Input[_builtins.int]] = None):
+                 days_after_initiation: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] days_after_initiation: Days after initiation to abort multipart uploads
         """
@@ -844,27 +844,27 @@ class ObjectStorageBucketLifecycleConfigurationRuleAbortIncompleteMultipartUploa
 
     @_builtins.property
     @pulumi.getter(name="daysAfterInitiation")
-    def days_after_initiation(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def days_after_initiation(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Days after initiation to abort multipart uploads
         """
         return pulumi.get(self, "days_after_initiation")
 
     @days_after_initiation.setter
-    def days_after_initiation(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def days_after_initiation(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "days_after_initiation", value)
 
 
 class ObjectStorageBucketLifecycleConfigurationRuleExpirationArgsDict(TypedDict):
-    date: NotRequired[pulumi.Input[_builtins.str]]
+    date: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     ISO8601 date when objects expire
     """
-    days: NotRequired[pulumi.Input[_builtins.int]]
+    days: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of days after object creation for expiration
     """
-    expired_object_delete_marker: NotRequired[pulumi.Input[_builtins.bool]]
+    expired_object_delete_marker: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to remove expired delete markers
     """
@@ -872,9 +872,9 @@ class ObjectStorageBucketLifecycleConfigurationRuleExpirationArgsDict(TypedDict)
 @pulumi.input_type
 class ObjectStorageBucketLifecycleConfigurationRuleExpirationArgs:
     def __init__(__self__, *,
-                 date: Optional[pulumi.Input[_builtins.str]] = None,
-                 days: Optional[pulumi.Input[_builtins.int]] = None,
-                 expired_object_delete_marker: Optional[pulumi.Input[_builtins.bool]] = None):
+                 date: pulumi.Input[Optional[_builtins.str]] = None,
+                 days: pulumi.Input[Optional[_builtins.int]] = None,
+                 expired_object_delete_marker: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] date: ISO8601 date when objects expire
         :param pulumi.Input[_builtins.int] days: Number of days after object creation for expiration
@@ -889,68 +889,68 @@ class ObjectStorageBucketLifecycleConfigurationRuleExpirationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ISO8601 date when objects expire
         """
         return pulumi.get(self, "date")
 
     @date.setter
-    def date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "date", value)
 
     @_builtins.property
     @pulumi.getter
-    def days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of days after object creation for expiration
         """
         return pulumi.get(self, "days")
 
     @days.setter
-    def days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "days", value)
 
     @_builtins.property
     @pulumi.getter(name="expiredObjectDeleteMarker")
-    def expired_object_delete_marker(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def expired_object_delete_marker(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to remove expired delete markers
         """
         return pulumi.get(self, "expired_object_delete_marker")
 
     @expired_object_delete_marker.setter
-    def expired_object_delete_marker(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def expired_object_delete_marker(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "expired_object_delete_marker", value)
 
 
 class ObjectStorageBucketLifecycleConfigurationRuleFilterArgsDict(TypedDict):
-    and_: NotRequired[pulumi.Input['ObjectStorageBucketLifecycleConfigurationRuleFilterAndArgsDict']]
+    and_: NotRequired[pulumi.Input[Optional['ObjectStorageBucketLifecycleConfigurationRuleFilterAndArgsDict']]]
     """
     Configuration block used to apply a logical AND to two or more predicates. The Lifecycle Rule will apply to any object matching all the predicates configured inside the and block.
     """
-    object_size_greater_than: NotRequired[pulumi.Input[_builtins.int]]
+    object_size_greater_than: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Minimum object size (in bytes) to which the rule applies.
     """
-    object_size_less_than: NotRequired[pulumi.Input[_builtins.int]]
+    object_size_less_than: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Maximum object size (in bytes) to which the rule applies.
     """
-    prefix: NotRequired[pulumi.Input[_builtins.str]]
+    prefix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Prefix filter
     """
-    tag: NotRequired[pulumi.Input['ObjectStorageBucketLifecycleConfigurationRuleFilterTagArgsDict']]
+    tag: NotRequired[pulumi.Input[Optional['ObjectStorageBucketLifecycleConfigurationRuleFilterTagArgsDict']]]
 
 @pulumi.input_type
 class ObjectStorageBucketLifecycleConfigurationRuleFilterArgs:
     def __init__(__self__, *,
-                 and_: Optional[pulumi.Input['ObjectStorageBucketLifecycleConfigurationRuleFilterAndArgs']] = None,
-                 object_size_greater_than: Optional[pulumi.Input[_builtins.int]] = None,
-                 object_size_less_than: Optional[pulumi.Input[_builtins.int]] = None,
-                 prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag: Optional[pulumi.Input['ObjectStorageBucketLifecycleConfigurationRuleFilterTagArgs']] = None):
+                 and_: pulumi.Input[Optional['ObjectStorageBucketLifecycleConfigurationRuleFilterAndArgs']] = None,
+                 object_size_greater_than: pulumi.Input[Optional[_builtins.int]] = None,
+                 object_size_less_than: pulumi.Input[Optional[_builtins.int]] = None,
+                 prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag: pulumi.Input[Optional['ObjectStorageBucketLifecycleConfigurationRuleFilterTagArgs']] = None):
         """
         :param pulumi.Input['ObjectStorageBucketLifecycleConfigurationRuleFilterAndArgs'] and_: Configuration block used to apply a logical AND to two or more predicates. The Lifecycle Rule will apply to any object matching all the predicates configured inside the and block.
         :param pulumi.Input[_builtins.int] object_size_greater_than: Minimum object size (in bytes) to which the rule applies.
@@ -970,76 +970,76 @@ class ObjectStorageBucketLifecycleConfigurationRuleFilterArgs:
 
     @_builtins.property
     @pulumi.getter(name="and")
-    def and_(self) -> Optional[pulumi.Input['ObjectStorageBucketLifecycleConfigurationRuleFilterAndArgs']]:
+    def and_(self) -> pulumi.Input[Optional['ObjectStorageBucketLifecycleConfigurationRuleFilterAndArgs']]:
         """
         Configuration block used to apply a logical AND to two or more predicates. The Lifecycle Rule will apply to any object matching all the predicates configured inside the and block.
         """
         return pulumi.get(self, "and_")
 
     @and_.setter
-    def and_(self, value: Optional[pulumi.Input['ObjectStorageBucketLifecycleConfigurationRuleFilterAndArgs']]):
+    def and_(self, value: pulumi.Input[Optional['ObjectStorageBucketLifecycleConfigurationRuleFilterAndArgs']]):
         pulumi.set(self, "and_", value)
 
     @_builtins.property
     @pulumi.getter(name="objectSizeGreaterThan")
-    def object_size_greater_than(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def object_size_greater_than(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minimum object size (in bytes) to which the rule applies.
         """
         return pulumi.get(self, "object_size_greater_than")
 
     @object_size_greater_than.setter
-    def object_size_greater_than(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def object_size_greater_than(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "object_size_greater_than", value)
 
     @_builtins.property
     @pulumi.getter(name="objectSizeLessThan")
-    def object_size_less_than(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def object_size_less_than(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum object size (in bytes) to which the rule applies.
         """
         return pulumi.get(self, "object_size_less_than")
 
     @object_size_less_than.setter
-    def object_size_less_than(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def object_size_less_than(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "object_size_less_than", value)
 
     @_builtins.property
     @pulumi.getter
-    def prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Prefix filter
         """
         return pulumi.get(self, "prefix")
 
     @prefix.setter
-    def prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "prefix", value)
 
     @_builtins.property
     @pulumi.getter
-    def tag(self) -> Optional[pulumi.Input['ObjectStorageBucketLifecycleConfigurationRuleFilterTagArgs']]:
+    def tag(self) -> pulumi.Input[Optional['ObjectStorageBucketLifecycleConfigurationRuleFilterTagArgs']]:
         return pulumi.get(self, "tag")
 
     @tag.setter
-    def tag(self, value: Optional[pulumi.Input['ObjectStorageBucketLifecycleConfigurationRuleFilterTagArgs']]):
+    def tag(self, value: pulumi.Input[Optional['ObjectStorageBucketLifecycleConfigurationRuleFilterTagArgs']]):
         pulumi.set(self, "tag", value)
 
 
 class ObjectStorageBucketLifecycleConfigurationRuleFilterAndArgsDict(TypedDict):
-    object_size_greater_than: NotRequired[pulumi.Input[_builtins.int]]
+    object_size_greater_than: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Minimum object size (in bytes) to which the rule applies.
     """
-    object_size_less_than: NotRequired[pulumi.Input[_builtins.int]]
+    object_size_less_than: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Maximum object size (in bytes) to which the rule applies.
     """
-    prefix: NotRequired[pulumi.Input[_builtins.str]]
+    prefix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Prefix identifying one or more objects to which the rule applies.
     """
-    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    tags: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Map for specifying tag keys and values.
     """
@@ -1047,10 +1047,10 @@ class ObjectStorageBucketLifecycleConfigurationRuleFilterAndArgsDict(TypedDict):
 @pulumi.input_type
 class ObjectStorageBucketLifecycleConfigurationRuleFilterAndArgs:
     def __init__(__self__, *,
-                 object_size_greater_than: Optional[pulumi.Input[_builtins.int]] = None,
-                 object_size_less_than: Optional[pulumi.Input[_builtins.int]] = None,
-                 prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 object_size_greater_than: pulumi.Input[Optional[_builtins.int]] = None,
+                 object_size_less_than: pulumi.Input[Optional[_builtins.int]] = None,
+                 prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.int] object_size_greater_than: Minimum object size (in bytes) to which the rule applies.
         :param pulumi.Input[_builtins.int] object_size_less_than: Maximum object size (in bytes) to which the rule applies.
@@ -1068,59 +1068,59 @@ class ObjectStorageBucketLifecycleConfigurationRuleFilterAndArgs:
 
     @_builtins.property
     @pulumi.getter(name="objectSizeGreaterThan")
-    def object_size_greater_than(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def object_size_greater_than(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minimum object size (in bytes) to which the rule applies.
         """
         return pulumi.get(self, "object_size_greater_than")
 
     @object_size_greater_than.setter
-    def object_size_greater_than(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def object_size_greater_than(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "object_size_greater_than", value)
 
     @_builtins.property
     @pulumi.getter(name="objectSizeLessThan")
-    def object_size_less_than(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def object_size_less_than(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum object size (in bytes) to which the rule applies.
         """
         return pulumi.get(self, "object_size_less_than")
 
     @object_size_less_than.setter
-    def object_size_less_than(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def object_size_less_than(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "object_size_less_than", value)
 
     @_builtins.property
     @pulumi.getter
-    def prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Prefix identifying one or more objects to which the rule applies.
         """
         return pulumi.get(self, "prefix")
 
     @prefix.setter
-    def prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "prefix", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Map for specifying tag keys and values.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 class ObjectStorageBucketLifecycleConfigurationRuleFilterTagArgsDict(TypedDict):
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Tag key filter
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Tag value filter
     """
@@ -1128,8 +1128,8 @@ class ObjectStorageBucketLifecycleConfigurationRuleFilterTagArgsDict(TypedDict):
 @pulumi.input_type
 class ObjectStorageBucketLifecycleConfigurationRuleFilterTagArgs:
     def __init__(__self__, *,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] key: Tag key filter
         :param pulumi.Input[_builtins.str] value: Tag value filter
@@ -1141,35 +1141,35 @@ class ObjectStorageBucketLifecycleConfigurationRuleFilterTagArgs:
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Tag key filter
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Tag value filter
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class ObjectStorageBucketLifecycleConfigurationRuleNoncurrentVersionExpirationArgsDict(TypedDict):
-    newer_noncurrent_versions: NotRequired[pulumi.Input[_builtins.int]]
+    newer_noncurrent_versions: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of noncurrent versions to retain
     """
-    noncurrent_days: NotRequired[pulumi.Input[_builtins.int]]
+    noncurrent_days: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Days after becoming noncurrent before deletion
     """
@@ -1177,8 +1177,8 @@ class ObjectStorageBucketLifecycleConfigurationRuleNoncurrentVersionExpirationAr
 @pulumi.input_type
 class ObjectStorageBucketLifecycleConfigurationRuleNoncurrentVersionExpirationArgs:
     def __init__(__self__, *,
-                 newer_noncurrent_versions: Optional[pulumi.Input[_builtins.int]] = None,
-                 noncurrent_days: Optional[pulumi.Input[_builtins.int]] = None):
+                 newer_noncurrent_versions: pulumi.Input[Optional[_builtins.int]] = None,
+                 noncurrent_days: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] newer_noncurrent_versions: Number of noncurrent versions to retain
         :param pulumi.Input[_builtins.int] noncurrent_days: Days after becoming noncurrent before deletion
@@ -1190,26 +1190,26 @@ class ObjectStorageBucketLifecycleConfigurationRuleNoncurrentVersionExpirationAr
 
     @_builtins.property
     @pulumi.getter(name="newerNoncurrentVersions")
-    def newer_noncurrent_versions(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def newer_noncurrent_versions(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of noncurrent versions to retain
         """
         return pulumi.get(self, "newer_noncurrent_versions")
 
     @newer_noncurrent_versions.setter
-    def newer_noncurrent_versions(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def newer_noncurrent_versions(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "newer_noncurrent_versions", value)
 
     @_builtins.property
     @pulumi.getter(name="noncurrentDays")
-    def noncurrent_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def noncurrent_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Days after becoming noncurrent before deletion
         """
         return pulumi.get(self, "noncurrent_days")
 
     @noncurrent_days.setter
-    def noncurrent_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def noncurrent_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "noncurrent_days", value)
 
 
@@ -1222,7 +1222,7 @@ class ObjectStorageBucketLifecycleConfigurationRuleNoncurrentVersionTransitionAr
     """
     Storage class to transition noncurrent objects to
     """
-    newer_noncurrent_versions: NotRequired[pulumi.Input[_builtins.int]]
+    newer_noncurrent_versions: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of noncurrent versions to retain
     """
@@ -1232,7 +1232,7 @@ class ObjectStorageBucketLifecycleConfigurationRuleNoncurrentVersionTransitionAr
     def __init__(__self__, *,
                  noncurrent_days: pulumi.Input[_builtins.int],
                  storage_class: pulumi.Input[_builtins.str],
-                 newer_noncurrent_versions: Optional[pulumi.Input[_builtins.int]] = None):
+                 newer_noncurrent_versions: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] noncurrent_days: Number of days after object becomes noncurrent before the transition may occur
         :param pulumi.Input[_builtins.str] storage_class: Storage class to transition noncurrent objects to
@@ -1269,14 +1269,14 @@ class ObjectStorageBucketLifecycleConfigurationRuleNoncurrentVersionTransitionAr
 
     @_builtins.property
     @pulumi.getter(name="newerNoncurrentVersions")
-    def newer_noncurrent_versions(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def newer_noncurrent_versions(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of noncurrent versions to retain
         """
         return pulumi.get(self, "newer_noncurrent_versions")
 
     @newer_noncurrent_versions.setter
-    def newer_noncurrent_versions(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def newer_noncurrent_versions(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "newer_noncurrent_versions", value)
 
 
@@ -1285,11 +1285,11 @@ class ObjectStorageBucketLifecycleConfigurationRuleTransitionArgsDict(TypedDict)
     """
     Storage class to transition objects to
     """
-    date: NotRequired[pulumi.Input[_builtins.str]]
+    date: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     ISO8601 date when objects transition
     """
-    days: NotRequired[pulumi.Input[_builtins.int]]
+    days: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of days after object creation for transition
     """
@@ -1298,8 +1298,8 @@ class ObjectStorageBucketLifecycleConfigurationRuleTransitionArgsDict(TypedDict)
 class ObjectStorageBucketLifecycleConfigurationRuleTransitionArgs:
     def __init__(__self__, *,
                  storage_class: pulumi.Input[_builtins.str],
-                 date: Optional[pulumi.Input[_builtins.str]] = None,
-                 days: Optional[pulumi.Input[_builtins.int]] = None):
+                 date: pulumi.Input[Optional[_builtins.str]] = None,
+                 days: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] storage_class: Storage class to transition objects to
         :param pulumi.Input[_builtins.str] date: ISO8601 date when objects transition
@@ -1325,26 +1325,26 @@ class ObjectStorageBucketLifecycleConfigurationRuleTransitionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ISO8601 date when objects transition
         """
         return pulumi.get(self, "date")
 
     @date.setter
-    def date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "date", value)
 
     @_builtins.property
     @pulumi.getter
-    def days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of days after object creation for transition
         """
         return pulumi.get(self, "days")
 
     @days.setter
-    def days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "days", value)
 
 

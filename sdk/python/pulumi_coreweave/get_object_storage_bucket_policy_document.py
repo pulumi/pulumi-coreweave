@@ -129,9 +129,9 @@ def get_object_storage_bucket_policy_document(id: Optional[_builtins.str] = None
         json=pulumi.get(__ret__, 'json'),
         statements=pulumi.get(__ret__, 'statements'),
         version=pulumi.get(__ret__, 'version'))
-def get_object_storage_bucket_policy_document_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                     statements: Optional[pulumi.Input[Optional[Sequence[Union['GetObjectStorageBucketPolicyDocumentStatementArgs', 'GetObjectStorageBucketPolicyDocumentStatementArgsDict']]]]] = None,
-                                                     version: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_object_storage_bucket_policy_document_output(id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                     statements: pulumi.Input[Optional[Optional[Sequence[Union['GetObjectStorageBucketPolicyDocumentStatementArgs', 'GetObjectStorageBucketPolicyDocumentStatementArgsDict']]]]] = None,
+                                                     version: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetObjectStorageBucketPolicyDocumentResult]:
     """
     [Bucket access policies](https://docs.coreweave.com/products/storage/object-storage/auth-access/bucket-access/bucket-policies) allow you to define precise, S3-compatible access control for one bucket. They are evaluated after organization access policies. See [Manage Bucket Policies](https://docs.coreweave.com/products/storage/object-storage/auth-access/bucket-access/manage-bucket-policies#example-policies) for examples and further information. This data source provides a type-safe data structure for creating an S3-compatible JSON bucket policy.

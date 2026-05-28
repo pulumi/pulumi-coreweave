@@ -194,11 +194,11 @@ export interface NetworkingVpcState {
     /**
      * Settings affecting DHCP behavior within the VPC.
      */
-    dhcp?: pulumi.Input<inputs.NetworkingVpcDhcp>;
+    dhcp?: pulumi.Input<inputs.NetworkingVpcDhcp | undefined>;
     /**
      * Settings affecting traffic leaving the VPC.
      */
-    egress?: pulumi.Input<inputs.NetworkingVpcEgress>;
+    egress?: pulumi.Input<inputs.NetworkingVpcEgress | undefined>;
     /**
      * An IPv4 CIDR range used to allocate host addresses when booting compute into a VPC.
      * This CIDR must be have a mask size of /18. If left unspecified, a Zone-specific default value will be applied by the server.
@@ -206,27 +206,27 @@ export interface NetworkingVpcState {
      *
      * @deprecated `hostPrefix` is deprecated. Use `hostPrefixes` instead. The field will be removed in a future version. The equivalent expression for a given resource may be found by refreshing state and running `terraform state show coreweave_networking_vpc.example`.
      */
-    hostPrefix?: pulumi.Input<string>;
+    hostPrefix?: pulumi.Input<string | undefined>;
     /**
      * The IPv4 or IPv6 CIDR ranges used to allocate host addresses when booting compute into a VPC.
      */
-    hostPrefixes?: pulumi.Input<pulumi.Input<inputs.NetworkingVpcHostPrefix>[]>;
+    hostPrefixes?: pulumi.Input<pulumi.Input<inputs.NetworkingVpcHostPrefix>[] | undefined>;
     /**
      * Settings affecting traffic entering the VPC.
      */
-    ingress?: pulumi.Input<inputs.NetworkingVpcIngress>;
+    ingress?: pulumi.Input<inputs.NetworkingVpcIngress | undefined>;
     /**
      * The name of the VPC. Must not be longer than 30 characters.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * A list of additional prefixes associated with the VPC. For example, CKS clusters use these prefixes for Pod and service CIDR ranges.
      */
-    vpcPrefixes?: pulumi.Input<pulumi.Input<inputs.NetworkingVpcVpcPrefix>[]>;
+    vpcPrefixes?: pulumi.Input<pulumi.Input<inputs.NetworkingVpcVpcPrefix>[] | undefined>;
     /**
      * The Availability Zone in which the VPC is located.
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -236,11 +236,11 @@ export interface NetworkingVpcArgs {
     /**
      * Settings affecting DHCP behavior within the VPC.
      */
-    dhcp?: pulumi.Input<inputs.NetworkingVpcDhcp>;
+    dhcp?: pulumi.Input<inputs.NetworkingVpcDhcp | undefined>;
     /**
      * Settings affecting traffic leaving the VPC.
      */
-    egress?: pulumi.Input<inputs.NetworkingVpcEgress>;
+    egress?: pulumi.Input<inputs.NetworkingVpcEgress | undefined>;
     /**
      * An IPv4 CIDR range used to allocate host addresses when booting compute into a VPC.
      * This CIDR must be have a mask size of /18. If left unspecified, a Zone-specific default value will be applied by the server.
@@ -248,23 +248,23 @@ export interface NetworkingVpcArgs {
      *
      * @deprecated `hostPrefix` is deprecated. Use `hostPrefixes` instead. The field will be removed in a future version. The equivalent expression for a given resource may be found by refreshing state and running `terraform state show coreweave_networking_vpc.example`.
      */
-    hostPrefix?: pulumi.Input<string>;
+    hostPrefix?: pulumi.Input<string | undefined>;
     /**
      * The IPv4 or IPv6 CIDR ranges used to allocate host addresses when booting compute into a VPC.
      */
-    hostPrefixes?: pulumi.Input<pulumi.Input<inputs.NetworkingVpcHostPrefix>[]>;
+    hostPrefixes?: pulumi.Input<pulumi.Input<inputs.NetworkingVpcHostPrefix>[] | undefined>;
     /**
      * Settings affecting traffic entering the VPC.
      */
-    ingress?: pulumi.Input<inputs.NetworkingVpcIngress>;
+    ingress?: pulumi.Input<inputs.NetworkingVpcIngress | undefined>;
     /**
      * The name of the VPC. Must not be longer than 30 characters.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * A list of additional prefixes associated with the VPC. For example, CKS clusters use these prefixes for Pod and service CIDR ranges.
      */
-    vpcPrefixes?: pulumi.Input<pulumi.Input<inputs.NetworkingVpcVpcPrefix>[]>;
+    vpcPrefixes?: pulumi.Input<pulumi.Input<inputs.NetworkingVpcVpcPrefix>[] | undefined>;
     /**
      * The Availability Zone in which the VPC is located.
      */

@@ -143,11 +143,11 @@ export interface ObjectStorageBucketLifecycleConfigurationState {
     /**
      * Name of the bucket to apply lifecycle configuration to
      */
-    bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string | undefined>;
     /**
      * One or more lifecycle rule blocks
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.ObjectStorageBucketLifecycleConfigurationRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.ObjectStorageBucketLifecycleConfigurationRule>[] | undefined>;
 }
 
 /**
@@ -161,5 +161,5 @@ export interface ObjectStorageBucketLifecycleConfigurationArgs {
     /**
      * One or more lifecycle rule blocks
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.ObjectStorageBucketLifecycleConfigurationRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.ObjectStorageBucketLifecycleConfigurationRule>[] | undefined>;
 }

@@ -118,13 +118,13 @@ export interface GetObjectStorageBucketPolicyDocumentOutputArgs {
     /**
      * An optional policy identifier
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The main policy element that defines the access rules for buckets and objects. Multiple statement blocks can be specified.
      */
-    statements?: pulumi.Input<pulumi.Input<inputs.GetObjectStorageBucketPolicyDocumentStatementArgs>[]>;
+    statements?: pulumi.Input<pulumi.Input<inputs.GetObjectStorageBucketPolicyDocumentStatementArgs>[] | undefined>;
     /**
      * The policy version, e.g. `"2012-10-17"`
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }

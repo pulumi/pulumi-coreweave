@@ -9,7 +9,7 @@ export interface CksClusterAuthnWebhook {
     /**
      * The CA certificate for the webhook server. Must be a base64-encoded PEM-encoded certificate.
      */
-    ca?: pulumi.Input<string>;
+    ca?: pulumi.Input<string | undefined>;
     /**
      * The URL of the webhook server.
      */
@@ -20,7 +20,7 @@ export interface CksClusterAuthzWebhook {
     /**
      * The CA certificate for the webhook server. Must be a base64-encoded PEM-encoded certificate.
      */
-    ca?: pulumi.Input<string>;
+    ca?: pulumi.Input<string | undefined>;
     /**
      * The URL of the webhook server.
      */
@@ -28,19 +28,19 @@ export interface CksClusterAuthzWebhook {
 }
 
 export interface CksClusterNodePortRange {
-    end?: pulumi.Input<number>;
-    start?: pulumi.Input<number>;
+    end?: pulumi.Input<number | undefined>;
+    start?: pulumi.Input<number | undefined>;
 }
 
 export interface CksClusterOidc {
     /**
      * The OIDC group that is bound to the cluster-admin role for bootstrap access to the cluster.
      */
-    adminGroupBinding?: pulumi.Input<string>;
+    adminGroupBinding?: pulumi.Input<string | undefined>;
     /**
      * The CA certificate for the OIDC issuer. Must be a base64-encoded PEM-encoded certificate.
      */
-    ca?: pulumi.Input<string>;
+    ca?: pulumi.Input<string | undefined>;
     /**
      * The client ID for the OIDC client.
      */
@@ -48,11 +48,11 @@ export interface CksClusterOidc {
     /**
      * The claim to use as the groups.
      */
-    groupsClaim?: pulumi.Input<string>;
+    groupsClaim?: pulumi.Input<string | undefined>;
     /**
      * The prefix to use for the groups.
      */
-    groupsPrefix?: pulumi.Input<string>;
+    groupsPrefix?: pulumi.Input<string | undefined>;
     /**
      * The URL of the OIDC issuer.
      */
@@ -60,19 +60,19 @@ export interface CksClusterOidc {
     /**
      * The claim to require for authentication.
      */
-    requiredClaim?: pulumi.Input<string>;
+    requiredClaim?: pulumi.Input<string | undefined>;
     /**
      * A list of signing algorithms that the OpenID Connect discovery endpoint uses.
      */
-    signingAlgs?: pulumi.Input<pulumi.Input<string>[]>;
+    signingAlgs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The claim to use as the username.
      */
-    usernameClaim?: pulumi.Input<string>;
+    usernameClaim?: pulumi.Input<string | undefined>;
     /**
      * The prefix to use for the username.
      */
-    usernamePrefix?: pulumi.Input<string>;
+    usernamePrefix?: pulumi.Input<string | undefined>;
 }
 
 export interface GetObjectStorageBucketPolicyDocumentStatement {
@@ -106,55 +106,55 @@ export interface GetObjectStorageBucketPolicyDocumentStatementArgs {
     /**
      * List of action strings, e.g. `["s3:PutObject"]`
      */
-    actions?: pulumi.Input<pulumi.Input<string>[]>;
+    actions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Map of condition operators to JSON expressions
      */
-    condition?: pulumi.Input<{[key: string]: pulumi.Input<{[key: string]: pulumi.Input<string>}>}>;
+    condition?: pulumi.Input<{[key: string]: pulumi.Input<{[key: string]: pulumi.Input<string>}>} | undefined>;
     /**
      * `Allow` or `Deny`
      */
-    effect?: pulumi.Input<string>;
+    effect?: pulumi.Input<string | undefined>;
     /**
      * Map of principal types to ARNs
      */
-    principal?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>}>;
+    principal?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>} | undefined>;
     /**
      * List of resource ARNs, e.g. `["arn:aws:s3:::bucket/*"]`
      */
-    resources?: pulumi.Input<pulumi.Input<string>[]>;
+    resources?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * An optional statement identifier
      */
-    sid?: pulumi.Input<string>;
+    sid?: pulumi.Input<string | undefined>;
 }
 
 export interface NetworkingVpcDhcp {
     /**
      * Settings affecting DNS for DHCP within the VPC
      */
-    dns?: pulumi.Input<inputs.NetworkingVpcDhcpDns>;
+    dns?: pulumi.Input<inputs.NetworkingVpcDhcpDns | undefined>;
 }
 
 export interface NetworkingVpcDhcpDns {
     /**
      * The DNS servers to be used by DHCP clients within the VPC.
      */
-    servers?: pulumi.Input<pulumi.Input<string>[]>;
+    servers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface NetworkingVpcEgress {
     /**
      * Specifies whether the VPC should be blocked from consuming public Internet.
      */
-    disablePublicAccess?: pulumi.Input<boolean>;
+    disablePublicAccess?: pulumi.Input<boolean | undefined>;
 }
 
 export interface NetworkingVpcHostPrefix {
     /**
      * The configuration for a secondary host prefix.
      */
-    ipam?: pulumi.Input<inputs.NetworkingVpcHostPrefixIpam>;
+    ipam?: pulumi.Input<inputs.NetworkingVpcHostPrefixIpam | undefined>;
     /**
      * The user-specified name of the host prefix.
      */
@@ -173,7 +173,7 @@ export interface NetworkingVpcHostPrefixIpam {
     /**
      * Describes which IP address from the prefix is allocated to the network gateway. Must be one of: `UNSPECIFIED`, `EUI64`, `FIRST_IP`, `LAST_IP`.
      */
-    gatewayAddressPolicy?: pulumi.Input<string>;
+    gatewayAddressPolicy?: pulumi.Input<string | undefined>;
     /**
      * The desired length for each Node's allocation from the VPC-wide aggregate prefix.
      */
@@ -184,7 +184,7 @@ export interface NetworkingVpcIngress {
     /**
      * Specifies whether the VPC should prevent public prefixes advertised from Nodes from being imported into public-facing networks, making them inaccessible from the Internet.
      */
-    disablePublicServices?: pulumi.Input<boolean>;
+    disablePublicServices?: pulumi.Input<boolean | undefined>;
 }
 
 export interface NetworkingVpcVpcPrefix {
@@ -193,114 +193,114 @@ export interface NetworkingVpcVpcPrefix {
 }
 
 export interface ObjectStorageBucketLifecycleConfigurationRule {
-    abortIncompleteMultipartUpload?: pulumi.Input<inputs.ObjectStorageBucketLifecycleConfigurationRuleAbortIncompleteMultipartUpload>;
-    expiration?: pulumi.Input<inputs.ObjectStorageBucketLifecycleConfigurationRuleExpiration>;
-    filter?: pulumi.Input<inputs.ObjectStorageBucketLifecycleConfigurationRuleFilter>;
+    abortIncompleteMultipartUpload?: pulumi.Input<inputs.ObjectStorageBucketLifecycleConfigurationRuleAbortIncompleteMultipartUpload | undefined>;
+    expiration?: pulumi.Input<inputs.ObjectStorageBucketLifecycleConfigurationRuleExpiration | undefined>;
+    filter?: pulumi.Input<inputs.ObjectStorageBucketLifecycleConfigurationRuleFilter | undefined>;
     /**
      * Unique identifier for the rule
      */
-    id?: pulumi.Input<string>;
-    noncurrentVersionExpiration?: pulumi.Input<inputs.ObjectStorageBucketLifecycleConfigurationRuleNoncurrentVersionExpiration>;
-    noncurrentVersionTransitions?: pulumi.Input<pulumi.Input<inputs.ObjectStorageBucketLifecycleConfigurationRuleNoncurrentVersionTransition>[]>;
+    id?: pulumi.Input<string | undefined>;
+    noncurrentVersionExpiration?: pulumi.Input<inputs.ObjectStorageBucketLifecycleConfigurationRuleNoncurrentVersionExpiration | undefined>;
+    noncurrentVersionTransitions?: pulumi.Input<pulumi.Input<inputs.ObjectStorageBucketLifecycleConfigurationRuleNoncurrentVersionTransition>[] | undefined>;
     /**
      * Object key prefix to which the rule applies
      */
-    prefix?: pulumi.Input<string>;
+    prefix?: pulumi.Input<string | undefined>;
     /**
      * Rule status: Enabled or Disabled
      */
     status: pulumi.Input<string>;
-    transitions?: pulumi.Input<pulumi.Input<inputs.ObjectStorageBucketLifecycleConfigurationRuleTransition>[]>;
+    transitions?: pulumi.Input<pulumi.Input<inputs.ObjectStorageBucketLifecycleConfigurationRuleTransition>[] | undefined>;
 }
 
 export interface ObjectStorageBucketLifecycleConfigurationRuleAbortIncompleteMultipartUpload {
     /**
      * Days after initiation to abort multipart uploads
      */
-    daysAfterInitiation?: pulumi.Input<number>;
+    daysAfterInitiation?: pulumi.Input<number | undefined>;
 }
 
 export interface ObjectStorageBucketLifecycleConfigurationRuleExpiration {
     /**
      * ISO8601 date when objects expire
      */
-    date?: pulumi.Input<string>;
+    date?: pulumi.Input<string | undefined>;
     /**
      * Number of days after object creation for expiration
      */
-    days?: pulumi.Input<number>;
+    days?: pulumi.Input<number | undefined>;
     /**
      * Whether to remove expired delete markers
      */
-    expiredObjectDeleteMarker?: pulumi.Input<boolean>;
+    expiredObjectDeleteMarker?: pulumi.Input<boolean | undefined>;
 }
 
 export interface ObjectStorageBucketLifecycleConfigurationRuleFilter {
     /**
      * Configuration block used to apply a logical AND to two or more predicates. The Lifecycle Rule will apply to any object matching all the predicates configured inside the and block.
      */
-    and?: pulumi.Input<inputs.ObjectStorageBucketLifecycleConfigurationRuleFilterAnd>;
+    and?: pulumi.Input<inputs.ObjectStorageBucketLifecycleConfigurationRuleFilterAnd | undefined>;
     /**
      * Minimum object size (in bytes) to which the rule applies.
      */
-    objectSizeGreaterThan?: pulumi.Input<number>;
+    objectSizeGreaterThan?: pulumi.Input<number | undefined>;
     /**
      * Maximum object size (in bytes) to which the rule applies.
      */
-    objectSizeLessThan?: pulumi.Input<number>;
+    objectSizeLessThan?: pulumi.Input<number | undefined>;
     /**
      * Prefix filter
      */
-    prefix?: pulumi.Input<string>;
-    tag?: pulumi.Input<inputs.ObjectStorageBucketLifecycleConfigurationRuleFilterTag>;
+    prefix?: pulumi.Input<string | undefined>;
+    tag?: pulumi.Input<inputs.ObjectStorageBucketLifecycleConfigurationRuleFilterTag | undefined>;
 }
 
 export interface ObjectStorageBucketLifecycleConfigurationRuleFilterAnd {
     /**
      * Minimum object size (in bytes) to which the rule applies.
      */
-    objectSizeGreaterThan?: pulumi.Input<number>;
+    objectSizeGreaterThan?: pulumi.Input<number | undefined>;
     /**
      * Maximum object size (in bytes) to which the rule applies.
      */
-    objectSizeLessThan?: pulumi.Input<number>;
+    objectSizeLessThan?: pulumi.Input<number | undefined>;
     /**
      * Prefix identifying one or more objects to which the rule applies.
      */
-    prefix?: pulumi.Input<string>;
+    prefix?: pulumi.Input<string | undefined>;
     /**
      * Map for specifying tag keys and values.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 export interface ObjectStorageBucketLifecycleConfigurationRuleFilterTag {
     /**
      * Tag key filter
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * Tag value filter
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface ObjectStorageBucketLifecycleConfigurationRuleNoncurrentVersionExpiration {
     /**
      * Number of noncurrent versions to retain
      */
-    newerNoncurrentVersions?: pulumi.Input<number>;
+    newerNoncurrentVersions?: pulumi.Input<number | undefined>;
     /**
      * Days after becoming noncurrent before deletion
      */
-    noncurrentDays?: pulumi.Input<number>;
+    noncurrentDays?: pulumi.Input<number | undefined>;
 }
 
 export interface ObjectStorageBucketLifecycleConfigurationRuleNoncurrentVersionTransition {
     /**
      * Number of noncurrent versions to retain
      */
-    newerNoncurrentVersions?: pulumi.Input<number>;
+    newerNoncurrentVersions?: pulumi.Input<number | undefined>;
     /**
      * Number of days after object becomes noncurrent before the transition may occur
      */
@@ -315,11 +315,11 @@ export interface ObjectStorageBucketLifecycleConfigurationRuleTransition {
     /**
      * ISO8601 date when objects transition
      */
-    date?: pulumi.Input<string>;
+    date?: pulumi.Input<string | undefined>;
     /**
      * Number of days after object creation for transition
      */
-    days?: pulumi.Input<number>;
+    days?: pulumi.Input<number | undefined>;
     /**
      * Storage class to transition objects to
      */

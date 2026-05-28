@@ -42,8 +42,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.coreweave.inputs.ObjectStorageBucketLifecycleConfigurationRuleNoncurrentVersionExpirationArgs;
  * import com.pulumi.coreweave.inputs.ObjectStorageBucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadArgs;
  * import com.pulumi.resources.CustomResourceOptions;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -76,16 +76,16 @@ import javax.annotation.Nullable;
  *                     .filter(ObjectStorageBucketLifecycleConfigurationRuleFilterArgs.builder()
  *                         .and(ObjectStorageBucketLifecycleConfigurationRuleFilterAndArgs.builder()
  *                             .prefix("logs/")
- *                             .objectSizeGreaterThan(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1e+06) (example.pp:26,33-40)))
+ *                             .objectSizeGreaterThan(1000000)
  *                             .tags(Map.of("env", "prod"))
  *                             .build())
  *                         .build())
  *                     .expiration(ObjectStorageBucketLifecycleConfigurationRuleExpirationArgs.builder()
- *                         .days(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(30) (example.pp:33,14-16)))
+ *                         .days(30)
  *                         .build())
  *                     .noncurrentVersionExpiration(ObjectStorageBucketLifecycleConfigurationRuleNoncurrentVersionExpirationArgs.builder()
- *                         .noncurrentDays(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(7) (example.pp:36,33-34)))
- *                         .newerNoncurrentVersions(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2) (example.pp:37,33-34)))
+ *                         .noncurrentDays(7)
+ *                         .newerNoncurrentVersions(2)
  *                         .build())
  *                     .build(),
  *                 ObjectStorageBucketLifecycleConfigurationRuleArgs.builder()
@@ -93,7 +93,7 @@ import javax.annotation.Nullable;
  *                     .prefix("traces/")
  *                     .status("Enabled")
  *                     .abortIncompleteMultipartUpload(ObjectStorageBucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadArgs.builder()
- *                         .daysAfterInitiation(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(5) (example.pp:44,29-30)))
+ *                         .daysAfterInitiation(5)
  *                         .build())
  *                     .expiration(ObjectStorageBucketLifecycleConfigurationRuleExpirationArgs.builder()
  *                         .date("2026-01-01T00:00:00Z")

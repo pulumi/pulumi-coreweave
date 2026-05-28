@@ -108,11 +108,11 @@ export interface ObjectStorageOrganizationAccessPolicyState {
     /**
      * The name of the organization access policy, must be unique.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The list of access policy statements associated with this policy. At least one statement is required.
      */
-    statements?: pulumi.Input<pulumi.Input<inputs.ObjectStorageOrganizationAccessPolicyStatement>[]>;
+    statements?: pulumi.Input<pulumi.Input<inputs.ObjectStorageOrganizationAccessPolicyStatement>[] | undefined>;
 }
 
 /**
@@ -122,7 +122,7 @@ export interface ObjectStorageOrganizationAccessPolicyArgs {
     /**
      * The name of the organization access policy, must be unique.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The list of access policy statements associated with this policy. At least one statement is required.
      */

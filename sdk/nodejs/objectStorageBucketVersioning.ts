@@ -102,8 +102,8 @@ export interface ObjectStorageBucketVersioningState {
     /**
      * The bucket on which to enable or suspend versioning.
      */
-    bucket?: pulumi.Input<string>;
-    versioningConfiguration?: pulumi.Input<inputs.ObjectStorageBucketVersioningVersioningConfiguration>;
+    bucket?: pulumi.Input<string | undefined>;
+    versioningConfiguration?: pulumi.Input<inputs.ObjectStorageBucketVersioningVersioningConfiguration | undefined>;
 }
 
 /**
@@ -114,5 +114,5 @@ export interface ObjectStorageBucketVersioningArgs {
      * The bucket on which to enable or suspend versioning.
      */
     bucket: pulumi.Input<string>;
-    versioningConfiguration?: pulumi.Input<inputs.ObjectStorageBucketVersioningVersioningConfiguration>;
+    versioningConfiguration?: pulumi.Input<inputs.ObjectStorageBucketVersioningVersioningConfiguration | undefined>;
 }

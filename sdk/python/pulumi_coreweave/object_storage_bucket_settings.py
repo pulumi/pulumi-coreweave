@@ -20,7 +20,7 @@ __all__ = ['ObjectStorageBucketSettingsArgs', 'ObjectStorageBucketSettings']
 class ObjectStorageBucketSettingsArgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
-                 audit_logging_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 audit_logging_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ObjectStorageBucketSettings resource.
 
@@ -45,22 +45,22 @@ class ObjectStorageBucketSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="auditLoggingEnabled")
-    def audit_logging_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def audit_logging_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether audit logging is enabled for the bucket. Note: please contact support to enable audit logging for your organization before enabling.
         """
         return pulumi.get(self, "audit_logging_enabled")
 
     @audit_logging_enabled.setter
-    def audit_logging_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def audit_logging_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "audit_logging_enabled", value)
 
 
 @pulumi.input_type
 class _ObjectStorageBucketSettingsState:
     def __init__(__self__, *,
-                 audit_logging_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None):
+                 audit_logging_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ObjectStorageBucketSettings resources.
 
@@ -74,26 +74,26 @@ class _ObjectStorageBucketSettingsState:
 
     @_builtins.property
     @pulumi.getter(name="auditLoggingEnabled")
-    def audit_logging_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def audit_logging_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether audit logging is enabled for the bucket. Note: please contact support to enable audit logging for your organization before enabling.
         """
         return pulumi.get(self, "audit_logging_enabled")
 
     @audit_logging_enabled.setter
-    def audit_logging_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def audit_logging_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "audit_logging_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the bucket to manage settings for.
         """
         return pulumi.get(self, "bucket")
 
     @bucket.setter
-    def bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket", value)
 
 
@@ -103,8 +103,8 @@ class ObjectStorageBucketSettings(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 audit_logging_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
+                 audit_logging_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages settings for an Object Storage Bucket.
@@ -180,8 +180,8 @@ class ObjectStorageBucketSettings(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 audit_logging_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
+                 audit_logging_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -205,8 +205,8 @@ class ObjectStorageBucketSettings(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            audit_logging_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            bucket: Optional[pulumi.Input[_builtins.str]] = None) -> 'ObjectStorageBucketSettings':
+            audit_logging_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            bucket: pulumi.Input[Optional[_builtins.str]] = None) -> 'ObjectStorageBucketSettings':
         """
         Get an existing ObjectStorageBucketSettings resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

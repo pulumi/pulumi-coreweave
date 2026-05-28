@@ -17,7 +17,7 @@ The CoreWeave provider is available as a package in all Pulumi languages:
 
 ## Example Usage
 
-{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
+{{< chooser language "typescript,python,go,csharp,java,yaml,hcl" >}}
 {{% choosable language typescript %}}
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
@@ -237,8 +237,8 @@ import com.pulumi.coreweave.NetworkingVpcArgs;
 import com.pulumi.coreweave.inputs.NetworkingVpcVpcPrefixArgs;
 import com.pulumi.coreweave.CksCluster;
 import com.pulumi.coreweave.CksClusterArgs;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Map;
 import java.io.File;
 import java.nio.file.Files;
@@ -280,6 +280,45 @@ public class App {
             .build());
 
     }
+}
+```
+
+{{% /choosable %}}
+{{% choosable language hcl %}}
+```hcl
+pulumi {
+  required_providers {
+    coreweave = {
+      source = "pulumi/coreweave"
+    }
+  }
+}
+
+resource "coreweave_networkingvpc" "default" {
+  name = "default"
+  zone = "US-EAST-04A"
+  vpc_prefixes {
+    name  = "pod cidr"
+    value = "10.0.0.0/13"
+  }
+  vpc_prefixes {
+    name  = "service cidr"
+    value = "10.16.0.0/22"
+  }
+  vpc_prefixes {
+    name  = "internal lb cidr"
+    value = "10.32.4.0/22"
+  }
+}
+resource "coreweave_ckscluster" "default" {
+  name                   = "default"
+  version                = "v1.35"
+  zone                   = "US-EAST-04A"
+  vpc_id                 = coreweave_networkingvpc.default.id
+  public                 = true
+  pod_cidr_name          = "pod cidr"
+  service_cidr_name      = "service cidr"
+  internal_lb_cidr_names = ["internal lb cidr"]
 }
 ```
 

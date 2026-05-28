@@ -217,88 +217,88 @@ export interface CksClusterState {
     /**
      * Additional Subject Alternative Names (SANs) to include in the Kubernetes API server TLS certificate. Maximum 10 entries.
      */
-    additionalServerSans?: pulumi.Input<pulumi.Input<string>[]>;
+    additionalServerSans?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The endpoint for the cluster's api-server.
      */
-    apiServerEndpoint?: pulumi.Input<string>;
+    apiServerEndpoint?: pulumi.Input<string | undefined>;
     /**
      * Audit policy for the cluster. Must be provided as a base64-encoded JSON/YAML string.
      */
-    auditPolicy?: pulumi.Input<string>;
+    auditPolicy?: pulumi.Input<string | undefined>;
     /**
      * Authentication webhook configuration for the cluster.
      */
-    authnWebhook?: pulumi.Input<inputs.CksClusterAuthnWebhook>;
+    authnWebhook?: pulumi.Input<inputs.CksClusterAuthnWebhook | undefined>;
     /**
      * Authorization webhook configuration for the cluster.
      */
-    authzWebhook?: pulumi.Input<inputs.CksClusterAuthzWebhook>;
+    authzWebhook?: pulumi.Input<inputs.CksClusterAuthzWebhook | undefined>;
     /**
      * The names of the vpc prefixes to use as internal load balancer CIDR ranges. Internal load balancers are reachable within the VPC but not accessible from the internet.
      * The prefixes must exist in the cluster's VPC. This field is append-only.
      */
-    internalLbCidrNames?: pulumi.Input<pulumi.Input<string>[]>;
+    internalLbCidrNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * IPv6 Internal Load Balancer CIDR names. If any IPv6 field is set, then ALL IPv6 fields must be set.
      */
-    internalLbCidrNamesV6s?: pulumi.Input<pulumi.Input<string>[]>;
+    internalLbCidrNamesV6s?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the cluster. Must not be longer than 30 characters.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Kubernetes Service NodePort range. NodePort range can be expanded in existing clusters but not shrunk. Updating the NodePort range to a smaller range will require a replacement of the cluster.
      */
-    nodePortRange?: pulumi.Input<inputs.CksClusterNodePortRange>;
+    nodePortRange?: pulumi.Input<inputs.CksClusterNodePortRange | undefined>;
     /**
      * OpenID Connect (OIDC) configuration for authentication to the api-server.
      */
-    oidc?: pulumi.Input<inputs.CksClusterOidc>;
+    oidc?: pulumi.Input<inputs.CksClusterOidc | undefined>;
     /**
      * The name of the vpc prefix to use as the pod CIDR range. The prefix must exist in the cluster's VPC.
      */
-    podCidrName?: pulumi.Input<string>;
+    podCidrName?: pulumi.Input<string | undefined>;
     /**
      * IPv6 Pod CIDR name. If any IPv6 field is set, then ALL IPv6 fields must be set.
      */
-    podCidrNameV6?: pulumi.Input<string>;
+    podCidrNameV6?: pulumi.Input<string | undefined>;
     /**
      * Whether the cluster's api-server is publicly accessible from the internet.
      */
-    public?: pulumi.Input<boolean>;
+    public?: pulumi.Input<boolean | undefined>;
     /**
      * The URL of the OIDC issuer for the cluster's service account tokens. This value corresponds to the `--service-account-issuer` flag on the kube-apiserver.
      */
-    serviceAccountOidcIssuerUrl?: pulumi.Input<string>;
+    serviceAccountOidcIssuerUrl?: pulumi.Input<string | undefined>;
     /**
      * The name of the vpc prefix to use as the service CIDR range. The prefix must exist in the cluster's VPC.
      */
-    serviceCidrName?: pulumi.Input<string>;
+    serviceCidrName?: pulumi.Input<string | undefined>;
     /**
      * IPv6 Service CIDR name. If any IPv6 field is set, then ALL IPv6 fields must be set.
      */
-    serviceCidrNameV6?: pulumi.Input<string>;
+    serviceCidrNameV6?: pulumi.Input<string | undefined>;
     /**
      * The `clusterId` of the cluster to share storage with. Must be enabled by CoreWeave suppport. Contact CoreWeave support if you are interested in this feature.
      */
-    sharedStorageClusterId?: pulumi.Input<string>;
+    sharedStorageClusterId?: pulumi.Input<string | undefined>;
     /**
      * The current status of the cluster.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The version of Kubernetes to run on the cluster, in minor version format (e.g. 'v1.35'). Patch versions are automatically applied by CKS as they are released.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VPC in which the cluster is located. Must be a VPC in the same Availability Zone as the cluster.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The Availability Zone in which the cluster is located.
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -308,19 +308,19 @@ export interface CksClusterArgs {
     /**
      * Additional Subject Alternative Names (SANs) to include in the Kubernetes API server TLS certificate. Maximum 10 entries.
      */
-    additionalServerSans?: pulumi.Input<pulumi.Input<string>[]>;
+    additionalServerSans?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Audit policy for the cluster. Must be provided as a base64-encoded JSON/YAML string.
      */
-    auditPolicy?: pulumi.Input<string>;
+    auditPolicy?: pulumi.Input<string | undefined>;
     /**
      * Authentication webhook configuration for the cluster.
      */
-    authnWebhook?: pulumi.Input<inputs.CksClusterAuthnWebhook>;
+    authnWebhook?: pulumi.Input<inputs.CksClusterAuthnWebhook | undefined>;
     /**
      * Authorization webhook configuration for the cluster.
      */
-    authzWebhook?: pulumi.Input<inputs.CksClusterAuthzWebhook>;
+    authzWebhook?: pulumi.Input<inputs.CksClusterAuthzWebhook | undefined>;
     /**
      * The names of the vpc prefixes to use as internal load balancer CIDR ranges. Internal load balancers are reachable within the VPC but not accessible from the internet.
      * The prefixes must exist in the cluster's VPC. This field is append-only.
@@ -329,19 +329,19 @@ export interface CksClusterArgs {
     /**
      * IPv6 Internal Load Balancer CIDR names. If any IPv6 field is set, then ALL IPv6 fields must be set.
      */
-    internalLbCidrNamesV6s?: pulumi.Input<pulumi.Input<string>[]>;
+    internalLbCidrNamesV6s?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the cluster. Must not be longer than 30 characters.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Kubernetes Service NodePort range. NodePort range can be expanded in existing clusters but not shrunk. Updating the NodePort range to a smaller range will require a replacement of the cluster.
      */
-    nodePortRange?: pulumi.Input<inputs.CksClusterNodePortRange>;
+    nodePortRange?: pulumi.Input<inputs.CksClusterNodePortRange | undefined>;
     /**
      * OpenID Connect (OIDC) configuration for authentication to the api-server.
      */
-    oidc?: pulumi.Input<inputs.CksClusterOidc>;
+    oidc?: pulumi.Input<inputs.CksClusterOidc | undefined>;
     /**
      * The name of the vpc prefix to use as the pod CIDR range. The prefix must exist in the cluster's VPC.
      */
@@ -349,11 +349,11 @@ export interface CksClusterArgs {
     /**
      * IPv6 Pod CIDR name. If any IPv6 field is set, then ALL IPv6 fields must be set.
      */
-    podCidrNameV6?: pulumi.Input<string>;
+    podCidrNameV6?: pulumi.Input<string | undefined>;
     /**
      * Whether the cluster's api-server is publicly accessible from the internet.
      */
-    public?: pulumi.Input<boolean>;
+    public?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the vpc prefix to use as the service CIDR range. The prefix must exist in the cluster's VPC.
      */
@@ -361,11 +361,11 @@ export interface CksClusterArgs {
     /**
      * IPv6 Service CIDR name. If any IPv6 field is set, then ALL IPv6 fields must be set.
      */
-    serviceCidrNameV6?: pulumi.Input<string>;
+    serviceCidrNameV6?: pulumi.Input<string | undefined>;
     /**
      * The `clusterId` of the cluster to share storage with. Must be enabled by CoreWeave suppport. Contact CoreWeave support if you are interested in this feature.
      */
-    sharedStorageClusterId?: pulumi.Input<string>;
+    sharedStorageClusterId?: pulumi.Input<string | undefined>;
     /**
      * The version of Kubernetes to run on the cluster, in minor version format (e.g. 'v1.35'). Patch versions are automatically applied by CKS as they are released.
      */

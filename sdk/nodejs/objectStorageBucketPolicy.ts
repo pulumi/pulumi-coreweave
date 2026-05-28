@@ -153,11 +153,11 @@ export interface ObjectStorageBucketPolicyState {
     /**
      * The name of the bucket for which to apply this policy.
      */
-    bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string | undefined>;
     /**
      * Text of the policy. Must be valid JSON. The coreweave*object*storage*bucket*policy_document data source may be used, simply reference the `.json` attribute of the data source.
      */
-    policy?: pulumi.Input<string>;
+    policy?: pulumi.Input<string | undefined>;
 }
 
 /**
