@@ -347,7 +347,7 @@ def get_cks_cluster(id: Optional[_builtins.str] = None,
         version=pulumi.get(__ret__, 'version'),
         vpc_id=pulumi.get(__ret__, 'vpc_id'),
         zone=pulumi.get(__ret__, 'zone'))
-def get_cks_cluster_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_cks_cluster_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCksClusterResult]:
     """
     Query information about an existing CoreWeave Kubernetes Service (CKS) cluster by ID. See the [CKS API reference](https://docs.coreweave.com/products/cks/reference/cks-api).

@@ -22,13 +22,13 @@ __all__ = ['NetworkingVpcArgs', 'NetworkingVpc']
 class NetworkingVpcArgs:
     def __init__(__self__, *,
                  zone: pulumi.Input[_builtins.str],
-                 dhcp: Optional[pulumi.Input['NetworkingVpcDhcpArgs']] = None,
-                 egress: Optional[pulumi.Input['NetworkingVpcEgressArgs']] = None,
-                 host_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkingVpcHostPrefixArgs']]]] = None,
-                 ingress: Optional[pulumi.Input['NetworkingVpcIngressArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkingVpcVpcPrefixArgs']]]] = None):
+                 dhcp: pulumi.Input[Optional['NetworkingVpcDhcpArgs']] = None,
+                 egress: pulumi.Input[Optional['NetworkingVpcEgressArgs']] = None,
+                 host_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input['NetworkingVpcHostPrefixArgs']]]] = None,
+                 ingress: pulumi.Input[Optional['NetworkingVpcIngressArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input['NetworkingVpcVpcPrefixArgs']]]] = None):
         """
         The set of arguments for constructing a NetworkingVpc resource.
 
@@ -76,32 +76,32 @@ class NetworkingVpcArgs:
 
     @_builtins.property
     @pulumi.getter
-    def dhcp(self) -> Optional[pulumi.Input['NetworkingVpcDhcpArgs']]:
+    def dhcp(self) -> pulumi.Input[Optional['NetworkingVpcDhcpArgs']]:
         """
         Settings affecting DHCP behavior within the VPC.
         """
         return pulumi.get(self, "dhcp")
 
     @dhcp.setter
-    def dhcp(self, value: Optional[pulumi.Input['NetworkingVpcDhcpArgs']]):
+    def dhcp(self, value: pulumi.Input[Optional['NetworkingVpcDhcpArgs']]):
         pulumi.set(self, "dhcp", value)
 
     @_builtins.property
     @pulumi.getter
-    def egress(self) -> Optional[pulumi.Input['NetworkingVpcEgressArgs']]:
+    def egress(self) -> pulumi.Input[Optional['NetworkingVpcEgressArgs']]:
         """
         Settings affecting traffic leaving the VPC.
         """
         return pulumi.get(self, "egress")
 
     @egress.setter
-    def egress(self, value: Optional[pulumi.Input['NetworkingVpcEgressArgs']]):
+    def egress(self, value: pulumi.Input[Optional['NetworkingVpcEgressArgs']]):
         pulumi.set(self, "egress", value)
 
     @_builtins.property
     @pulumi.getter(name="hostPrefix")
     @_utilities.deprecated("""`host_prefix` is deprecated. Use `host_prefixes` instead. The field will be removed in a future version. The equivalent expression for a given resource may be found by refreshing state and running `terraform state show coreweave_networking_vpc.example`.""")
-    def host_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An IPv4 CIDR range used to allocate host addresses when booting compute into a VPC.
         This CIDR must be have a mask size of /18. If left unspecified, a Zone-specific default value will be applied by the server.
@@ -110,69 +110,69 @@ class NetworkingVpcArgs:
         return pulumi.get(self, "host_prefix")
 
     @host_prefix.setter
-    def host_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="hostPrefixes")
-    def host_prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkingVpcHostPrefixArgs']]]]:
+    def host_prefixes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NetworkingVpcHostPrefixArgs']]]]:
         """
         The IPv4 or IPv6 CIDR ranges used to allocate host addresses when booting compute into a VPC.
         """
         return pulumi.get(self, "host_prefixes")
 
     @host_prefixes.setter
-    def host_prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkingVpcHostPrefixArgs']]]]):
+    def host_prefixes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NetworkingVpcHostPrefixArgs']]]]):
         pulumi.set(self, "host_prefixes", value)
 
     @_builtins.property
     @pulumi.getter
-    def ingress(self) -> Optional[pulumi.Input['NetworkingVpcIngressArgs']]:
+    def ingress(self) -> pulumi.Input[Optional['NetworkingVpcIngressArgs']]:
         """
         Settings affecting traffic entering the VPC.
         """
         return pulumi.get(self, "ingress")
 
     @ingress.setter
-    def ingress(self, value: Optional[pulumi.Input['NetworkingVpcIngressArgs']]):
+    def ingress(self, value: pulumi.Input[Optional['NetworkingVpcIngressArgs']]):
         pulumi.set(self, "ingress", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the VPC. Must not be longer than 30 characters.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcPrefixes")
-    def vpc_prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkingVpcVpcPrefixArgs']]]]:
+    def vpc_prefixes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NetworkingVpcVpcPrefixArgs']]]]:
         """
         A list of additional prefixes associated with the VPC. For example, CKS clusters use these prefixes for Pod and service CIDR ranges.
         """
         return pulumi.get(self, "vpc_prefixes")
 
     @vpc_prefixes.setter
-    def vpc_prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkingVpcVpcPrefixArgs']]]]):
+    def vpc_prefixes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NetworkingVpcVpcPrefixArgs']]]]):
         pulumi.set(self, "vpc_prefixes", value)
 
 
 @pulumi.input_type
 class _NetworkingVpcState:
     def __init__(__self__, *,
-                 dhcp: Optional[pulumi.Input['NetworkingVpcDhcpArgs']] = None,
-                 egress: Optional[pulumi.Input['NetworkingVpcEgressArgs']] = None,
-                 host_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkingVpcHostPrefixArgs']]]] = None,
-                 ingress: Optional[pulumi.Input['NetworkingVpcIngressArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkingVpcVpcPrefixArgs']]]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 dhcp: pulumi.Input[Optional['NetworkingVpcDhcpArgs']] = None,
+                 egress: pulumi.Input[Optional['NetworkingVpcEgressArgs']] = None,
+                 host_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input['NetworkingVpcHostPrefixArgs']]]] = None,
+                 ingress: pulumi.Input[Optional['NetworkingVpcIngressArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input['NetworkingVpcVpcPrefixArgs']]]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NetworkingVpc resources.
 
@@ -209,32 +209,32 @@ class _NetworkingVpcState:
 
     @_builtins.property
     @pulumi.getter
-    def dhcp(self) -> Optional[pulumi.Input['NetworkingVpcDhcpArgs']]:
+    def dhcp(self) -> pulumi.Input[Optional['NetworkingVpcDhcpArgs']]:
         """
         Settings affecting DHCP behavior within the VPC.
         """
         return pulumi.get(self, "dhcp")
 
     @dhcp.setter
-    def dhcp(self, value: Optional[pulumi.Input['NetworkingVpcDhcpArgs']]):
+    def dhcp(self, value: pulumi.Input[Optional['NetworkingVpcDhcpArgs']]):
         pulumi.set(self, "dhcp", value)
 
     @_builtins.property
     @pulumi.getter
-    def egress(self) -> Optional[pulumi.Input['NetworkingVpcEgressArgs']]:
+    def egress(self) -> pulumi.Input[Optional['NetworkingVpcEgressArgs']]:
         """
         Settings affecting traffic leaving the VPC.
         """
         return pulumi.get(self, "egress")
 
     @egress.setter
-    def egress(self, value: Optional[pulumi.Input['NetworkingVpcEgressArgs']]):
+    def egress(self, value: pulumi.Input[Optional['NetworkingVpcEgressArgs']]):
         pulumi.set(self, "egress", value)
 
     @_builtins.property
     @pulumi.getter(name="hostPrefix")
     @_utilities.deprecated("""`host_prefix` is deprecated. Use `host_prefixes` instead. The field will be removed in a future version. The equivalent expression for a given resource may be found by refreshing state and running `terraform state show coreweave_networking_vpc.example`.""")
-    def host_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An IPv4 CIDR range used to allocate host addresses when booting compute into a VPC.
         This CIDR must be have a mask size of /18. If left unspecified, a Zone-specific default value will be applied by the server.
@@ -243,67 +243,67 @@ class _NetworkingVpcState:
         return pulumi.get(self, "host_prefix")
 
     @host_prefix.setter
-    def host_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="hostPrefixes")
-    def host_prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkingVpcHostPrefixArgs']]]]:
+    def host_prefixes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NetworkingVpcHostPrefixArgs']]]]:
         """
         The IPv4 or IPv6 CIDR ranges used to allocate host addresses when booting compute into a VPC.
         """
         return pulumi.get(self, "host_prefixes")
 
     @host_prefixes.setter
-    def host_prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkingVpcHostPrefixArgs']]]]):
+    def host_prefixes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NetworkingVpcHostPrefixArgs']]]]):
         pulumi.set(self, "host_prefixes", value)
 
     @_builtins.property
     @pulumi.getter
-    def ingress(self) -> Optional[pulumi.Input['NetworkingVpcIngressArgs']]:
+    def ingress(self) -> pulumi.Input[Optional['NetworkingVpcIngressArgs']]:
         """
         Settings affecting traffic entering the VPC.
         """
         return pulumi.get(self, "ingress")
 
     @ingress.setter
-    def ingress(self, value: Optional[pulumi.Input['NetworkingVpcIngressArgs']]):
+    def ingress(self, value: pulumi.Input[Optional['NetworkingVpcIngressArgs']]):
         pulumi.set(self, "ingress", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the VPC. Must not be longer than 30 characters.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcPrefixes")
-    def vpc_prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkingVpcVpcPrefixArgs']]]]:
+    def vpc_prefixes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NetworkingVpcVpcPrefixArgs']]]]:
         """
         A list of additional prefixes associated with the VPC. For example, CKS clusters use these prefixes for Pod and service CIDR ranges.
         """
         return pulumi.get(self, "vpc_prefixes")
 
     @vpc_prefixes.setter
-    def vpc_prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkingVpcVpcPrefixArgs']]]]):
+    def vpc_prefixes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NetworkingVpcVpcPrefixArgs']]]]):
         pulumi.set(self, "vpc_prefixes", value)
 
     @_builtins.property
     @pulumi.getter
-    def zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Availability Zone in which the VPC is located.
         """
         return pulumi.get(self, "zone")
 
     @zone.setter
-    def zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone", value)
 
 
@@ -313,14 +313,14 @@ class NetworkingVpc(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dhcp: Optional[pulumi.Input[Union['NetworkingVpcDhcpArgs', 'NetworkingVpcDhcpArgsDict']]] = None,
-                 egress: Optional[pulumi.Input[Union['NetworkingVpcEgressArgs', 'NetworkingVpcEgressArgsDict']]] = None,
-                 host_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkingVpcHostPrefixArgs', 'NetworkingVpcHostPrefixArgsDict']]]]] = None,
-                 ingress: Optional[pulumi.Input[Union['NetworkingVpcIngressArgs', 'NetworkingVpcIngressArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkingVpcVpcPrefixArgs', 'NetworkingVpcVpcPrefixArgsDict']]]]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 dhcp: pulumi.Input[Optional[Union['NetworkingVpcDhcpArgs', 'NetworkingVpcDhcpArgsDict']]] = None,
+                 egress: pulumi.Input[Optional[Union['NetworkingVpcEgressArgs', 'NetworkingVpcEgressArgsDict']]] = None,
+                 host_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkingVpcHostPrefixArgs', 'NetworkingVpcHostPrefixArgsDict']]]]] = None,
+                 ingress: pulumi.Input[Optional[Union['NetworkingVpcIngressArgs', 'NetworkingVpcIngressArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkingVpcVpcPrefixArgs', 'NetworkingVpcVpcPrefixArgsDict']]]]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Create and manage VPCs. Learn more about [CoreWeave VPCs](https://docs.coreweave.com/products/networking/vpc/about-vpcs).
@@ -508,14 +508,14 @@ class NetworkingVpc(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dhcp: Optional[pulumi.Input[Union['NetworkingVpcDhcpArgs', 'NetworkingVpcDhcpArgsDict']]] = None,
-                 egress: Optional[pulumi.Input[Union['NetworkingVpcEgressArgs', 'NetworkingVpcEgressArgsDict']]] = None,
-                 host_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkingVpcHostPrefixArgs', 'NetworkingVpcHostPrefixArgsDict']]]]] = None,
-                 ingress: Optional[pulumi.Input[Union['NetworkingVpcIngressArgs', 'NetworkingVpcIngressArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkingVpcVpcPrefixArgs', 'NetworkingVpcVpcPrefixArgsDict']]]]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 dhcp: pulumi.Input[Optional[Union['NetworkingVpcDhcpArgs', 'NetworkingVpcDhcpArgsDict']]] = None,
+                 egress: pulumi.Input[Optional[Union['NetworkingVpcEgressArgs', 'NetworkingVpcEgressArgsDict']]] = None,
+                 host_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkingVpcHostPrefixArgs', 'NetworkingVpcHostPrefixArgsDict']]]]] = None,
+                 ingress: pulumi.Input[Optional[Union['NetworkingVpcIngressArgs', 'NetworkingVpcIngressArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkingVpcVpcPrefixArgs', 'NetworkingVpcVpcPrefixArgsDict']]]]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -545,14 +545,14 @@ class NetworkingVpc(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            dhcp: Optional[pulumi.Input[Union['NetworkingVpcDhcpArgs', 'NetworkingVpcDhcpArgsDict']]] = None,
-            egress: Optional[pulumi.Input[Union['NetworkingVpcEgressArgs', 'NetworkingVpcEgressArgsDict']]] = None,
-            host_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-            host_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkingVpcHostPrefixArgs', 'NetworkingVpcHostPrefixArgsDict']]]]] = None,
-            ingress: Optional[pulumi.Input[Union['NetworkingVpcIngressArgs', 'NetworkingVpcIngressArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkingVpcVpcPrefixArgs', 'NetworkingVpcVpcPrefixArgsDict']]]]] = None,
-            zone: Optional[pulumi.Input[_builtins.str]] = None) -> 'NetworkingVpc':
+            dhcp: pulumi.Input[Optional[Union['NetworkingVpcDhcpArgs', 'NetworkingVpcDhcpArgsDict']]] = None,
+            egress: pulumi.Input[Optional[Union['NetworkingVpcEgressArgs', 'NetworkingVpcEgressArgsDict']]] = None,
+            host_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            host_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkingVpcHostPrefixArgs', 'NetworkingVpcHostPrefixArgsDict']]]]] = None,
+            ingress: pulumi.Input[Optional[Union['NetworkingVpcIngressArgs', 'NetworkingVpcIngressArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkingVpcVpcPrefixArgs', 'NetworkingVpcVpcPrefixArgsDict']]]]] = None,
+            zone: pulumi.Input[Optional[_builtins.str]] = None) -> 'NetworkingVpc':
         """
         Get an existing NetworkingVpc resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

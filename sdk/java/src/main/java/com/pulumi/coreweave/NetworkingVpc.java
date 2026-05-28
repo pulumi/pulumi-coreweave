@@ -41,8 +41,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.coreweave.inputs.NetworkingVpcIngressArgs;
  * import com.pulumi.coreweave.inputs.NetworkingVpcDhcpArgs;
  * import com.pulumi.coreweave.inputs.NetworkingVpcDhcpDnsArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  *                     .type("ROUTED")
  *                     .prefixes("2601:db8:bbbb::/48")
  *                     .ipam(NetworkingVpcHostPrefixIpamArgs.builder()
- *                         .prefixLength(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(80) (example.pp:12,30-32)))
+ *                         .prefixLength(80)
  *                         .gatewayAddressPolicy("FIRST_IP")
  *                         .build())
  *                     .build(),
@@ -79,7 +79,7 @@ import javax.annotation.Nullable;
  *                     .type("ATTACHED")
  *                     .prefixes("2601:db8:cccc::/48")
  *                     .ipam(NetworkingVpcHostPrefixIpamArgs.builder()
- *                         .prefixLength(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(64) (example.pp:20,22-24)))
+ *                         .prefixLength(64)
  *                         .build())
  *                     .build())
  *             .vpcPrefixes(            

@@ -22,7 +22,7 @@ __all__ = ['ObjectStorageBucketVersioningArgs', 'ObjectStorageBucketVersioning']
 class ObjectStorageBucketVersioningArgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
-                 versioning_configuration: Optional[pulumi.Input['ObjectStorageBucketVersioningVersioningConfigurationArgs']] = None):
+                 versioning_configuration: pulumi.Input[Optional['ObjectStorageBucketVersioningVersioningConfigurationArgs']] = None):
         """
         The set of arguments for constructing a ObjectStorageBucketVersioning resource.
 
@@ -46,19 +46,19 @@ class ObjectStorageBucketVersioningArgs:
 
     @_builtins.property
     @pulumi.getter(name="versioningConfiguration")
-    def versioning_configuration(self) -> Optional[pulumi.Input['ObjectStorageBucketVersioningVersioningConfigurationArgs']]:
+    def versioning_configuration(self) -> pulumi.Input[Optional['ObjectStorageBucketVersioningVersioningConfigurationArgs']]:
         return pulumi.get(self, "versioning_configuration")
 
     @versioning_configuration.setter
-    def versioning_configuration(self, value: Optional[pulumi.Input['ObjectStorageBucketVersioningVersioningConfigurationArgs']]):
+    def versioning_configuration(self, value: pulumi.Input[Optional['ObjectStorageBucketVersioningVersioningConfigurationArgs']]):
         pulumi.set(self, "versioning_configuration", value)
 
 
 @pulumi.input_type
 class _ObjectStorageBucketVersioningState:
     def __init__(__self__, *,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 versioning_configuration: Optional[pulumi.Input['ObjectStorageBucketVersioningVersioningConfigurationArgs']] = None):
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 versioning_configuration: pulumi.Input[Optional['ObjectStorageBucketVersioningVersioningConfigurationArgs']] = None):
         """
         Input properties used for looking up and filtering ObjectStorageBucketVersioning resources.
 
@@ -71,23 +71,23 @@ class _ObjectStorageBucketVersioningState:
 
     @_builtins.property
     @pulumi.getter
-    def bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The bucket on which to enable or suspend versioning.
         """
         return pulumi.get(self, "bucket")
 
     @bucket.setter
-    def bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket", value)
 
     @_builtins.property
     @pulumi.getter(name="versioningConfiguration")
-    def versioning_configuration(self) -> Optional[pulumi.Input['ObjectStorageBucketVersioningVersioningConfigurationArgs']]:
+    def versioning_configuration(self) -> pulumi.Input[Optional['ObjectStorageBucketVersioningVersioningConfigurationArgs']]:
         return pulumi.get(self, "versioning_configuration")
 
     @versioning_configuration.setter
-    def versioning_configuration(self, value: Optional[pulumi.Input['ObjectStorageBucketVersioningVersioningConfigurationArgs']]):
+    def versioning_configuration(self, value: pulumi.Input[Optional['ObjectStorageBucketVersioningVersioningConfigurationArgs']]):
         pulumi.set(self, "versioning_configuration", value)
 
 
@@ -97,8 +97,8 @@ class ObjectStorageBucketVersioning(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 versioning_configuration: Optional[pulumi.Input[Union['ObjectStorageBucketVersioningVersioningConfigurationArgs', 'ObjectStorageBucketVersioningVersioningConfigurationArgsDict']]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 versioning_configuration: pulumi.Input[Optional[Union['ObjectStorageBucketVersioningVersioningConfigurationArgs', 'ObjectStorageBucketVersioningVersioningConfigurationArgsDict']]] = None,
                  __props__=None):
         """
         Versioning protects your data by preserving all versions of objects and preventing permanent deletion. When objects are deleted, they are "soft deleted" with delete markers, allowing you to restore previous versions and recover data. After creating a versioned bucket with Terraform, [use `rclone` to manage versioned objects and delete markers](https://docs.coreweave.com/products/storage/object-storage/buckets/rclone-versioned-buckets).
@@ -177,8 +177,8 @@ class ObjectStorageBucketVersioning(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 versioning_configuration: Optional[pulumi.Input[Union['ObjectStorageBucketVersioningVersioningConfigurationArgs', 'ObjectStorageBucketVersioningVersioningConfigurationArgsDict']]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 versioning_configuration: pulumi.Input[Optional[Union['ObjectStorageBucketVersioningVersioningConfigurationArgs', 'ObjectStorageBucketVersioningVersioningConfigurationArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -202,8 +202,8 @@ class ObjectStorageBucketVersioning(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bucket: Optional[pulumi.Input[_builtins.str]] = None,
-            versioning_configuration: Optional[pulumi.Input[Union['ObjectStorageBucketVersioningVersioningConfigurationArgs', 'ObjectStorageBucketVersioningVersioningConfigurationArgsDict']]] = None) -> 'ObjectStorageBucketVersioning':
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            versioning_configuration: pulumi.Input[Optional[Union['ObjectStorageBucketVersioningVersioningConfigurationArgs', 'ObjectStorageBucketVersioningVersioningConfigurationArgsDict']]] = None) -> 'ObjectStorageBucketVersioning':
         """
         Get an existing ObjectStorageBucketVersioning resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

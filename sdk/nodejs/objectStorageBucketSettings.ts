@@ -101,11 +101,11 @@ export interface ObjectStorageBucketSettingsState {
     /**
      * Whether audit logging is enabled for the bucket. Note: please contact support to enable audit logging for your organization before enabling.
      */
-    auditLoggingEnabled?: pulumi.Input<boolean>;
+    auditLoggingEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the bucket to manage settings for.
      */
-    bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -115,7 +115,7 @@ export interface ObjectStorageBucketSettingsArgs {
     /**
      * Whether audit logging is enabled for the bucket. Note: please contact support to enable audit logging for your organization before enabling.
      */
-    auditLoggingEnabled?: pulumi.Input<boolean>;
+    auditLoggingEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the bucket to manage settings for.
      */
