@@ -31,6 +31,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.coreweave.ObjectStorageBucketPolicyArgs;
  * import com.pulumi.coreweave.CoreweaveFunctions;
  * import com.pulumi.coreweave.inputs.GetObjectStorageBucketPolicyDocumentArgs;
+ * import com.pulumi.coreweave.inputs.GetObjectStorageBucketPolicyDocumentStatementArgs;
  * import static com.pulumi.codegen.internal.Serialization.*;
  * import java.util.ArrayList;
  * import java.util.Arrays;
