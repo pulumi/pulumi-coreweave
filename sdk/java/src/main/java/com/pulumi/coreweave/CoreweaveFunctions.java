@@ -435,6 +435,7 @@ public final class CoreweaveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.coreweave.CoreweaveFunctions;
      * import com.pulumi.coreweave.inputs.GetObjectStorageBucketPolicyDocumentArgs;
+     * import com.pulumi.coreweave.inputs.GetObjectStorageBucketPolicyDocumentStatementArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -482,6 +483,7 @@ public final class CoreweaveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.coreweave.CoreweaveFunctions;
      * import com.pulumi.coreweave.inputs.GetObjectStorageBucketPolicyDocumentArgs;
+     * import com.pulumi.coreweave.inputs.GetObjectStorageBucketPolicyDocumentStatementArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -529,6 +531,7 @@ public final class CoreweaveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.coreweave.CoreweaveFunctions;
      * import com.pulumi.coreweave.inputs.GetObjectStorageBucketPolicyDocumentArgs;
+     * import com.pulumi.coreweave.inputs.GetObjectStorageBucketPolicyDocumentStatementArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -576,6 +579,7 @@ public final class CoreweaveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.coreweave.CoreweaveFunctions;
      * import com.pulumi.coreweave.inputs.GetObjectStorageBucketPolicyDocumentArgs;
+     * import com.pulumi.coreweave.inputs.GetObjectStorageBucketPolicyDocumentStatementArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -623,6 +627,7 @@ public final class CoreweaveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.coreweave.CoreweaveFunctions;
      * import com.pulumi.coreweave.inputs.GetObjectStorageBucketPolicyDocumentArgs;
+     * import com.pulumi.coreweave.inputs.GetObjectStorageBucketPolicyDocumentStatementArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -670,6 +675,7 @@ public final class CoreweaveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.coreweave.CoreweaveFunctions;
      * import com.pulumi.coreweave.inputs.GetObjectStorageBucketPolicyDocumentArgs;
+     * import com.pulumi.coreweave.inputs.GetObjectStorageBucketPolicyDocumentStatementArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -717,6 +723,7 @@ public final class CoreweaveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.coreweave.CoreweaveFunctions;
      * import com.pulumi.coreweave.inputs.GetObjectStorageBucketPolicyDocumentArgs;
+     * import com.pulumi.coreweave.inputs.GetObjectStorageBucketPolicyDocumentStatementArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
