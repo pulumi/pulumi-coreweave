@@ -125,7 +125,7 @@ import (
 //			_, err = coreweave.NewObjectStorageBucketPolicy(ctx, "doc", &coreweave.ObjectStorageBucketPolicyArgs{
 //				Bucket: docObjectStorageBucket.Name,
 //				Policy: pulumi.String(doc.ApplyT(func(doc coreweave.GetObjectStorageBucketPolicyDocumentResult) (*string, error) {
-//					return &doc.Json, nil
+//					return doc.Json, nil
 //				}).(pulumi.StringPtrOutput)),
 //			})
 //			if err != nil {
