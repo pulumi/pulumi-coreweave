@@ -10,7 +10,7 @@ replace github.com/coreweave/terraform-provider-coreweave => ../upstream
 
 require (
 	github.com/coreweave/terraform-provider-coreweave/pulumi-shim v0.0.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.132.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.133.0
 )
 
 require (
