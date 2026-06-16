@@ -183,5 +183,41 @@
             }
         }
     },
-    "auto-settings": {}
+    "auto-settings": {},
+    "default-resource-schema-fixups": {
+        "resources": {
+            "coreweave_cks_cluster": {},
+            "coreweave_networking_vpc": {},
+            "coreweave_object_storage_bucket": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "coreweave_object_storage_bucket_lifecycle_configuration": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "coreweave_object_storage_bucket_policy": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "coreweave_object_storage_bucket_settings": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "coreweave_object_storage_bucket_versioning": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "coreweave_object_storage_organization_access_policy": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            }
+        }
+    }
 }
