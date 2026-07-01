@@ -78,7 +78,7 @@ func Provider() tfbridge.ProviderInfo {
 		//nolint:lll
 		P: pfbridge.ShimProvider(provider.Provider(version.Version)),
 
-		Name:    "coreweave",
+		Name:    mainPkg,
 		Version: version.Version,
 		// DisplayName is a way to be able to change the casing of the provider name when being
 		// displayed on the Pulumi registry
@@ -100,7 +100,7 @@ func Provider() tfbridge.ProviderInfo {
 		// category/cloud tag helps with categorizing the package in the Pulumi Registry.
 		// For all available categories, see `Keywords` in
 		// https://www.pulumi.com/docs/guides/pulumi-packages/schema/#package.
-		Keywords:   []string{"coreweave", "category/cloud"},
+		Keywords:   []string{mainPkg, "category/cloud"},
 		License:    "Apache-2.0",
 		Homepage:   "https://www.pulumi.com",
 		Repository: "https://github.com/pulumi/pulumi-coreweave",
@@ -158,7 +158,7 @@ func Provider() tfbridge.ProviderInfo {
 			// Brand the .NET namespace/package as "CoreWeave" (matching DisplayName)
 			// rather than the default title-cased provider name "Coreweave".
 			Namespaces: map[string]string{
-				"coreweave": "CoreWeave",
+				mainPkg: "CoreWeave",
 			},
 		},
 	}
