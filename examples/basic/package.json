@@ -8,6 +8,6 @@
     "dependencies": {
         "@pulumi/coreweave": "1.0.1",
         "@pulumi/kubernetes": "4.33.0",
-        "@pulumi/pulumi": "3.252.0"
+        "@pulumi/pulumi": "3.253.0"
     }
 }
