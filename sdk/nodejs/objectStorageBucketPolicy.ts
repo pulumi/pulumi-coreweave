@@ -68,7 +68,7 @@ import * as utilities from "./utilities";
  * });
  * const docObjectStorageBucketPolicy = new coreweave.ObjectStorageBucketPolicy("doc", {
  *     bucket: docObjectStorageBucket.name,
- *     policy: doc.apply(doc => doc.json),
+ *     policy: doc.json,
  * });
  * ```
  *
