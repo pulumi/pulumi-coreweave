@@ -44,7 +44,7 @@ import (
 //					map[string]interface{}{
 //						"sid":    "allow-all",
 //						"effect": "Allow",
-//						"principal": map[string]interface{}{
+//						"principal": map[string]string{
 //							"CW": "*",
 //						},
 //						"action": []string{
@@ -124,9 +124,7 @@ import (
 //			}, nil)
 //			_, err = coreweave.NewObjectStorageBucketPolicy(ctx, "doc", &coreweave.ObjectStorageBucketPolicyArgs{
 //				Bucket: docObjectStorageBucket.Name,
-//				Policy: pulumi.String(doc.ApplyT(func(doc coreweave.GetObjectStorageBucketPolicyDocumentResult) (*string, error) {
-//					return doc.Json, nil
-//				}).(pulumi.StringPtrOutput)),
+//				Policy: doc.Json(),
 //			})
 //			if err != nil {
 //				return err

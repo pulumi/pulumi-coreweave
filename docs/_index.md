@@ -177,7 +177,7 @@ func main() {
 			Name:            pulumi.String("default"),
 			Version:         pulumi.String("v1.35"),
 			Zone:            pulumi.String("US-EAST-04A"),
-			VpcId:           _default.ID(),
+			VpcId:           _default.ID().ToIDOutput().ToStringOutput(),
 			Public:          pulumi.Bool(true),
 			PodCidrName:     pulumi.String("pod cidr"),
 			ServiceCidrName: pulumi.String("service cidr"),
