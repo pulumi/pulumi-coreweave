@@ -79,12 +79,8 @@ type LookupNetworkingVpcResult struct {
 }
 
 func LookupNetworkingVpcOutput(ctx *pulumi.Context, args LookupNetworkingVpcOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkingVpcResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupNetworkingVpcResultOutput, error) {
-			args := v.(LookupNetworkingVpcArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("coreweave:index/getNetworkingVpc:getNetworkingVpc", args, LookupNetworkingVpcResultOutput{}, options).(LookupNetworkingVpcResultOutput), nil
-		}).(LookupNetworkingVpcResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("coreweave:index/getNetworkingVpc:getNetworkingVpc", args, LookupNetworkingVpcResultOutput{}, options).(LookupNetworkingVpcResultOutput)
 }
 
 // A collection of arguments for invoking getNetworkingVpc.

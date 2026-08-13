@@ -88,12 +88,8 @@ type GetObjectStorageBucketPolicyDocumentResult struct {
 }
 
 func GetObjectStorageBucketPolicyDocumentOutput(ctx *pulumi.Context, args GetObjectStorageBucketPolicyDocumentOutputArgs, opts ...pulumi.InvokeOption) GetObjectStorageBucketPolicyDocumentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetObjectStorageBucketPolicyDocumentResultOutput, error) {
-			args := v.(GetObjectStorageBucketPolicyDocumentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("coreweave:index/getObjectStorageBucketPolicyDocument:getObjectStorageBucketPolicyDocument", args, GetObjectStorageBucketPolicyDocumentResultOutput{}, options).(GetObjectStorageBucketPolicyDocumentResultOutput), nil
-		}).(GetObjectStorageBucketPolicyDocumentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("coreweave:index/getObjectStorageBucketPolicyDocument:getObjectStorageBucketPolicyDocument", args, GetObjectStorageBucketPolicyDocumentResultOutput{}, options).(GetObjectStorageBucketPolicyDocumentResultOutput)
 }
 
 // A collection of arguments for invoking getObjectStorageBucketPolicyDocument.

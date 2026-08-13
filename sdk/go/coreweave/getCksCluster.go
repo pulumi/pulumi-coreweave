@@ -103,12 +103,8 @@ type LookupCksClusterResult struct {
 }
 
 func LookupCksClusterOutput(ctx *pulumi.Context, args LookupCksClusterOutputArgs, opts ...pulumi.InvokeOption) LookupCksClusterResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCksClusterResultOutput, error) {
-			args := v.(LookupCksClusterArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("coreweave:index/getCksCluster:getCksCluster", args, LookupCksClusterResultOutput{}, options).(LookupCksClusterResultOutput), nil
-		}).(LookupCksClusterResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("coreweave:index/getCksCluster:getCksCluster", args, LookupCksClusterResultOutput{}, options).(LookupCksClusterResultOutput)
 }
 
 // A collection of arguments for invoking getCksCluster.
