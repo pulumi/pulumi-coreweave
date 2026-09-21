@@ -29,29 +29,29 @@ namespace Pulumi.CoreWeave
     ///         Zone = "US-EAST-04A",
     ///     });
     /// 
-    ///     var bucketPolicy = 
+    ///     var bucketPolicy = new Dictionary&lt;string, object?&gt;
     ///     {
-    ///         { "version", "2012-10-17" },
-    ///         { "statement", new[]
+    ///         ["version"] = "2012-10-17",
+    ///         ["statement"] = new[]
     ///         {
-    ///             
+    ///             new Dictionary&lt;string, object?&gt;
     ///             {
-    ///                 { "sid", "allow-all" },
-    ///                 { "effect", "Allow" },
-    ///                 { "principal", 
+    ///                 ["sid"] = "allow-all",
+    ///                 ["effect"] = "Allow",
+    ///                 ["principal"] = new Dictionary&lt;string, object?&gt;
     ///                 {
-    ///                     { "CW", "*" },
-    ///                 } },
-    ///                 { "action", new[]
+    ///                     ["CW"] = "*",
+    ///                 },
+    ///                 ["action"] = new[]
     ///                 {
     ///                     "s3:*",
-    ///                 } },
-    ///                 { "resource", new[]
+    ///                 },
+    ///                 ["resource"] = new[]
     ///                 {
     ///                     raw.Name.Apply(name =&gt; $"arn:aws:s3:::{name}"),
-    ///                 } },
+    ///                 },
     ///             },
-    ///         } },
+    ///         },
     ///     };
     /// 
     ///     var rawObjectStorageBucketPolicy = new CoreWeave.ObjectStorageBucketPolicy("raw", new()
