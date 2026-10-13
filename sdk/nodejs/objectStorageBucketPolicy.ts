@@ -33,7 +33,7 @@ import * as utilities from "./utilities";
  *     bucket: raw.name,
  *     policy: pulumi.jsonStringify(bucketPolicy),
  * });
- * //# Example using the coreweave_object_storage_bucket_policy_document data source
+ * //# Example using the coreweave_object_storage_bucket_policy_document function
  * const docObjectStorageBucket = new coreweave.ObjectStorageBucket("doc", {
  *     name: "bucket-policy-doc-example",
  *     zone: "US-EAST-04A",
