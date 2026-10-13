@@ -286,7 +286,7 @@ public class App {
 {{% /choosable %}}
 {{% choosable language hcl %}}
 ```hcl
-pulumi {
+terraform {
   required_providers {
     coreweave = {
       source = "pulumi/coreweave"
@@ -294,7 +294,10 @@ pulumi {
   }
 }
 
-resource "coreweave_networkingvpc" "default" {
+resource "coreweave_networking_vpc" "default" {
+  lifecycle {
+    create_before_destroy = true
+  }
   name = "default"
   zone = "US-EAST-04A"
   vpc_prefixes {
@@ -310,11 +313,14 @@ resource "coreweave_networkingvpc" "default" {
     value = "10.32.4.0/22"
   }
 }
-resource "coreweave_ckscluster" "default" {
+resource "coreweave_cks_cluster" "default" {
+  lifecycle {
+    create_before_destroy = true
+  }
   name                   = "default"
   version                = "v1.35"
   zone                   = "US-EAST-04A"
-  vpc_id                 = coreweave_networkingvpc.default.id
+  vpc_id                 = coreweave_networking_vpc.default.id
   public                 = true
   pod_cidr_name          = "pod cidr"
   service_cidr_name      = "service cidr"

@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *                 bucketPolicy))
  *             .build());
  * 
- *         //# Example using the coreweave_object_storage_bucket_policy_document data source
+ *         //# Example using the coreweave_object_storage_bucket_policy_document function
  *         var docObjectStorageBucket = new ObjectStorageBucket("docObjectStorageBucket", ObjectStorageBucketArgs.builder()
  *             .name("bucket-policy-doc-example")
  *             .zone("US-EAST-04A")

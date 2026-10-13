@@ -70,7 +70,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			// # Example using the coreweave_object_storage_bucket_policy_document data source
+//			// # Example using the coreweave_object_storage_bucket_policy_document function
 //			docObjectStorageBucket, err := coreweave.NewObjectStorageBucket(ctx, "doc", &coreweave.ObjectStorageBucketArgs{
 //				Name: pulumi.String("bucket-policy-doc-example"),
 //				Zone: pulumi.String("US-EAST-04A"),

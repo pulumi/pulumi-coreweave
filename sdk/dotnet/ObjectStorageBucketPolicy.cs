@@ -60,7 +60,7 @@ namespace Pulumi.CoreWeave
     ///         Policy = Output.JsonSerialize(Output.Create(bucketPolicy)),
     ///     });
     /// 
-    ///     //# Example using the coreweave_object_storage_bucket_policy_document data source
+    ///     //# Example using the coreweave_object_storage_bucket_policy_document function
     ///     var docObjectStorageBucket = new CoreWeave.ObjectStorageBucket("doc", new()
     ///     {
     ///         Name = "bucket-policy-doc-example",
