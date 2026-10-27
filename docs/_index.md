@@ -177,7 +177,7 @@ func main() {
 			Name:            pulumi.String("default"),
 			Version:         pulumi.String("v1.35"),
 			Zone:            pulumi.String("US-EAST-04A"),
-			VpcId:           _default.ID().ToIDOutput().ToStringOutput(),
+			VpcId:           _default.ID(),
 			Public:          pulumi.Bool(true),
 			PodCidrName:     pulumi.String("pod cidr"),
 			ServiceCidrName: pulumi.String("service cidr"),
@@ -300,18 +300,16 @@ resource "coreweave_networking_vpc" "default" {
   }
   name = "default"
   zone = "US-EAST-04A"
-  vpc_prefixes {
+  vpc_prefixes = [{
     name  = "pod cidr"
     value = "10.0.0.0/13"
-  }
-  vpc_prefixes {
+    }, {
     name  = "service cidr"
     value = "10.16.0.0/22"
-  }
-  vpc_prefixes {
+    }, {
     name  = "internal lb cidr"
     value = "10.32.4.0/22"
-  }
+  }]
 }
 resource "coreweave_cks_cluster" "default" {
   lifecycle {
