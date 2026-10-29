@@ -47,6 +47,17 @@ export class ObjectStorageBucketVersioning extends pulumi.CustomResource {
         return new ObjectStorageBucketVersioning(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing ObjectStorageBucketVersioning resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: ObjectStorageBucketVersioningState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("coreweave:index/objectStorageBucketVersioning:ObjectStorageBucketVersioning", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'coreweave:index/objectStorageBucketVersioning:ObjectStorageBucketVersioning';
 
