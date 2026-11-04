@@ -212,6 +212,12 @@ func (NetworkingVpcState) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkingVpcState)(nil)).Elem()
 }
 
+// NetworkingVpcExists checks whether an existing NetworkingVpc resource with the given ID exists.
+func NetworkingVpcExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NetworkingVpcState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("coreweave:index/networkingVpc:NetworkingVpc", id, state, "", opts...)
+}
+
 type networkingVpcArgs struct {
 	// Settings affecting DHCP behavior within the VPC.
 	Dhcp *NetworkingVpcDhcp `pulumi:"dhcp"`

@@ -221,6 +221,16 @@ class ObjectStorageBucketVersioning(pulumi.CustomResource):
         __props__.__dict__["versioning_configuration"] = versioning_configuration
         return ObjectStorageBucketVersioning(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            versioning_configuration: pulumi.Input[Optional[Union['ObjectStorageBucketVersioningVersioningConfigurationArgs', 'ObjectStorageBucketVersioningVersioningConfigurationArgsDict', 'outputs.ObjectStorageBucketVersioningVersioningConfiguration']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bucket"] = bucket
+        __props__["versioningConfiguration"] = versioning_configuration
+        return pulumi.runtime.exists_resource(None, 'coreweave:index/objectStorageBucketVersioning:ObjectStorageBucketVersioning', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def bucket(self) -> pulumi.Output[_builtins.str]:

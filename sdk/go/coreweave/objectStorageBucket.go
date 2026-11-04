@@ -114,6 +114,12 @@ func (ObjectStorageBucketState) ElementType() reflect.Type {
 	return reflect.TypeOf((*objectStorageBucketState)(nil)).Elem()
 }
 
+// ObjectStorageBucketExists checks whether an existing ObjectStorageBucket resource with the given ID exists.
+func ObjectStorageBucketExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ObjectStorageBucketState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("coreweave:index/objectStorageBucket:ObjectStorageBucket", id, state, "", opts...)
+}
+
 type objectStorageBucketArgs struct {
 	// The name of the bucket, must be unique
 	Name *string `pulumi:"name"`

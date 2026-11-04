@@ -157,11 +157,10 @@ public class NetworkingVpc extends com.pulumi.resources.CustomResource {
      * This CIDR must be have a mask size of /18. If left unspecified, a Zone-specific default value will be applied by the server.
      * This field is immutable once set.
      * 
-     * @deprecated
-     * `hostPrefix` is deprecated. Use `hostPrefixes` instead. The field will be removed in a future version. The equivalent expression for a given resource may be found by refreshing state and running `terraform state show coreweave_networking_vpc.example`.
+     * @deprecated `hostPrefix` is deprecated. Use `hostPrefixes` instead. The field will be removed in a future version. The equivalent expression for a given resource may be found by refreshing state and running `terraform state show coreweave_networking_vpc.example`.
      * 
      */
-    @Deprecated /* `hostPrefix` is deprecated. Use `hostPrefixes` instead. The field will be removed in a future version. The equivalent expression for a given resource may be found by refreshing state and running `terraform state show coreweave_networking_vpc.example`. */
+    @Deprecated
     @Export(name="hostPrefix", refs={String.class}, tree="[0]")
     private Output<String> hostPrefix;
 

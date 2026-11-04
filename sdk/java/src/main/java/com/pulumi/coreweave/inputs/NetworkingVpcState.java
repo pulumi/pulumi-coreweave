@@ -56,11 +56,10 @@ public final class NetworkingVpcState extends com.pulumi.resources.ResourceArgs 
      * This CIDR must be have a mask size of /18. If left unspecified, a Zone-specific default value will be applied by the server.
      * This field is immutable once set.
      * 
-     * @deprecated
-     * `hostPrefix` is deprecated. Use `hostPrefixes` instead. The field will be removed in a future version. The equivalent expression for a given resource may be found by refreshing state and running `terraform state show coreweave_networking_vpc.example`.
+     * @deprecated `hostPrefix` is deprecated. Use `hostPrefixes` instead. The field will be removed in a future version. The equivalent expression for a given resource may be found by refreshing state and running `terraform state show coreweave_networking_vpc.example`.
      * 
      */
-    @Deprecated /* `hostPrefix` is deprecated. Use `hostPrefixes` instead. The field will be removed in a future version. The equivalent expression for a given resource may be found by refreshing state and running `terraform state show coreweave_networking_vpc.example`. */
+    @Deprecated
     @Import(name="hostPrefix")
     private @Nullable Output<String> hostPrefix;
 
@@ -69,11 +68,10 @@ public final class NetworkingVpcState extends com.pulumi.resources.ResourceArgs 
      * This CIDR must be have a mask size of /18. If left unspecified, a Zone-specific default value will be applied by the server.
      * This field is immutable once set.
      * 
-     * @deprecated
-     * `hostPrefix` is deprecated. Use `hostPrefixes` instead. The field will be removed in a future version. The equivalent expression for a given resource may be found by refreshing state and running `terraform state show coreweave_networking_vpc.example`.
+     * @deprecated `hostPrefix` is deprecated. Use `hostPrefixes` instead. The field will be removed in a future version. The equivalent expression for a given resource may be found by refreshing state and running `terraform state show coreweave_networking_vpc.example`.
      * 
      */
-    @Deprecated /* `hostPrefix` is deprecated. Use `hostPrefixes` instead. The field will be removed in a future version. The equivalent expression for a given resource may be found by refreshing state and running `terraform state show coreweave_networking_vpc.example`. */
+    @Deprecated
     public Optional<Output<String>> hostPrefix() {
         return Optional.ofNullable(this.hostPrefix);
     }
@@ -233,11 +231,10 @@ public final class NetworkingVpcState extends com.pulumi.resources.ResourceArgs 
          * 
          * @return builder
          * 
-         * @deprecated
-         * `hostPrefix` is deprecated. Use `hostPrefixes` instead. The field will be removed in a future version. The equivalent expression for a given resource may be found by refreshing state and running `terraform state show coreweave_networking_vpc.example`.
+         * @deprecated `hostPrefix` is deprecated. Use `hostPrefixes` instead. The field will be removed in a future version. The equivalent expression for a given resource may be found by refreshing state and running `terraform state show coreweave_networking_vpc.example`.
          * 
          */
-        @Deprecated /* `hostPrefix` is deprecated. Use `hostPrefixes` instead. The field will be removed in a future version. The equivalent expression for a given resource may be found by refreshing state and running `terraform state show coreweave_networking_vpc.example`. */
+        @Deprecated
         public Builder hostPrefix(@Nullable Output<String> hostPrefix) {
             $.hostPrefix = hostPrefix;
             return this;
@@ -250,11 +247,10 @@ public final class NetworkingVpcState extends com.pulumi.resources.ResourceArgs 
          * 
          * @return builder
          * 
-         * @deprecated
-         * `hostPrefix` is deprecated. Use `hostPrefixes` instead. The field will be removed in a future version. The equivalent expression for a given resource may be found by refreshing state and running `terraform state show coreweave_networking_vpc.example`.
+         * @deprecated `hostPrefix` is deprecated. Use `hostPrefixes` instead. The field will be removed in a future version. The equivalent expression for a given resource may be found by refreshing state and running `terraform state show coreweave_networking_vpc.example`.
          * 
          */
-        @Deprecated /* `hostPrefix` is deprecated. Use `hostPrefixes` instead. The field will be removed in a future version. The equivalent expression for a given resource may be found by refreshing state and running `terraform state show coreweave_networking_vpc.example`. */
+        @Deprecated
         public Builder hostPrefix(String hostPrefix) {
             return hostPrefix(Output.of(hostPrefix));
         }

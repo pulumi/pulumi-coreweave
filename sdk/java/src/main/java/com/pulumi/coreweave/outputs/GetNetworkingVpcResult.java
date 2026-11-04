@@ -29,11 +29,10 @@ public final class GetNetworkingVpcResult {
     /**
      * @return An IPv4 CIDR range used to allocate host addresses when booting compute into a VPC.
      * 
-     * @deprecated
-     * Configure hostPrefixes instead.
+     * @deprecated Configure hostPrefixes instead.
      * 
      */
-    @Deprecated /* Configure hostPrefixes instead. */
+    @Deprecated
     private String hostPrefix;
     /**
      * @return The IPv4 or IPv6 CIDR ranges used to allocate host addresses when booting compute into a VPC.
@@ -84,11 +83,10 @@ public final class GetNetworkingVpcResult {
     /**
      * @return An IPv4 CIDR range used to allocate host addresses when booting compute into a VPC.
      * 
-     * @deprecated
-     * Configure hostPrefixes instead.
+     * @deprecated Configure hostPrefixes instead.
      * 
      */
-    @Deprecated /* Configure hostPrefixes instead. */
+    @Deprecated
     public String hostPrefix() {
         return this.hostPrefix;
     }

@@ -111,6 +111,12 @@ func (ObjectStorageBucketVersioningState) ElementType() reflect.Type {
 	return reflect.TypeOf((*objectStorageBucketVersioningState)(nil)).Elem()
 }
 
+// ObjectStorageBucketVersioningExists checks whether an existing ObjectStorageBucketVersioning resource with the given ID exists.
+func ObjectStorageBucketVersioningExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ObjectStorageBucketVersioningState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("coreweave:index/objectStorageBucketVersioning:ObjectStorageBucketVersioning", id, state, "", opts...)
+}
+
 type objectStorageBucketVersioningArgs struct {
 	// The bucket on which to enable or suspend versioning.
 	Bucket                  string                                                `pulumi:"bucket"`

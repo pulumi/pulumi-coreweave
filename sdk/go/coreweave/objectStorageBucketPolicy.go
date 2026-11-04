@@ -202,6 +202,12 @@ func (ObjectStorageBucketPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*objectStorageBucketPolicyState)(nil)).Elem()
 }
 
+// ObjectStorageBucketPolicyExists checks whether an existing ObjectStorageBucketPolicy resource with the given ID exists.
+func ObjectStorageBucketPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ObjectStorageBucketPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("coreweave:index/objectStorageBucketPolicy:ObjectStorageBucketPolicy", id, state, "", opts...)
+}
+
 type objectStorageBucketPolicyArgs struct {
 	// The name of the bucket for which to apply this policy.
 	Bucket string `pulumi:"bucket"`
