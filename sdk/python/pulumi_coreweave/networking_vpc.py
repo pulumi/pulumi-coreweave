@@ -585,6 +585,28 @@ class NetworkingVpc(pulumi.CustomResource):
         __props__.__dict__["zone"] = zone
         return NetworkingVpc(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            dhcp: pulumi.Input[Optional[Union['NetworkingVpcDhcpArgs', 'NetworkingVpcDhcpArgsDict', 'outputs.NetworkingVpcDhcp']]] = None,
+            egress: pulumi.Input[Optional[Union['NetworkingVpcEgressArgs', 'NetworkingVpcEgressArgsDict', 'outputs.NetworkingVpcEgress']]] = None,
+            host_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            host_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkingVpcHostPrefixArgs', 'NetworkingVpcHostPrefixArgsDict', 'outputs.NetworkingVpcHostPrefix']]]]] = None,
+            ingress: pulumi.Input[Optional[Union['NetworkingVpcIngressArgs', 'NetworkingVpcIngressArgsDict', 'outputs.NetworkingVpcIngress']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkingVpcVpcPrefixArgs', 'NetworkingVpcVpcPrefixArgsDict', 'outputs.NetworkingVpcVpcPrefix']]]]] = None,
+            zone: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["dhcp"] = dhcp
+        __props__["egress"] = egress
+        __props__["hostPrefix"] = host_prefix
+        __props__["hostPrefixes"] = host_prefixes
+        __props__["ingress"] = ingress
+        __props__["name"] = name
+        __props__["vpcPrefixes"] = vpc_prefixes
+        __props__["zone"] = zone
+        return pulumi.runtime.exists_resource(None, 'coreweave:index/networkingVpc:NetworkingVpc', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def dhcp(self) -> pulumi.Output[Optional['outputs.NetworkingVpcDhcp']]:

@@ -155,6 +155,12 @@ func (ObjectStorageBucketLifecycleConfigurationState) ElementType() reflect.Type
 	return reflect.TypeOf((*objectStorageBucketLifecycleConfigurationState)(nil)).Elem()
 }
 
+// ObjectStorageBucketLifecycleConfigurationExists checks whether an existing ObjectStorageBucketLifecycleConfiguration resource with the given ID exists.
+func ObjectStorageBucketLifecycleConfigurationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ObjectStorageBucketLifecycleConfigurationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("coreweave:index/objectStorageBucketLifecycleConfiguration:ObjectStorageBucketLifecycleConfiguration", id, state, "", opts...)
+}
+
 type objectStorageBucketLifecycleConfigurationArgs struct {
 	// Name of the bucket to apply lifecycle configuration to
 	Bucket string `pulumi:"bucket"`

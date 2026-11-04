@@ -120,6 +120,12 @@ func (ObjectStorageOrganizationAccessPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*objectStorageOrganizationAccessPolicyState)(nil)).Elem()
 }
 
+// ObjectStorageOrganizationAccessPolicyExists checks whether an existing ObjectStorageOrganizationAccessPolicy resource with the given ID exists.
+func ObjectStorageOrganizationAccessPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ObjectStorageOrganizationAccessPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("coreweave:index/objectStorageOrganizationAccessPolicy:ObjectStorageOrganizationAccessPolicy", id, state, "", opts...)
+}
+
 type objectStorageOrganizationAccessPolicyArgs struct {
 	// The name of the organization access policy, must be unique.
 	Name *string `pulumi:"name"`

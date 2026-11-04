@@ -303,6 +303,16 @@ class ObjectStorageBucketLifecycleConfiguration(pulumi.CustomResource):
         __props__.__dict__["rules"] = rules
         return ObjectStorageBucketLifecycleConfiguration(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ObjectStorageBucketLifecycleConfigurationRuleArgs', 'ObjectStorageBucketLifecycleConfigurationRuleArgsDict', 'outputs.ObjectStorageBucketLifecycleConfigurationRule']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bucket"] = bucket
+        __props__["rules"] = rules
+        return pulumi.runtime.exists_resource(None, 'coreweave:index/objectStorageBucketLifecycleConfiguration:ObjectStorageBucketLifecycleConfiguration', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def bucket(self) -> pulumi.Output[_builtins.str]:

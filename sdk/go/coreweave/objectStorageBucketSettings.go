@@ -112,6 +112,12 @@ func (ObjectStorageBucketSettingsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*objectStorageBucketSettingsState)(nil)).Elem()
 }
 
+// ObjectStorageBucketSettingsExists checks whether an existing ObjectStorageBucketSettings resource with the given ID exists.
+func ObjectStorageBucketSettingsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ObjectStorageBucketSettingsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("coreweave:index/objectStorageBucketSettings:ObjectStorageBucketSettings", id, state, "", opts...)
+}
+
 type objectStorageBucketSettingsArgs struct {
 	// Whether audit logging is enabled for the bucket. Note: please contact support to enable audit logging for your organization before enabling.
 	AuditLoggingEnabled *bool `pulumi:"auditLoggingEnabled"`

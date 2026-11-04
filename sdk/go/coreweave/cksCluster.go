@@ -210,6 +210,12 @@ func (CksClusterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*cksClusterState)(nil)).Elem()
 }
 
+// CksClusterExists checks whether an existing CksCluster resource with the given ID exists.
+func CksClusterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CksClusterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("coreweave:index/cksCluster:CksCluster", id, state, "", opts...)
+}
+
 type cksClusterArgs struct {
 	// Additional Subject Alternative Names (SANs) to include in the Kubernetes API server TLS certificate. Maximum 10 entries.
 	AdditionalServerSans []string `pulumi:"additionalServerSans"`

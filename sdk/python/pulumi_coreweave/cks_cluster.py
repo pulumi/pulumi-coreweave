@@ -894,6 +894,54 @@ class CksCluster(pulumi.CustomResource):
         __props__.__dict__["zone"] = zone
         return CksCluster(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            additional_server_sans: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            api_server_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            audit_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            authn_webhook: pulumi.Input[Optional[Union['CksClusterAuthnWebhookArgs', 'CksClusterAuthnWebhookArgsDict', 'outputs.CksClusterAuthnWebhook']]] = None,
+            authz_webhook: pulumi.Input[Optional[Union['CksClusterAuthzWebhookArgs', 'CksClusterAuthzWebhookArgsDict', 'outputs.CksClusterAuthzWebhook']]] = None,
+            internal_lb_cidr_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            internal_lb_cidr_names_v6s: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            node_port_range: pulumi.Input[Optional[Union['CksClusterNodePortRangeArgs', 'CksClusterNodePortRangeArgsDict', 'outputs.CksClusterNodePortRange']]] = None,
+            oidc: pulumi.Input[Optional[Union['CksClusterOidcArgs', 'CksClusterOidcArgsDict', 'outputs.CksClusterOidc']]] = None,
+            pod_cidr_name: pulumi.Input[Optional[_builtins.str]] = None,
+            pod_cidr_name_v6: pulumi.Input[Optional[_builtins.str]] = None,
+            public: pulumi.Input[Optional[_builtins.bool]] = None,
+            service_account_oidc_issuer_url: pulumi.Input[Optional[_builtins.str]] = None,
+            service_cidr_name: pulumi.Input[Optional[_builtins.str]] = None,
+            service_cidr_name_v6: pulumi.Input[Optional[_builtins.str]] = None,
+            shared_storage_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["additionalServerSans"] = additional_server_sans
+        __props__["apiServerEndpoint"] = api_server_endpoint
+        __props__["auditPolicy"] = audit_policy
+        __props__["authnWebhook"] = authn_webhook
+        __props__["authzWebhook"] = authz_webhook
+        __props__["internalLbCidrNames"] = internal_lb_cidr_names
+        __props__["internalLbCidrNamesV6s"] = internal_lb_cidr_names_v6s
+        __props__["name"] = name
+        __props__["nodePortRange"] = node_port_range
+        __props__["oidc"] = oidc
+        __props__["podCidrName"] = pod_cidr_name
+        __props__["podCidrNameV6"] = pod_cidr_name_v6
+        __props__["public"] = public
+        __props__["serviceAccountOidcIssuerUrl"] = service_account_oidc_issuer_url
+        __props__["serviceCidrName"] = service_cidr_name
+        __props__["serviceCidrNameV6"] = service_cidr_name_v6
+        __props__["sharedStorageClusterId"] = shared_storage_cluster_id
+        __props__["status"] = status
+        __props__["version"] = version
+        __props__["vpcId"] = vpc_id
+        __props__["zone"] = zone
+        return pulumi.runtime.exists_resource(None, 'coreweave:index/cksCluster:CksCluster', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="additionalServerSans")
     def additional_server_sans(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
